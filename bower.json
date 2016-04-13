@@ -1,0 +1,18 @@
+{
+  "name": "censusmapvsualization",
+  "description": "user-friendly visualizatoin of the us census data",
+  "main": "gulpfile.js",
+  "authors": [
+    "MEzeroTM <mezerotm@gmail.com>"
+  ],
+  "license": "ISC",
+  "homepage": "https://github.com/MEzeroTM/CensusMapVisualization",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
