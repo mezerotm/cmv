@@ -1,0 +1,24 @@
+{
+  "name": "censusmapvsualization",
+  "version": "1.0.0",
+  "description": "user-friendly visualizatoin of the us census data",
+  "main": "gulpfile.js",
+  "dependencies": {
+    "bower": "^1.7.9",
+    "gulp-cli": "^1.2.1"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MezeroTM/CensusMapVisualization.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/MezeroTM/CensusMapVisualization/issues"
+  },
+  "homepage": "https://github.com/MezeroTM/CensusMapVisualization#readme"
+}
