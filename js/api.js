@@ -45,7 +45,7 @@ apiCallBack = function (response) {
 geoCallBack = function(response) {
         console.log(JSON.stringify(response, null, 4));
 
-}
+};
     
 //Function which will gather data from user and then submit it to the API. The API will then return 
 //the data that was requested. 
@@ -76,7 +76,7 @@ function data(){
         }
     }
 
-   // request.variables = values;
+    request.variables = values;
     
 
 
@@ -102,6 +102,3 @@ function initMap() {
     scrollwheel: false
     });
 }
-
-
-data();
