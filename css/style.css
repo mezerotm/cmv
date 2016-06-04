@@ -73,13 +73,13 @@ button {
 /* The side navigation menu */
 .sidenav {
     height: 680px; /* 100% Full-height */
-    margin-top: 68px;
+    /* margin-top: 68px; 
+    margin-right: 55px; */
     width: 0; /* 0 width - change this with JavaScript */
     position: fixed; /* Stay in place */
     z-index: 1; /* Stay on top */
     top: 0;
     right: 0;
-    margin-right: 55px;
     background-color: white;
     overflow-x: hidden; /* Disable horizontal scroll */
     padding-top: 60px; /* Place content 60px from the top */
@@ -87,6 +87,7 @@ button {
     border-style: solid;
     border-color: black;
     border-width: 0px;
+    position: absolute;
 }
 
 /* The navigation menu links */
