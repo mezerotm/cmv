@@ -1,0 +1,32 @@
+.test {
+  padding-top: 100px;
+}
+
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+/* CSS for the slider button */
+#toggle {
+  width: 200px;
+  height: 230px;
+  border: 2px solid blue;
+  display: none;
+}
+
+/* CSS for the Data Form */
+.data-form {
+  margin-top: 30px;
+  margin-left: 10px;
+}
+
+/* CSS for the maps inside each Bootstrap column*/
+.col-md-6 div {
+  height: 280px;
+}
+
+.col-mid-2 .row img {
+  padding-top: 40px;
+}
