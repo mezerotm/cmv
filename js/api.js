@@ -1,11 +1,8 @@
-var sdk = new CitySDK(); //Create the CitySDK Instance
-var census = sdk.modules.census; //Create an instance of the module
-census.enable("24e658711bf26dbead500bf24f3f522fd50a79a9");
 //Enable module with the API key
-var censusAPIKey = "cdfd4ff35b1ffdf619b567c6fa2988fd3099ead";
+var censusAPIKey = "c83e06ec87c35c0d3ffb0f6d7640afbf52b7071c";
 var sdk = new CitySdk(); //Create the CitySDK Instance
 var census = new CensusModule(censusAPIKey); //Create an instance of the module
-sdk.modules.census = census;
+//sdk.modules.census = census;
 
 
 //creating the request variable. Please note that I have left in income as the default variable.
@@ -47,7 +44,7 @@ apiCallBack = function (response) {
 
 console.log(sdk);
 console.log(census);
-census.apiRequest(request, apiCallBack);    
+console.log(request);
      
 
 
