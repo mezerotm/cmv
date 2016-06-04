@@ -33,9 +33,13 @@ html, body {
   height: 680px; 
 }
 
+.col-md-2 {
+}
+
 .col-md-2 .row img {/*sidebar icons for selecting input/output*/
   margin-top: 20px;
   margin-bottom: 20px;
+  margin-right: 10px;
   height: 50px;
   width: 50px;
 }
