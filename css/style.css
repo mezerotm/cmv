@@ -1,32 +1,24 @@
-.test {
-  padding-top: 100px;
-}
-
 html, body {
   height: 100%;
   margin: 0;
   padding: 0;
 }
 
-/* CSS for the slider button */
-#toggle {
-  width: 200px;
-  height: 230px;
-  border: 2px solid blue;
-  display: none;
-}
-
-/* CSS for the Data Form */
-.data-form {
-  margin-top: 30px;
-  margin-left: 10px;
-}
 
 /* CSS for the maps inside each Bootstrap column*/
 .col-md-6 div {
   height: 280px;
 }
 
-.col-mid-2 .row img {
-  padding-top: 40px;
+.col-md-2 .row img {
+  margin-top: 10px;
+  height: 40px;
+  width: 40px;
+}
+
+#map1, #map2, #map3, #map4 {
+  border-style: solid;
+  border-color: black;
+  border-width: 3px;
+  background-color: black;
 }
