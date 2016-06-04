@@ -60,6 +60,8 @@ html, body {
 
 
 
+
+
 /*  SPACER  */
 
 
@@ -100,6 +102,10 @@ html, body {
 .sidenav a:hover, .offcanvas a:focus{
     color: #f1f1f1;
 }
+
+/* .checkbox {
+  margin: auto;
+} */
 
 /* Position and style the close button (top right corner) */
 .closebtn {
