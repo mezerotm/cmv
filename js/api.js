@@ -1,3 +1,7 @@
+var sdk = new CitySDK(); //Create the CitySDK Instance
+var census = sdk.modules.census; //Create an instance of the module
+census.enable("24e658711bf26dbead500bf24f3f522fd50a79a9");
+//Enable module with the API key
 var censusAPIKey = "cdfd4ff35b1ffdf619b567c6fa2988fd3099ead";
 var sdk = new CitySdk(); //Create the CitySDK Instance
 var census = new CensusModule(censusAPIKey); //Create an instance of the module

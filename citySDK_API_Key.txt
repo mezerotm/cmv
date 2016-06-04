@@ -1,1 +1,1 @@
-citySDK api key: cdfd4ff35b1ffdf619b567c6fa2988fd3099ead
+citySDK api key: 24e658711bf26dbead500bf24f3f522fd50a79a9
