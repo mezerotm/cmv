@@ -7,7 +7,7 @@ html, body {
 #header {
   width: 100%;
   background-color: lightblue;
-  height: 40px;
+  height: 60px;
 }
 
 .col-md-6 div {/*maps divs*/
@@ -17,10 +17,12 @@ html, body {
 
 .col-md-6 h3 {
   margin-left: 20px;
+  margin-top: 0;
+  padding-top: 0;
 }
 
 .col-md-3 {/*sidebar*/
-  margin-top: 30px;
+  margin-top: 8px;
 }
 
 .col-md-9 {
@@ -31,7 +33,7 @@ html, body {
   border-style: solid solid solid solid;
   border-width: 2px;
   border-color: black;
-  height: 715px;
+  height: 675px;
 }
 
 .col-md-2 .row img {/*sidebar icons for selecting input/output*/
