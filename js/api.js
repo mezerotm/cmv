@@ -1,6 +1,7 @@
 var sdk = new CitySDK(); //Create the CitySDK Instance
 var census = sdk.modules.census; //Create an instance of the module
-census.enable("cdfd4ff35b1ffdf619b567c6fa2988fd3099ead"); //Enable module with the API key
+census.enable("24e658711bf26dbead500bf24f3f522fd50a79a9
+"); //Enable module with the API key
 
 
 //creating the request variable. Please note that I have left in income as the default variable.
