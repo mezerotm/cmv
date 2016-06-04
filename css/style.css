@@ -76,14 +76,14 @@ html, body {
     z-index: 1; /* Stay on top */
     top: 0;
     right: 0;
-    margin-right: 50px;
+    margin-right: 55px;
     background-color: white;
     overflow-x: hidden; /* Disable horizontal scroll */
     padding-top: 60px; /* Place content 60px from the top */
     transition: 0.5s; /* 0.5 second transition effect to slide in the sidenav */
     border-style: solid;
     border-color: black;
-    border-width: 1px;
+    border-width: 0px;
 }
 
 /* The navigation menu links */

@@ -93,9 +93,11 @@ function initMap() {
 /* Set the width of the side navigation to 250px */
 function openNav() {
     document.getElementById("mySidenav").style.width = "300px";
+    document.getElementById("mySidenav").style.border = "1px solid black";
 }
 
 /* Set the width of the side navigation to 0 */
 function closeNav() {
     document.getElementById("mySidenav").style.width = "0";
+    document.getElementById("mySidenav").style.border = "0px solid white";
 }
