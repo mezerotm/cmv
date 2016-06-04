@@ -23,7 +23,7 @@ html, body {
 
 .col-md-3 {/*sidebar*/
   margin-top: 8px;
-  
+
 }
 /*map container*/
 .col-md-9 {
@@ -52,6 +52,10 @@ html, body {
   background-color: black;
   margin-left: 10px;
   margin-right: 10px;
+}
+
+.sidenav h3 {
+  padding-left: 10px;
 }
 
 
