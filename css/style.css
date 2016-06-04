@@ -3,7 +3,7 @@ html, body {
   margin: 0;
   padding: 0;
 }
-
+/*header for the webpage*/
 #header {
   width: 100%;
   background-color: lightblue;
@@ -14,7 +14,7 @@ html, body {
   height: 275px;
   margin-top: 0;
 }
-
+/*map div headers*/
 .col-md-6 h3 {
   margin-left: 20px;
   margin-top: 2px;
@@ -24,15 +24,12 @@ html, body {
 .col-md-3 {/*sidebar*/
   margin-top: 8px;
 }
-
+/*map container*/
 .col-md-9 {
   margin-top: 60px;
 }
 
 .col-md-10 {/*input/output section of sidebar*/
-  /* border-style: solid solid solid solid;
-  border-width: 2px;
-  border-color: black; */
   height: 680px; 
 }
 
@@ -41,11 +38,8 @@ html, body {
   margin-bottom: 20px;
   height: 50px;
   width: 50px;
- /* border-style: solid solid solid hidden;
-  border-width: 1px;
-  border-color: black;*/
 }
-
+/*map object styles*/
 #map1, #map2, #map3, #map4 {/*maps themselves*/
   border-style: solid;
   border-color: black;
@@ -56,7 +50,7 @@ html, body {
 }
 
 
-
+/*the submit button styles*/
 button {
   margin-left: 60px;
 }

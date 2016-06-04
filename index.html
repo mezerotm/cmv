@@ -1,55 +1,64 @@
 <!DOCTYPE html>
 <html>
 <head>
- <link rel="icon" href="favicon.ico" type="image/x-icon" />
-  <title>Test File</title>
+ 
+  <link rel="icon" href="favicon.ico" type="image/x-icon" />
+  <title>Census Map Visualization Tool</title>
+
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
-   <!--<script src="citysdk/examples/libraries/vendor/jquery/jquery-2.1.3.min.js" type="text/javascript"></script>-->
   <script src="terraformer/terraformer-1.0.5.min.js"></script>
   <script src="terraformer/terraformer-arcgis-parser-1.0.4.min.js"></script>
   <script src="citysdk/dist/js/core/citysdk.js"></script>
   <script src="citysdk/dist/js/modules/citysdk.census.js"></script>
  
-<!-- Latest compiled and minified CSS -->
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
-
-    <link rel="stylesheet" href="css/style.css">
-    <script src="http://maps.google.com/maps/api/js?key=AIzaSyAhgSIK7GcSzuKZ8acLE2oOeGCY52C-7qw"></script>
+  <!-- Latest compiled and minified CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+  <!-- custom stylesheet -->
+  <link rel="stylesheet" href="css/style.css">
+  <!-- google maps api -->
+  <script src="http://maps.google.com/maps/api/js?key=AIzaSyAhgSIK7GcSzuKZ8acLE2oOeGCY52C-7qw"></script>
     
 </head>
 <body>
 
-<!--<div class="bump container p-t-3">-->
-<div>
   <div class="row">
-  <div id="header"><button name="submit" id="submit" onclick="data()">Submit</button></div>
-    <div class="col-md-9">
-      <div class="row">
+    <div id="header"><button name="submit" id="submit" onclick="data()">Submit</button></div>
+      <div class="col-md-9">
+        <div class="row">
           <div class="col-md-6">
+
             <h3>Map 1</h3>
             <div id="map1"></div>
-          </div>
-          <div class="col-md-6">
+
+              </div>
+              <div class="col-md-6">
+
             <h3>Map 2</h3>
-            <div id="map2"></div>
+             <div id="map2"></div>
+
+            </div>
+          </div> <!-- /row -->
+            <div class="row">
+              <div class="col-md-6">
+
+                <h3>Map 3</h3>
+                <div id="map3"></div>
+
+            </div>
+            <div class="col-md-6">
+
+              <h3>Map 4</h3>
+              <div id="map4"></div> 
+
           </div>
-      </div>
-      <div class="row">
-        <div class="col-md-6">
-          <h3>Map 3</h3>
-            <div id="map3"></div>
-        </div>
-        <div class="col-md-6">
-          <h3>Map 4</h3>
-          <div id="map4"></div>
-        </div>
-      </div>
+      </div> <!-- /row -->
     </div>
-    <div class="col-md-3"><!--sidebar-->
-      <div class="row">
-        <div class="col-md-10">
-          <div class="row">
-            <div id="mySidenav1" class="sidenav">
+      <div class="col-md-3"> <!--sidebar-->
+        <div class="row">
+          <div class="col-md-10">
+            <div class="row">
+
+              <div id="mySidenav1" class="sidenav">
                 <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
                   <div class="checkbox">
                     <label><input name="censusVarz" type="checkbox" value="population">Population</label>
@@ -57,58 +66,124 @@
                   <div class="checkbox">
                     <label><input name="censusVarz" type="checkbox" value="income">Income</label>
                   </div>
-            </div>
+              </div> <!-- /navbar -->
+
             <div id="mySidenav2" class="sidenav">
               <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
                 <div class="checkbox">
                   <label><input name="censusVarz" type="checkbox" value="median_male_age">Median Male Age</label>
                 </div>
-              <div class="checkbox">
+                <div class="checkbox">
                   <label><input name="censusVarz" type="checkbox" value="median_female_age">Median Female Age</label>
                 </div>
                 <div class="checkbox">
                   <label><input name="censusVarz" type="checkbox" value="education_high_school">Eduction High School</label>
-                </div>
-                <div class="checkbox">
-                  <label><input name="censusVarz" type="checkbox" value="education_bachelors">Education Bachelor's</label>
-                </div>
-                <div class="checkbox">
-                  <label><input name="censusVarz" type="checkbox" value="education_masters">Education Master's</label>
-                </div>
-            </div>
+                  </div>
+              </div> <!-- /navbar -->
+              
             <div id="mySidenav3" class="sidenav">
               <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-                
-              </div>
+                <div class="checkbox">
+                  <label><input name="censusVarz" type="checkbox" value="median_male_age">Median Male Age</label>
+                </div>
+                <div class="checkbox">
+                  <label><input name="censusVarz" type="checkbox" value="median_female_age">Median Female Age</label>
+                </div>
+                <div class="checkbox">
+                  <label><input name="censusVarz" type="checkbox" value="education_high_school">Eduction High School</label>
+                  </div>
+              </div> <!-- /navbar -->
+
+            <div id="mySidenav4" class="sidenav">
+              <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+                <div class="checkbox">
+                  <label><input name="censusVarz" type="checkbox" value="median_male_age">Median Male Age</label>
+                </div>
+                <div class="checkbox">
+                  <label><input name="censusVarz" type="checkbox" value="median_female_age">Median Female Age</label>
+                </div>
+                <div class="checkbox">
+                  <label><input name="censusVarz" type="checkbox" value="education_high_school">Eduction High School</label>
+                  </div>
+              </div> <!-- /navbar -->
+
+            <div id="mySidenav5" class="sidenav">
+              <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+                <div class="checkbox">
+                  <label><input name="censusVarz" type="checkbox" value="median_male_age">Median Male Age</label>
+                </div>
+                <div class="checkbox">
+                  <label><input name="censusVarz" type="checkbox" value="median_female_age">Median Female Age</label>
+                </div>
+                <div class="checkbox">
+                  <label><input name="censusVarz" type="checkbox" value="education_high_school">Eduction High School</label>
+                  </div>
+              </div> <!-- /navbar -->
+
+            <div id="mySidenav6" class="sidenav">
+              <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+                <div class="checkbox">
+                  <label><input name="censusVarz" type="checkbox" value="median_male_age">Median Male Age</label>
+                </div>
+                <div class="checkbox">
+                  <label><input name="censusVarz" type="checkbox" value="median_female_age">Median Female Age</label>
+                </div>
+                <div class="checkbox">
+                  <label><input name="censusVarz" type="checkbox" value="education_high_school">Eduction High School</label>
+                  </div>
+              </div> <!-- /navbar -->
+
+          <div class="col-md-2">
+            <div class="row">
+
+             <img src="img/svg/map.svg" alt="right_naverbar_button1" onclick="openNav1()">
+
+            </div> <!-- /row -->
+            <div class="row">
+
+             <img src="img/svg/map-1.svg" alt="right_naverbar_button2" onclick="openNav2()">
+
+            </div> <!-- /row -->
+            <div class="row">
+
+             <img src="img/svg/layers.svg" alt="right_naverbar_button3" onclick="openNav3()">
+
+            </div> <!-- /row -->
+            <div class="row">
+
+             <img src="img/svg/notes.svg" alt="right_naverbar_button4" onclick="openNav4()">
+
+            </div> <!-- /row -->
+            <div class="row">
+
+             <img src="img/svg/team.svg" alt="right_naverbar_button5" onclick="openNav5()">
+
+            </div> <!-- /row -->
+            <div class="row">
+
+             <img src="img/svg/mortarboard.svg" alt="right_naverbar_button6" onclick="openNav6()">
+
+            </div> <!-- /row -->
           </div>
-        </div>
-        <div class="col-md-2">
-          <div class="row">
-           <img src="img/svg/map.svg" alt="right_naverbar_button1" onclick="openNav1()">
-          </div>
-          <div class="row">
-           <img src="img/svg/map-1.svg" alt="right_naverbar_button2" onclick="openNav2()">
-          </div>
-          <div class="row">
-           <img src="img/svg/layers.svg" alt="right_naverbar_button3" onclick="openNav3()">
-          </div>
-      </div>
-    </div>
+        </div> <!-- /row -->
+      </div> <!-- /row -->
+    </div> 
   </div>
-</div>
-</div>
 
+  <!-- jquery -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+  <!-- boostrap tether -->
+  <script src="//github.hubspot.com/tether/dist/js/tether.js"></script>
+  <!-- bottstrap javascript -->
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+  <!-- custom javascript -->
+  <script src="js/api.js"></script> 
+  <!-- jquery -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+  <!-- custom google map javascript -->
+  <script src = "js/initMaps.js"></script>
+  <!-- navbar custom javascript -->
+  <script src = "js/sidebarAnimation.js"></script>
 
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
-<script src="//github.hubspot.com/tether/dist/js/tether.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
-<script src="js/api.js"></script> 
-<!--<script src="https://maps.googleapis.com/maps/api/js?key=API KEY HERE!!!&callback=initMap"
-    async defer></script>-->
-<script src="js/api.js">
-</script> 
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
-<script src = "js/initMaps.js"></script>
-<script src = "js/sidebarAnimation.js"></script>
 </body>
 </html>
