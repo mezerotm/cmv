@@ -43,8 +43,13 @@ apiCallBack = function (response) {
 };
 
 geoCallBack = function(response) {
-        console.log(JSON.stringify(response, null, 4));
-
+      //  console.log(JSON.stringify(response, null, 4));
+        var resultsArea = document.getElementById("mySidenav3");
+        var theResultsContent = document.createElement("p");
+        
+        theResultsContent.appendChild(document.createTextNode(JSON.stringify(response, null, 4)));
+        resultsArea.appendChild(theResultsContent);
+        
 };
     
 //Function which will gather data from user and then submit it to the API. The API will then return 
