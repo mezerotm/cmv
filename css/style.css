@@ -70,7 +70,7 @@ html, body {
 /* The side navigation menu */
 .sidenav {
     height: 680px; /* 100% Full-height */
-    margin-top: 8px;
+    margin-top: 68px;
     width: 0; /* 0 width - change this with JavaScript */
     position: fixed; /* Stay in place */
     z-index: 1; /* Stay on top */
