@@ -2,10 +2,9 @@
   "name": "censusmapvsualization",
   "version": "1.0.0",
   "description": "user-friendly visualizatoin of the us census data",
-  "main": "gulpfile.js",
+
   "dependencies": {
-    "bower": "^1.7.9",
-    "gulp-cli": "^1.2.1"
+
   },
   "devDependencies": {},
   "scripts": {
