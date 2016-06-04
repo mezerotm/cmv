@@ -18,20 +18,20 @@ var census = new CensusModule(censusAPIKey); //Create an instance of the module
 //    "tract": ""
 //};
 
-var request = {
-    "level": "county",
-    "zip": "30013",
-    "variables": [
-      "age"
-    ],
-    "api": "acs1",
-    "year": "2012",
-    "county": "Rockdale County",
-    "state": "GA"
-  };
+//var request = {
+//    "level": "county",
+//    "zip": "30013",
+//    "variables": [
+//      "age"
+//    ],
+//    "api": "acs1",
+//    "year": "2012",
+//    "county": "Rockdale County",
+//    "state": "GA"
+//  };
 
 apiCallBack = function (response) {
-    console.log(response);
+    console.log(JSON.stringify(response, null, 4));
     //Outputs the raw JSON text-full data
     jQuery("#data").text(JSON.stringify(response, null, 4));
 
@@ -42,32 +42,49 @@ apiCallBack = function (response) {
    // alert("hello");
 };
 
+geoCallBack = function(response) {
+        console.log(JSON.stringify(response, null, 4));
 
-console.log(sdk);
-console.log(census);
-console.log(request);
-     
-
-
+}
     
 //Function which will gather data from user and then submit it to the API. The API will then return 
 //the data that was requested. 
 function data(){
-    var zip = document.getElementById("zip").value;
-    var year = document.getElementById("year").value;
-    var variable = document.getElementById("variables").value;
-    //var tract = document.getElementById("tract").value;
-    //request.zip = zip;
-    //request.year = year;
-    //request.variables.push(variable);
-console.log(citysdk);
-  console.log(census);
+  //  var zip = document.getElementById("zip").value;
+//    var year = document.getElementById("year").value;
+//    var variable = document.getElementById("variables").value;
+    
+    // get checkboxes
+    var allCheckBoxes = document.getElementsByName("censusVarz");
+    var request = {};
+    
+    request.level = "county";
+    request.zip = "30043";
+    request.api = "acs5";
+    request.year = "2014";
+    request.state = "GA";
+    request.sublevel = true;
+    request.variables = ["population", "income"];
+    
+    
+    var values = new Array();
+    var numElems = allCheckBoxes.length;
+    
+    for (var i = 0;i < numElems; i++) {
+        if ( allCheckBoxes[i].checked ) {
+           values.push(allCheckBoxes[i].value);
+        }
+    }
+
+   // request.variables = values;
+    
 
 
     //The request to gather the actual data.
-    census.apiRequest(request, apiCallBack);   
-    
-    
+//    census.apiRequest(request, apiCallBack);   
+  
+    // This request is used to get geographical data for D3
+    census.geoRequest(request, geoCallBack);
 }
 
 /////////////  Sliding effect 
@@ -85,3 +102,6 @@ function initMap() {
     scrollwheel: false
     });
 }
+
+
+data();
