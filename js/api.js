@@ -101,3 +101,10 @@ function closeNav() {
     document.getElementById("mySidenav").style.width = "0";
     document.getElementById("mySidenav").style.border = "0px solid white";
 }
+
+/*
+    figure out which sidebar (if any) to close when a new sidebar is clicked to open
+*/
+function getClose() {
+    
+}
