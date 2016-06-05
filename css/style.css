@@ -4,6 +4,7 @@ html, body {
   margin: 0;
   padding: 0;
 }
+
 /*header for the webpage*/
 #header {
   width: 100%;
@@ -11,10 +12,12 @@ html, body {
   height: 60px;
 }
 
-.col-md-6 div {/*maps divs*/
+/*maps divs*/
+.col-md-6 div {
   height: 275px;
   margin-top: 0;
 }
+
 /*map div headers*/
 .col-md-6 h3 {
   margin-left: 20px;
@@ -22,7 +25,8 @@ html, body {
   padding-top: 0;
 }
 
-.col-md-3 {/*sidebar*/
+/*sidebar*/
+.col-md-3 {
   margin-top: 8px;
 
 }
@@ -31,14 +35,16 @@ html, body {
   margin-top: 60px;
 }
 
-.col-md-10 {/*input/output section of sidebar*/
+/*input/output section of sidebar*/
+.col-md-10 {
   height: 680px; 
 }
 
 .col-md-2 {
 }
 
-.col-md-2 .row img {/*sidebar icons for selecting input/output*/
+/*sidebar icons for selecting input/output*/
+.col-md-2 .row img {
   margin-top: 20px;
   margin-bottom: 20px;
   margin-right: 10px;
@@ -46,7 +52,7 @@ html, body {
   width: 50px;
 }
 /*map object styles*/
-#map1, #map2, #map3, #map4 {/*maps themselves*/
+#map1, #map2, #map3, #map4 {
   border-style: solid;
   border-color: black;
   border-width: 1px;
@@ -68,8 +74,6 @@ button {
 /* The side navigation menu */
 .sidenav {
     height: 680px; /* 100% Full-height */
-    /* margin-top: 68px; 
-    margin-right: 55px; */
     width: 0; /* 0 width - change this with JavaScript */
     position: fixed; /* Stay in place */
     z-index: 1; /* Stay on top */

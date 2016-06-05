@@ -23,61 +23,61 @@
 
   <div class="row">
     <div id="header"><button name="submit" id="submit" onclick="data()">Submit</button></div>
+
       <div class="col-md-9">
         <div class="row">
-          <div class="col-md-6">
 
-            <h3>Map 1</h3>
-            <div id="map1"></div>
+        	<div class="col-md-6">
+          		<h3>Map 1</h3>
+            	<div id="map1"></div>
+        	</div> <!-- /container -->
 
-              </div>
-              <div class="col-md-6">
+        	<div class="col-md-6">
+            	<h3>Map 2</h3>
+            	<div id="map2"></div>
+            </div> <!-- /container -->
 
-            <h3>Map 2</h3>
-             <div id="map2"></div>
+        </div> <!-- /row -->
 
-            </div>
-          </div> <!-- /row -->
             <div class="row">
-              <div class="col-md-6">
 
+              <div class="col-md-6">
                 <h3>Map 3</h3>
                 <div id="map3"></div>
+            </div> <!-- /container -->
 
-            </div>
             <div class="col-md-6">
-
               <h3>Map 4</h3>
               <div id="map4"></div> 
+          	</div> <!-- /container -->
 
-          </div>
-      </div> <!-- /row -->
-    </div>
-      <div class="col-md-3"> <!--sidebar-->
+		</div> <!-- /row -->
+
+    </div> <!-- /container -->
+
+      <div class="col-md-3">
         <div class="row">
           <div class="col-md-10">
             <div class="row">
 
-              <div id="mySidenav1" class="sidenav">
-                <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-                <h3>Demographics:</h3>
-                  <div class="checkbox">
-                    <label><input name="censusVarz" type="checkbox" value="population">Population</label>
-                  </div>
-                  <div class="checkbox">
-                    <label><input name="censusVarz" type="checkbox" value="income">Income</label>
-                  </div>
-                  <div class="checkbox">
-                  <label><input name="censusVarz" type="checkbox" value="median_male_age">Median Male Age</label>
-                </div>
-                <div class="checkbox">
-                  <label><input name="censusVarz" type="checkbox" value="median_female_age">Median Female Age</label>
-                </div>
-              </div> <!-- /navbar -->
+             <div id="mySidenav1" class="sidenav">
+             	<a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>	<h3>Demographics:</h3>
+            	<div class="checkbox">
+            		<label><input name="censusVarz" type="checkbox" value="population">Population</label>
+              	</div>
+              	<div class="checkbox">
+                	<label><input name="censusVarz" type="checkbox" value="income">Income</label>
+              	</div>
+              	<div class="checkbox">
+              		<label><input name="censusVarz" type="checkbox" value="median_male_age">Median Male Age</label>
+            	</div>
+            	<div class="checkbox">
+              		<label><input name="censusVarz" type="checkbox" value="median_female_age">Median Female Age</label>
+            	</div>
+         	</div> <!-- /navbar -->
 
             <div id="mySidenav2" class="sidenav">
-              <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-              <h3>Income</h3>
+              <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>	<h3>Income</h3>
                 <div class="checkbox">
                   <label><input name="censusVarz" type="checkbox" value="income">Income</label>
                 </div>
@@ -85,18 +85,16 @@
                   <label><input name="censusVarz" type="checkbox" value="income_per_capita">Income Per Capita</label>
                 </div>
                 <div class="checkbox">
-                  <label><input name="censusVarz" type="checkbox" value="poverty">Poverty</label>
-                  </div>
-              </div> <!-- /navbar -->
+                	<label><input name="censusVarz" type="checkbox" value="poverty">Poverty</label>
+                </div>
+             </div> <!-- /navbar -->
               
-            <div id="mySidenav3" class="sidenav">
-              <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-                
-              </div> <!-- /navbar -->
+             <div id="mySidenav3" class="sidenav">
+             	<a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+             </div> <!-- /navbar -->
 
             <div id="mySidenav4" class="sidenav">
-              <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-              <h3>Crime & Law-Enforcement</h3>
+              <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>	<h3>Crime & Law-Enforcement</h3>
                 <div class="checkbox">
                   <label><input name="censusVarz" type="checkbox" value="employment_unemployed">Unemployment</label>
                 </div>
@@ -106,7 +104,7 @@
               </div> <!-- /navbar -->
 
             <div id="mySidenav5" class="sidenav">
-              <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a><h3>Transportation</h3>
+              <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>	<h3>Transportation</h3>
                 <div class="checkbox">
                   <label><input name="censusVarz" type="checkbox" value="commute_time">Commute Time</label>
                   </div>
@@ -125,8 +123,7 @@
               </div> <!-- /navbar -->
 
             <div id="mySidenav6" class="sidenav">
-              <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-              <h3>Education</h3>
+              <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>	<h3>Education</h3>
                 <div class="checkbox">
                   <label><input name="censusVarz" type="checkbox" value="education_bachelors">Bachelor's Degrees</label>
                 </div>
@@ -150,8 +147,9 @@
                 </div>
               </div> <!-- /navbar -->
 
-            </div>
-          </div>
+            </div> <!-- /row -->
+          </div> <!-- /container -->
+
           <div class="col-md-2">
             <div class="row">
 
@@ -183,12 +181,12 @@
 
              <img src="img/svg/icon.svg" alt="right_naverbar_button3" onclick="openNav3()">
 
-            </div> <!-- /row -->
-          </div>
+			</div> <!-- /row -->
+
+          </div> <!-- /container -->
         </div> <!-- /row --> 
-      </div> <!-- /row -->
-    </div> 
-  </div>
+      </div> <!-- /container -->
+    </div>  <!-- /row -->
 
   <!-- jquery -->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>

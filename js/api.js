@@ -1,24 +1,24 @@
 
-//Enable module with the API key
+// Enable module with the API key
 var censusAPIKey = "c83e06ec87c35c0d3ffb0f6d7640afbf52b7071c";
 var sdk = new CitySdk(); //Create the CitySDK Instance
-var census = new CensusModule(censusAPIKey); //Create an instance of the module
-//sdk.modules.census = census;
+var census = new CensusModule(censusAPIKey); // Create an instance of the module
+// sdk.modules.census = census;
 
 
-//creating the request variable. Please note that I have left in income as the default variable.
-//var request = {
+// creating the request variable. Please note that I have left in income as the default variable.
+// var request = {
 //    "level": "county",
 //    "zip": "",
 //    "variables": [
-//        
+       
 //    ],
 //    "api": "acs5",
 //    "year": "",
 //    "tract": ""
-//};
+// };
 
-//var request = {
+// var request = {
 //    "level": "county",
 //    "zip": "30013",
 //    "variables": [
@@ -35,10 +35,10 @@ apiCallBack = function (response) {
     //Outputs the raw JSON text-full data
     jQuery("#data").text(JSON.stringify(response, null, 4));
 
-    //Below outputs only income or whatever is requested. 
-   //jQuery("#data").text(JSON.stringify(+response.data[0].poverty, null, 4));
+   //  Below outputs only income or whatever is requested. 
+   // jQuery("#data").text(JSON.stringify(+response.data[0].poverty, null, 4));
 
-    //console.log(JSON.parse(response));
+   //  console.log(JSON.parse(response));
    // alert("hello");
 };
 
@@ -52,12 +52,12 @@ geoCallBack = function(response) {
         
 };
     
-//Function which will gather data from user and then submit it to the API. The API will then return 
-//the data that was requested. 
+// Function which will gather data from user and then submit it to the API. The API will then return 
+// the data that was requested. 
 function data(){
-  //  var zip = document.getElementById("zip").value;
-//    var year = document.getElementById("year").value;
-//    var variable = document.getElementById("variables").value;
+   // var zip = document.getElementById("zip").value;
+   // var year = document.getElementById("year").value;
+   // var variable = document.getElementById("variables").value;
     
     // get checkboxes
     var allCheckBoxes = document.getElementsByName("censusVarz");
@@ -85,25 +85,28 @@ function data(){
     
 
 
-    //The request to gather the actual data.
-//    census.apiRequest(request, apiCallBack);   
+    // The request to gather the actual data.
+    // census.apiRequest(request, apiCallBack);   
   
     // This request is used to get geographical data for D3
     census.geoRequest(request, geoCallBack);
 }
 
-/////////////  Sliding effect 
-
+/**
+    Sliding Effect
+    @Notes Carlos Rincon: Do we still need this? I think this was during mike's testing but is not being used anymore.
+*/
 $("#menu").click(function() {
-  $("#toggle").slideToggle(550);
+    $("#toggle").slideToggle(200);
 });
 
-////////// Google Maps ////////////////
 
+// Google Maps
 function initMap() {
-    map = new google.maps.Map(document.getElementById('map'), {
-    center: {lat: 34.1207, lng: -84.0044},
-    zoom: 10,
-    scrollwheel: false
+    map = new google.maps.Map(document.getElementById('map'), 
+    {
+        center: {lat: 34.1207, lng: -84.0044},
+        zoom: 10,
+        scrollwheel: false
     });
 }
