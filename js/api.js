@@ -11,7 +11,7 @@
  * geoCAllBack : This is the callback function that respondes to the responses 
  * from the geographical based api of the City SDK.
  * 
- * data : This function is called by the submit button to connect with the City
+ * retrieveData : This function is called by the submit button to connect with the City
  * SDK and obtain the data.
  */
 
@@ -64,10 +64,10 @@ geoCallBack = function(response) {
 };
     
 /*
- * data : This function is called by the submit button to connect with the City
+ * retrieveData : This function is called by the submit button to connect with the City
  * SDK and obtain the data.
  */
-function data(){
+function retrieveData(){
  
     // get checkboxes from the web page
     var allCheckBoxes = document.getElementsByName("censusVarz");
@@ -87,17 +87,19 @@ function data(){
     
     var checkedVariables = new Array();   // array to hold checked variables
     var numElems = allCheckBoxes.length;  // determines the number of checkboxes
+    var foundChecked = false;             // flag for at least one checked box
     
     // This loop processes each checkbox and determines which boxes have been
     // checked. The checked boxes are added to the array of checked variables
     for (var i = 0;i < numElems; i++) {
         if ( allCheckBoxes[i].checked ) {
+           foundChecked = true;
            checkedVariables.push(allCheckBoxes[i].value);
         }
     }
 
     // fill the census data request with the variables selected by the user
-    if (request.variables.length > 0)
+    if (foundChecked)
         request.variables = checkedVariables;
     else // default vars
         request.variables = ["population", "income"];
