@@ -20,7 +20,7 @@
 // false: debug output off
 var DEBUG = true; 
 
-//Enable module with the API key
+// Enable module with the API key
 var censusAPIKey = "c83e06ec87c35c0d3ffb0f6d7640afbf52b7071c";
 var sdk = new CitySdk(); //Create the CitySDK Instance
 var census = new CensusModule(censusAPIKey); //Create an instance of the module
@@ -112,18 +112,21 @@ function data(){
     census.geoRequest(request, geoCallBack);
 }
 
-/////////////  Sliding effect 
-
+/**
+    Sliding Effect
+    @Notes Carlos Rincon: Do we still need this? I think this was during mike's testing but is not being used anymore.
+*/
 $("#menu").click(function() {
-  $("#toggle").slideToggle(550);
+    $("#toggle").slideToggle(200);
 });
 
-////////// Google Maps ////////////////
 
+// Google Maps
 function initMap() {
-    map = new google.maps.Map(document.getElementById('map'), {
-    center: {lat: 34.1207, lng: -84.0044},
-    zoom: 10,
-    scrollwheel: false
+    map = new google.maps.Map(document.getElementById('map'), 
+    {
+        center: {lat: 34.1207, lng: -84.0044},
+        zoom: 10,
+        scrollwheel: false
     });
 }
