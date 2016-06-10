@@ -113,22 +113,3 @@ function retrieveData(){
     // This request is used to get geographical data for D3
     census.geoRequest(request, geoCallBack);
 }
-
-/**
-    Sliding Effect
-    @Notes Carlos Rincon: Do we still need this? I think this was during mike's testing but is not being used anymore.
-*/
-$("#menu").click(function() {
-    $("#toggle").slideToggle(200);
-});
-
-
-// Google Maps
-function initMap() {
-    map = new google.maps.Map(document.getElementById('map'), 
-    {
-        center: {lat: 34.1207, lng: -84.0044},
-        zoom: 10,
-        scrollwheel: false
-    });
-}
