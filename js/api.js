@@ -104,7 +104,7 @@ function retrieveData(){
     else // default vars
         request.variables = ["population", "income"];
     
-
+    checkLoading();
 
     // The request to gather the actual data.
     // We may not need this anymore
@@ -112,4 +112,13 @@ function retrieveData(){
   
     // This request is used to get geographical data for D3
     census.geoRequest(request, geoCallBack);
+}
+
+function checkLoading() {
+    if (census.SUPPLEMENTAL_REQUESTS_IN_FLIGHT == 0) {
+        jQuery(".loading-icon-initialstate").hide();
+        return;
+    } else if (census.SUPPLEMENTAL_REQUESTS_IN_FLIGHT > 0) {
+        window.setTimeout(checkLoading, 1500);
+    }
 }
