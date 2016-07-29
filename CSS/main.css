@@ -1,0 +1,177 @@
+* {
+	z-index: 0;
+}
+#wrapper {
+	width: 100%;
+	margin-left: 0;
+}
+
+header {
+	background-color: #0c6291;
+	width: 96%;
+	margin: auto;
+	padding: 30px;
+}
+header #heading {
+	background-color: white;
+	border-style: solid;
+	border-width: 2px;
+	border-color: lightgray;
+	display: inline-block;
+	font-size: 28px;
+	font-weight: bold;
+	padding: 5px;
+	color: darkblue;
+	box-shadow: 0 5px 5px 0 black;
+}
+#map_views {
+	margin-right: 30px;
+	float: right;
+}
+#map_views_form * {
+	margin-left: 10px;
+	margin-right: 10px;
+}
+header .label {
+	font-weight: bold;
+	color: white;
+	font-size: 18px;
+}
+header select, header button {
+	margin-left: 10px;
+}
+#help_img {
+	height: 20px;
+	width: 20px;
+	float: left;
+	margin-top: 10px;
+	margin-left: 10px;
+}
+
+#help_div {
+	height: 0;
+	background-color: white;
+	width: 600px;
+	top: 95px;
+	left: 80px;
+	position: absolute;
+	display: none;
+	z-index: 2;
+	border-style: solid;
+	border-color: black;
+	border-width: 1px;
+}
+#help_close {
+	margin: 5px;
+	float: right;
+	font-size: 10px;
+	background-color: white;
+}
+
+main {
+	height: 100%;
+	width: 100%;
+	margin: auto;
+}
+#maps_main {
+	display: inline-block;
+	width: 80%;
+	margin: 0;
+	float: left;
+}
+.maps_div_left {
+	z-index: 1;
+	float: left;
+	border-style: solid;
+	border-color: black;
+	border-width: 1px;
+	height: 280px;
+	width: 48%;
+	margin-left: 1%;
+	margin-top: 10px;
+	background-color: #0197c1;
+}
+.maps_div_right {
+	z-index: 1;
+	float: left;
+	border-style: solid;
+	border-color: black;
+	border-width: 1px;
+	height: 280px;
+	width: 48%;
+	margin-left: 2%;
+	margin-top: 10px;
+	background-color: #0197c1;
+}
+.map_tab {
+	height: 30px;
+	width: 30%;
+	background-color: white;
+	color: darkblue
+	padding: 0;
+	margin-top: 1%;
+	margin-left: 1%;
+	margin-right: 1%;
+	border-style: solid;
+	border-width: 1px;
+	border-color: lightgray;
+	text-align: center;
+}
+.map {
+	margin: 20px;
+	height: 85%;
+	width: 98%;
+	margin: auto;
+	z-index: 1;
+}
+
+#sidebars {
+	display: inline-block;
+	width: 20%;
+	float: right;
+	margin-top: 10px;
+}
+
+.sidebar {
+	padding: 5%;
+	width: auto;
+	min-height: 500px;
+	height: auto;
+	display: none;
+}
+#sidebars_main {
+	display: inline-block;
+	width: 85%;
+	box-shadow: 0 5px 5px 0 black;
+}
+#sidebars_main input[type="number"] {
+	float: right;
+	width: 60%;
+}
+#sidebars_buttons {
+	display: inline-block;
+	float: right;
+	width: 13%;
+	margin-left: 2%;
+}	
+
+.sidebar_icon {
+	height: 100%;
+	width: 100%;
+	margin-bottom: 10px;
+}
+.input_div {
+	display: block;
+	width: 90%;
+	height: auto;
+	margin-top: 10px;
+	margin-bottom: 10px;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.tab_btn {
+	width: 100%;
+	height: 100%;
+	background-color: white;
+}

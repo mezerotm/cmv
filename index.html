@@ -1,208 +1,121 @@
 <!DOCTYPE html>
 <html>
-<head>
- 
-  <link rel="icon" href="favicon.ico" type="image/x-icon" />
-  <title>Census Map Visualization Tool</title>
-
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
-  <script src="terraformer/terraformer-1.0.5.min.js"></script>
-  <script src="terraformer/terraformer-arcgis-parser-1.0.4.min.js"></script>
-  <script src="citysdk/dist/js/core/citysdk.js"></script>
-  <script src="citysdk/dist/js/modules/citysdk.census.js"></script>
- 
-  <!-- Latest compiled and minified CSS -->
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
-  <!-- custom stylesheet -->
-  <link rel="stylesheet" href="css/style.css">
-  <!-- google maps api -->
-  <script src="http://maps.google.com/maps/api/js?key=AIzaSyAhgSIK7GcSzuKZ8acLE2oOeGCY52C-7qw"></script>
-    
-</head>
-<body>
-
-<div class="container-fluid">
-  <div class="row">
-    <div id="header"><button name="submit" id="submit" onclick="retrieveData();">Submit</button></div>
-
-      <div class="col-md-9">
-        <div class="row">
-
-        	<div class="col-md-6">
-          		<h3>Map 1</h3>
-            	<div id="map1"></div>
-        	</div> <!-- /columns -->
-
-        	<div class="col-md-6">
-            	<h3>Map 2</h3>
-            	<div id="map2"></div>
-            </div> <!-- /columns -->
-
-        </div> <!-- /row -->
-
-            <div class="row">
-
-              <div class="col-md-6">
-                <h3>Map 3</h3>
-                <div id="map3"></div>
-            </div> <!-- /columns -->
-
-            <div class="col-md-6">
-              <h3>Map 4</h3>
-              <div id="map4"></div> 
-          	</div> <!-- /columns -->
-
-		</div> <!-- /row -->
-
-    </div> <!-- /columns -->
-
-      <div class="col-md-3">
-        <div class="row">
-          <div class="col-md-10">
-            <div class="row">
-
-             <div id="mySidenav1" class="sidenav">
-             	<a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>	<h3>Demographics:</h3>
-            	<div class="checkbox">
-            		<label><input name="censusVarz" type="checkbox" value="population">Population</label>
-              	</div>
-              	<div class="checkbox">
-                	<label><input name="censusVarz" type="checkbox" value="income">Income</label>
-              	</div>
-              	<div class="checkbox">
-              		<label><input name="censusVarz" type="checkbox" value="median_male_age">Median Male Age</label>
-            	</div>
-            	<div class="checkbox">
-              		<label><input name="censusVarz" type="checkbox" value="median_female_age">Median Female Age</label>
-            	</div>
-         	</div> <!-- /navbar -->
-
-            <div id="mySidenav2" class="sidenav">
-              <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>	<h3>Income</h3>
-                <div class="checkbox">
-                  <label><input name="censusVarz" type="checkbox" value="income">Income</label>
-                </div>
-                <div class="checkbox">
-                  <label><input name="censusVarz" type="checkbox" value="income_per_capita">Income Per Capita</label>
-                </div>
-                <div class="checkbox">
-                	<label><input name="censusVarz" type="checkbox" value="poverty">Poverty</label>
-                </div>
-             </div> <!-- /navbar -->
-              
-             <div id="mySidenav3" class="sidenav">
-             	<a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-             </div> <!-- /navbar -->
-
-            <div id="mySidenav4" class="sidenav">
-              <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>	<h3>Crime & Law-Enforcement</h3>
-                <div class="checkbox">
-                  <label><input name="censusVarz" type="checkbox" value="employment_unemployed">Unemployment</label>
-                </div>
-                <div class="checkbox">
-                  <label><input name="censusVarz" type="checkbox" value="employment_not_labor_force">People not in the Labor Force</label>
-                </div>
-              </div> <!-- /navbar -->
-
-            <div id="mySidenav5" class="sidenav">
-              <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>	<h3>Transportation</h3>
-                <div class="checkbox">
-                  <label><input name="censusVarz" type="checkbox" value="commute_time">Commute Time</label>
-                  </div>
-                <div class="checkbox">
-                  <label><input name="censusVarz" type="checkbox" value="commute_time_carpool">Car Pool Commute Time</label>
-                </div>
-                <div class="checkbox">
-                  <label><input name="censusVarz" type="checkbox" value="commute_time_public_transport">Public Transport Commute Time</label>
-                </div>
-                <div class="checkbox">
-                  <label><input name="censusVarz" type="checkbox" value="commute_time_solo_automobile">Solo Car Commute Time</label>
-                  </div>
-                <div class="checkbox">
-                  <label><input name="censusVarz" type="checkbox" value="commute_time_solo_automobile">Solo Car Commute Time</label>
-                  </div>
-              </div> <!-- /navbar -->
-
-            <div id="mySidenav6" class="sidenav">
-              <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>	<h3>Education</h3>
-                <div class="checkbox">
-                  <label><input name="censusVarz" type="checkbox" value="education_bachelors">Bachelor's Degrees</label>
-                </div>
-                <div class="checkbox">
-                  <label><input name="censusVarz" type="checkbox" value="education_masters">Master's Degrees</label>
-                </div>
-                <div class="checkbox">
-                  <label><input name="censusVarz" type="checkbox" value="education_high_school">Eduction High School</label>
-                  </div>
-                <div class="checkbox">
-                  <label><input name="censusVarz" type="checkbox" value="education_ged">GED</label>
-                </div>
-                <div class="checkbox">
-                  <label><input name="censusVarz" type="checkbox" value="education_none">No Education</label>
-                </div>
-                <div class="checkbox">
-                  <label><input name="censusVarz" type="checkbox" value="education_associates">Associate's Degree</label>
-                </div>
-                <div class="checkbox">
-                  <label><input name="censusVarz" type="checkbox" value="education_professional">Professional Education</label>
-                </div>
-              </div> <!-- /navbar -->
-
-            </div> <!-- /row -->
-          </div> <!-- /columns -->
-
-          <div class="col-md-2">
-            <div class="row">
-
-             <img src="img/svg/map.svg" alt="right_naverbar_button1" onclick="openNav1()">
-
-            </div> <!-- /row -->
-            <div class="row">
-
-             <img src="img/svg/map-1.svg" alt="right_naverbar_button2" onclick="openNav2()">
-
-            </div> <!-- /row -->
-            
-            <div class="row">
-
-             <img src="img/svg/layers.svg" alt="right_naverbar_button4" onclick="openNav4()">
-
-            </div> <!-- /row -->
-            <div class="row">
-
-             <img src="img/svg/notes.svg" alt="right_naverbar_button5" onclick="openNav5()">
-
-            </div> <!-- /row -->
-            <div class="row">
-
-             <img src="img/svg/team.svg" alt="right_naverbar_button6" onclick="openNav6()">
-
-            </div> <!-- /row -->
-            <div class="row">
-
-             <img src="img/svg/icon.svg" alt="right_naverbar_button3" onclick="openNav3()">
-
-			</div> <!-- /row -->
-
-          </div> <!-- /columns -->
-        </div> <!-- /row --> 
-      </div> <!-- /columns -->
-    </div>  <!-- /row -->
-  </div> <!-- /container -->
-  <!-- jquery -->
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
-  <!-- boostrap tether -->
-  <script src="//github.hubspot.com/tether/dist/js/tether.js"></script>
-  <!-- bottstrap javascript -->
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
-  <!-- custom javascript -->
-  <script src="js/api.js"></script> 
-  <!-- jquery -->
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
-  <!-- custom google map javascript -->
-  <script src = "js/initMaps.js"></script>
-  <!-- navbar custom javascript -->
-  <script src = "js/sidebarAnimation.js"></script>
-
-</body>
+	<head>
+		<title>Census Map Visualization Tool</title>
+		<link href="CSS/main.css" rel="stylesheet">
+		<script  type='text/javascript' src='JS/visual_js.js'><!--the scripts to initialize all visual components-->
+		<!--[if lt IE 9]>
+		<script src = "http://html5shim.googlecode.com/svn/trunk/html5.js">
+		</script>
+		<![endif]-->
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+	 	 <!-- google maps api -->
+  		<script src="http://maps.google.com/maps/api/js?key=AIzaSyAhgSIK7GcSzuKZ8acLE2oOeGCY52C-7qw"></script>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0"><!--mobile compatibility-->
+		<script>
+			google.maps.event.addDomListener(window, 'load', init_page);/*creates a listener to where it initializes the maps and other page elements when the page itself finishes loading*/
+			
+			/*STUB for submitting user input for census data*/
+			function submitInput() {
+				alert("STUB submitting census data input from user");
+			}
+		</script>
+	</head>
+	<body>
+		<div id="wrapper">
+			<header>
+				<div id="heading">Census Map Visualization Project</div><br>
+				<div id="map_views">
+					<span class="label">Map Views:</span>
+					<select id="map_view_list">
+						<option value="1">1 Map View</option>
+						<option value="2">2 Map View</option>
+						<option value="4" selected="selected">4 Map View</option>
+					</select>
+					<button id="maps_view_btn" onclick="mapViewsChange()">Update</button>
+				</div><!--end map views section of header-->
+				<img src="images/question_mark.png" onclick="showHelp()" alt="help" id="help_img">
+				<div id="help_div"><!--the help display for the user-->
+					<big>HELP</big> <button id="help_close" onclick="closeHelp()">X</button>
+					<br>- In order to have data show up on the selected map, you must visit an output tab, and select which census variables you would like to show on the map
+					<br><br>- The map with the bolded tab name is your active map. Click on another map's tab in order to change the active map
+					<br>
+				</div><!--end help_div-->
+			</header>
+			
+			<main>
+				<div id="maps_main"><!--hold all maps for the screen-->
+					<div id="map1_container" class="maps_div_left">
+						<div id="map1_tab" class="map_tab">
+							<button onclick="map1Active()" class="tab_btn" id="map1_tab_btn">Map 1</button>
+						</div><!--end map1_tab div-->
+						<div id="map1" class="map">
+						</div><!--end map1 div-->
+					</div><!--end map1_container div-->
+					<div id="map2_container" class="maps_div_left">
+						<div id="map2_tab" class="map_tab">
+							<button onclick="map2Active()" class="tab_btn" id="map2_tab_btn">Map 2</button>
+						</div><!--end map1_tab div-->
+						<div id="map2" class="map">
+						</div><!--end map2 div-->
+					</div><!--end map1_container div-->
+					<div id="map3_container" class="maps_div_left">
+						<div id="map3_tab" class="map_tab">
+							<button onclick="map3Active()" class="tab_btn" id="map3_tab_btn">Map 3</button>
+						</div><!--end map3_tab div-->
+						<div id="map3" class="map">
+						</div><!--end map3 div-->
+					</div><!--end map3_container div-->
+					<div id="map4_container" class="maps_div_left">
+						<div id="map4_tab" class="map_tab">
+							<button onclick="map4Active()" class="tab_btn" id="map4_tab_btn">Map 4</button>
+						</div><!--end map4_tab div-->
+						<div id="map4" class="map">
+						</div><!--end map4 div-->
+					</div><!--end map4_container div-->
+					
+				</div><!--end maps_main div-->
+				<div id="sidebars" onload="showInputMain()"><!--hold all the sidebars for data input and output-->
+					<div id="sidebars_main">
+						<div id="input_main" class="sidebar" onload="showInputMain()">
+							<h2>Input</h2>
+							<div class="input_div" id="input_year_div">
+								<label for="year">Year: <input type="number" id="year" min="2000" max="2020">
+							</div><!--end input_year_div-->
+							<div class="input_div" id="input_zip_div">
+								<label for="zip">ZIP Code: </label><input type="number" id="zip" min="000001" max="999999">
+							</div><!--end input_zip_div-->
+							<button id="input_submit_btn" onclick="submitInput()">Submit</button>
+						</div><!--end input_main sidebar-->
+						<div id="output_demographic" class="sidebar">
+							Demographic Output
+						</div><!--end output_demographic sidebar-->
+						<div id="output_income" class="sidebar">
+							Income Output
+						</div><!--end output_income sidebar-->
+						<div id="output_crime" class="sidebar">
+							Crime Output
+						</div><!--end output_crime sidebar-->
+						<div id="output_transportation" class="sidebar">
+							Transportation Output
+						</div><!--end output_transportation sidebar-->
+						<div id="output_education" class="sidebar">
+							Education Output
+						</div><!--end output_education sidebar-->
+					</div><!--end sidebars_main div-->
+					<div id="sidebars_buttons">
+						<image src="images/input_icon.png" id="input_main_btn" onclick="showInputMain()" class="sidebar_icon">
+						<image src="images/people_icon.png" id="output_demographic_btn" onclick="showDemographic()" class="sidebar_icon">
+						<image src="images/income_icon.png" id="output_income_btn" onclick="showIncome()" class="sidebar_icon">
+						<image src="images/crime_icon.png" id="output_crime_btn" onclick="showCrime()" class="sidebar_icon">
+						<image src="images/transportation_icon.png" id="output_transportation_btn" onclick="showTransportation()" class="sidebar_icon">
+						<image src="images/education_icon.png" id="output_education_btn" onclick="showEducation()" class="sidebar_icon">						
+					</div>
+				</div>
+			</main>
+			<footer>
+			
+			</footer>
+		</div><!--end wrapper-->
+	</body>
 </html>
