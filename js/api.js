@@ -77,8 +77,27 @@ geoCallBack = function(response) {
         var theResultsContent = document.createElement("p");
         
         theResultsContent.appendChild(document.createTextNode(JSON.stringify(response, null, 4)));
-        var work = JSON.stringify(response, null, 4)
-        console.log(work);
+
+        //This line I am using to actually look for the coordinate data. 
+        //The below line gets me all of the coordinate points:
+        console.log(response.features[0].geometry.coordinates[0]);
+        //It will pull back with two objects which contain the information that I need. 
+        //This line below will get me the coordinate location at index 0: 
+        console.log(response.features[0].geometry.coordinates[0][0]);
+        //This will get me the array at index 1:
+        console.log(response.features[0].geometry.coordinates[0][1]);
+
+        //Array to hold all of the coordinates
+        // arrayOfCoords = [];
+        //Creating a variable to hold the coordinates
+        // var coord = response.features[0].geometry.coordinates[0][0];
+        //pushing the coordinates into the array:
+        // arrayOfCoords.push(coord);
+        //Console.logging the results to see what I got.
+        // console.log(arrayOfCoords[0]);
+
+
+
         resultsArea.appendChild(theResultsContent);
         // map1.data.addGeoJson(geojson);
     }
