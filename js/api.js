@@ -20,10 +20,28 @@
 // false: debug output off
 var DEBUG = true; 
 
+
 // Enable module with the API key
 var censusAPIKey = "c83e06ec87c35c0d3ffb0f6d7640afbf52b7071c";
 var sdk = new CitySdk(); //Create the CitySDK Instance
 var census = new CensusModule(censusAPIKey); //Create an instance of the module
+//Here is where I set up and make my call to google maps API. 
+function init_map() {
+      var var_location = new google.maps.LatLng(33.957,-84.282);
+
+      var var_mapoptions = {
+        center:var_location,
+        zoom: 11
+      }
+
+      var map1 = new google.maps.Map(document.getElementById("map1"), var_mapoptions);
+
+      map1.data.setStyle({
+          fillColor: 'blue'
+        });
+    }
+
+    google.maps.event.addDomListener(window, 'load', init_map);
 
 
 
@@ -59,7 +77,10 @@ geoCallBack = function(response) {
         var theResultsContent = document.createElement("p");
         
         theResultsContent.appendChild(document.createTextNode(JSON.stringify(response, null, 4)));
+        var work = JSON.stringify(response, null, 4)
+        console.log(work);
         resultsArea.appendChild(theResultsContent);
+        // map1.data.addGeoJson(geojson);
     }
 };
     
@@ -75,19 +96,18 @@ function retrieveData(){
     
     
     // configure the census data request
-    request.level = "county";
-    request.zip = "30043";
+    request.level = "state";
+    request.zip = "30519";
     request.api = "acs5";
     request.year = "2014";
-    request.state = "GA";
-    request.sublevel = true;
+    //request.state = "GA";
+    //request.sublevel = true;
    
-    
-    
-    
     var checkedVariables = new Array();   // array to hold checked variables
     var numElems = allCheckBoxes.length;  // determines the number of checkboxes
+    console.log(numElems);
     var foundChecked = false;             // flag for at least one checked box
+
     
     // This loop processes each checkbox and determines which boxes have been
     // checked. The checked boxes are added to the array of checked variables
@@ -95,6 +115,7 @@ function retrieveData(){
         if ( allCheckBoxes[i].checked ) {
            foundChecked = true;
            checkedVariables.push(allCheckBoxes[i].value);
+           console.log(checkedVariables);
         }
     }
 
@@ -103,8 +124,6 @@ function retrieveData(){
         request.variables = checkedVariables;
     else // default vars
         request.variables = ["population", "income"];
-    
-    checkLoading();
 
     // The request to gather the actual data.
     // We may not need this anymore
@@ -114,11 +133,5 @@ function retrieveData(){
     census.geoRequest(request, geoCallBack);
 }
 
-function checkLoading() {
-    if (census.SUPPLEMENTAL_REQUESTS_IN_FLIGHT == 0) {
-        jQuery(".loading-icon-initialstate").hide();
-        return;
-    } else if (census.SUPPLEMENTAL_REQUESTS_IN_FLIGHT > 0) {
-        window.setTimeout(checkLoading, 1500);
-    }
-}
+
+
