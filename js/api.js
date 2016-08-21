@@ -39,9 +39,9 @@ function init_map() {
       map1.data.setStyle({
           fillColor: 'blue'
         });
-    }
+}
 
-    google.maps.event.addDomListener(window, 'load', init_map);
+google.maps.event.addDomListener(window, 'load', init_map);
 
 
 
@@ -78,30 +78,65 @@ geoCallBack = function(response) {
         
         theResultsContent.appendChild(document.createTextNode(JSON.stringify(response, null, 4)));
 
-        //This line I am using to actually look for the coordinate data. 
+        resultsArea.appendChild(theResultsContent);
+
+        //Working on building coorindate array => Work is all below. 
+
         //The below line gets me all of the coordinate points:
-        console.log(response.features[0].geometry.coordinates[0]);
+        //console.log(response.features[0].geometry.coordinates[0]);
         //It will pull back with two objects which contain the information that I need. 
         //This line below will get me the coordinate location at index 0: 
-        console.log(response.features[0].geometry.coordinates[0][0]);
+        //console.log(response.features[0].geometry.coordinates[0][0]);
         //This will get me the array at index 1:
-        console.log(response.features[0].geometry.coordinates[0][1]);
+        // console.log(response.features[0].geometry.coordinates[0][1]);
 
-        //Array to hold all of the coordinates
-        // arrayOfCoords = [];
-        //Creating a variable to hold the coordinates
-        // var coord = response.features[0].geometry.coordinates[0][0];
-        //pushing the coordinates into the array:
-        // arrayOfCoords.push(coord);
+        //Array to hold all of the coordinates that will be used for the lines of the polygon's path.
+        arrayOfCoords = []; 
+
+        //For loop to go through all of the coordinates. There are a total of 30148 points.
+        for (var i = 0; i < 30149 ; i++){
+            //Creating a variable to hold the coordinates
+            var coord = response.features[0].geometry.coordinates[0][i];
+            //pushing the coordinates into the array:
+            arrayOfCoords.push(coord);
+        }
         //Console.logging the results to see what I got.
-        // console.log(arrayOfCoords[0]);
+        console.log(arrayOfCoords);
 
+        /* In order to proceede, I believe that I need to convert my arrayOfCoords array to 
+            lat and long coordinates. It may even have to be an object that appears to look 
+            something like this:
 
+            var triangleCoords = [
+              {lat: 33.965, lng: -84.085},
+              {lat: 33.949, lng: -84.049},
+              {lat: 33.977, lng: -84.039},
+              {lat: 33.983, lng: -84.074}
+            ];
+        Once that is done, it can be passed in below under the 'paths:'' area. 
 
-        resultsArea.appendChild(theResultsContent);
-        // map1.data.addGeoJson(geojson);
+        //At this point the coordinates will be placed on the map. 
+        // var map = new google.maps.Map(document.getElementById('map1'), {
+        //     zoom: 11,
+        //     center: {lat: 33.963, lng: -84.067},
+        //     mapTypeId: 'terrain'
+        // });
+
+        // // Construct the polygon.
+        // var polyShape = new google.maps.Polygon({
+        // paths: arrayOfCoords,
+        // strokeColor: '#FF0000',
+        // strokeOpacity: 0.8,
+        // strokeWeight: 2,
+        // fillColor: '#FF0000',
+        // fillOpacity: 0.35
+        // });
+        // polyShape.setMap(map);
+
+        
     }
 };
+
     
 /*
  * retrieveData : This function is called by the submit button to connect with the City
