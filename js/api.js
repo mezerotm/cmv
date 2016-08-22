@@ -27,7 +27,7 @@ var sdk = new CitySdk(); //Create the CitySDK Instance
 var census = new CensusModule(censusAPIKey); //Create an instance of the module
 //Here is where I set up and make my call to google maps API. 
 function init_map() {
-      var var_location = new google.maps.LatLng(33.957,-84.282);
+      var var_location = new google.maps.LatLng(33.901,-85.386);
 
       var var_mapoptions = {
         center:var_location,
@@ -103,6 +103,22 @@ geoCallBack = function(response) {
         //Console.logging the results to see what I got.
         console.log(arrayOfCoords);
 
+        //This line will give me the single lat coordinate or if I did 1 in the third post it would be long.
+        //alert(response.features[0].geometry.coordinates[0][0][0])
+
+        //I am working on building an array that will accept the data for the construction of the polygon.
+
+        var Coords = [
+            {lat: 7, lng: 3},
+            {lat: 3, lng: 2}
+        ]
+        //To push into the Coords array, use: 
+        // Coords.push({lat: 1, lng: 2})
+        // console.log(Coords)
+
+        //This gets me the specific information at one spot: 
+        // console.log(Coords[1].lat);
+
          // In order to proceede, I believe that I need to convert my arrayOfCoords array to 
          //    lat and long coordinates. It may even have to be an object that appears to look 
          //    something like this:
@@ -117,12 +133,13 @@ geoCallBack = function(response) {
 
         //At this point the coordinates will be placed on the map. 
         // var map = new google.maps.Map(document.getElementById('map1'), {
-        //     zoom: 11,
-        //     center: {lat: 33.963, lng: -84.067},
+        //     zoom: 8,
+        //     center: {lat: 33.901, lng: -85.386},
+        
         //     mapTypeId: 'terrain'
         // });
 
-        // // Construct the polygon.
+        // Construct the polygon.
         // var polyShape = new google.maps.Polygon({
         // paths: arrayOfCoords,
         // strokeColor: '#FF0000',
