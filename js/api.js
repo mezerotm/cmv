@@ -103,17 +103,17 @@ geoCallBack = function(response) {
         //Console.logging the results to see what I got.
         console.log(arrayOfCoords);
 
-        /* In order to proceede, I believe that I need to convert my arrayOfCoords array to 
-            lat and long coordinates. It may even have to be an object that appears to look 
-            something like this:
+         // In order to proceede, I believe that I need to convert my arrayOfCoords array to 
+         //    lat and long coordinates. It may even have to be an object that appears to look 
+         //    something like this:
 
-            var triangleCoords = [
-              {lat: 33.965, lng: -84.085},
-              {lat: 33.949, lng: -84.049},
-              {lat: 33.977, lng: -84.039},
-              {lat: 33.983, lng: -84.074}
-            ];
-        Once that is done, it can be passed in below under the 'paths:'' area. 
+            // var triangleCoords = [
+            //   {lat: 33.965, lng: -84.085},
+            //   {lat: 33.949, lng: -84.049},
+            //   {lat: 33.977, lng: -84.039},
+            //   {lat: 33.983, lng: -84.074}
+            // ];
+        // Once that is done, it can be passed in below under the 'paths:' area. 
 
         //At this point the coordinates will be placed on the map. 
         // var map = new google.maps.Map(document.getElementById('map1'), {
@@ -131,17 +131,15 @@ geoCallBack = function(response) {
         // fillColor: '#FF0000',
         // fillOpacity: 0.35
         // });
-        // polyShape.setMap(map);
-
-        
+        // polyShape.setMap(map);      
     }
 };
-
     
 /*
  * retrieveData : This function is called by the submit button to connect with the City
- * SDK and obtain the data.
+ * SDK and obtain the data. 
  */
+ 
 function retrieveData(){
  
     // get checkboxes from the web page
@@ -185,7 +183,7 @@ function retrieveData(){
   
     // This request is used to get geographical data for D3
     census.geoRequest(request, geoCallBack);
-}
+};
 
 
 
