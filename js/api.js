@@ -93,28 +93,38 @@ geoCallBack = function(response) {
         //Array to hold all of the coordinates that will be used for the lines of the polygon's path.
         arrayOfCoords = []; 
 
-        //For loop to go through all of the coordinates. There are a total of 30148 points.
-        for (var i = 0; i < 30149 ; i++){
+        /* For loop to go through all of the coordinates. There are a total of 30148 points.
+           I would also say that I think that I could take the for loop below and 
+           simply replace it with this one. I have two for loops that are basically doing the same thing.
+           The first one builds an array of all of the coordinates. The second one labels those 
+           coordinates lat and long. I think I could do this with only using the second for loop and 
+           getting rid of the first. */
+        for (var i = 0; i < 30149; i++){
             //Creating a variable to hold the coordinates
             var coord = response.features[0].geometry.coordinates[0][i];
             //pushing the coordinates into the array:
             arrayOfCoords.push(coord);
         }
         //Console.logging the results to see what I got.
-        console.log(arrayOfCoords);
+        //console.log(arrayOfCoords);
 
         //This line will give me the single lat coordinate or if I did 1 in the third post it would be long.
         //alert(response.features[0].geometry.coordinates[0][0][0])
 
         //I am working on building an array that will accept the data for the construction of the polygon.
 
-        var Coords = [
-            {lat: 7, lng: 3},
-            {lat: 3, lng: 2}
-        ]
+        var Coords = []
         //To push into the Coords array, use: 
         // Coords.push({lat: 1, lng: 2})
+        //This will get the correct coords pushed into the Coords array. 
+        // Coords.push({lat: response.features[0].geometry.coordinates[0][0][1], lng: response.features[0].geometry.coordinates[0][0][0]})
         // console.log(Coords)
+
+        for (var i = 0; i < 30149; i++){
+            Coords.push({lat: response.features[0].geometry.coordinates[0][i][1], lng: response.features[0].geometry.coordinates[0][i][0]})
+        }
+
+        //console.log(Coords)
 
         //This gets me the specific information at one spot: 
         // console.log(Coords[1].lat);
@@ -132,23 +142,22 @@ geoCallBack = function(response) {
         // Once that is done, it can be passed in below under the 'paths:' area. 
 
         //At this point the coordinates will be placed on the map. 
-        // var map = new google.maps.Map(document.getElementById('map1'), {
-        //     zoom: 8,
-        //     center: {lat: 33.901, lng: -85.386},
-        
-        //     mapTypeId: 'terrain'
-        // });
+        var map = new google.maps.Map(document.getElementById('map1'), {
+            zoom: 8,
+            center: {lat: 33.901, lng: -85.386},
+            mapTypeId: 'terrain'
+        });
 
-        // Construct the polygon.
-        // var polyShape = new google.maps.Polygon({
-        // paths: arrayOfCoords,
-        // strokeColor: '#FF0000',
-        // strokeOpacity: 0.8,
-        // strokeWeight: 2,
-        // fillColor: '#FF0000',
-        // fillOpacity: 0.35
-        // });
-        // polyShape.setMap(map);      
+        //Construct the polygon.
+        var polyShape = new google.maps.Polygon({
+        paths: Coords,
+        strokeColor: '#FF0000',
+        strokeOpacity: 0.8,
+        strokeWeight: 2,
+        fillColor: '#FF0000',
+        fillOpacity: 0.35
+        });
+        polyShape.setMap(map);      
     }
 };
     
