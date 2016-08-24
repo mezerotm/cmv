@@ -27,7 +27,7 @@ var sdk = new CitySdk(); //Create the CitySDK Instance
 var census = new CensusModule(censusAPIKey); //Create an instance of the module
 //Here is where I set up and make my call to google maps API. 
 function init_map() {
-      var var_location = new google.maps.LatLng(33.901,-85.386);
+      var var_location = new google.maps.LatLng(33.895,-84.210);
 
       var var_mapoptions = {
         center:var_location,
@@ -36,9 +36,19 @@ function init_map() {
 
       var map1 = new google.maps.Map(document.getElementById("map1"), var_mapoptions);
 
-      map1.data.setStyle({
-          fillColor: 'blue'
-        });
+      // map1.data.setStyle({
+      //     fillColor: 'blue'
+      //   });
+
+    //MAP TWO 
+    var var_location = new google.maps.LatLng(33.895,-84.210);
+
+    var var_mapoptions = {
+        center:var_location,
+        zoom: 11
+      }
+
+      var map1 = new google.maps.Map(document.getElementById("map2"), var_mapoptions);
 }
 
 google.maps.event.addDomListener(window, 'load', init_map);
@@ -80,7 +90,95 @@ geoCallBack = function(response) {
 
         resultsArea.appendChild(theResultsContent);
 
-        //Working on building coorindate array => Work is all below. 
+        //Working on building coorindate array => Work is all below.
+        //console.log(response.features[1].geometry.coordinates[0][0]); 
+
+        // console.log(response.features[0].geometry.coordinates[0][0][0])
+        // console.log(response.features.length);
+
+        // arrayOfCoords = [];
+
+        // for (var i = 0; i < 184; i++){
+        //     //Creating a variable to hold the coordinates
+        //     var coord = response.features[0].geometry.coordinates[0][i];
+        //     //pushing the coordinates into the array:
+        //     arrayOfCoords.push(coord);
+        // }
+
+        //This tells us that there are 113 tracts.
+        // console.log(response.features.length);
+        // for (var tract = 0; tract < response.features.length; tract++){
+        //     for (var coord = 0; coord < response.features[tract].length; coord++){
+
+        //   }
+        // }
+
+
+        //console.log(response.features[0].geometry.coordinates[0]);
+
+         var map = new google.maps.Map(document.getElementById('map1'), {
+            zoom: 8,
+            center: {lat: 33.895, lng: -84.210},
+            mapTypeId: 'terrain'
+        });
+
+       var colors = ["red", "green", "blue"];
+  
+       for (var tract = 0; tract < response.features.length; tract++) {
+
+            var Coords = []
+        
+            for (var i = 0; i < response.features[tract].geometry.coordinates[0].length; i++){
+                if (i % 20 === 1) {
+                    Coords.push({lat: response.features[tract].geometry.coordinates[0][i][1], lng: response.features[tract].geometry.coordinates[0][i][0]});
+                }
+
+                var pickColor = Math.round((Math.random() * 10)) % colors.length
+                console.log(pickColor);
+                var polyShape = new google.maps.Polygon({
+                    paths: Coords,
+                    strokeColor: colors[pickColor],
+                    strokeOpacity: 0.8,
+                    strokeWeight: 2,
+                    fillColor: colors[pickColor],
+                    fillOpacity: 0.35
+                });
+                polyShape.setMap(map);      
+            }
+        }
+
+        var map = new google.maps.Map(document.getElementById('map2'), {
+            zoom: 8,
+            center: {lat: 33.895, lng: -84.210},
+            mapTypeId: 'terrain'
+        });
+
+       var colors = ["red", "green", "blue"];
+  
+       for (var tract = 0; tract < response.features.length; tract++) {
+
+            var Coords = []
+        
+            for (var i = 0; i < response.features[tract].geometry.coordinates[0].length; i++){
+                if (i % 20 === 1) {
+                    Coords.push({lat: response.features[tract].geometry.coordinates[0][i][1], lng: response.features[tract].geometry.coordinates[0][i][0]});
+                }
+
+                var pickColor = Math.round((Math.random() * 10)) % colors.length
+                console.log(pickColor);
+                var polyShape = new google.maps.Polygon({
+                    paths: Coords,
+                    strokeColor: colors[pickColor],
+                    strokeOpacity: 0.8,
+                    strokeWeight: 2,
+                    fillColor: colors[pickColor],
+                    fillOpacity: 0.35
+                });
+                polyShape.setMap(map);      
+            }
+        }
+}
+        //console.log(Coords);
 
         //The below line gets me all of the coordinate points:
         //console.log(response.features[0].geometry.coordinates[0]);
@@ -91,7 +189,7 @@ geoCallBack = function(response) {
         // console.log(response.features[0].geometry.coordinates[0][1]);
 
         //Array to hold all of the coordinates that will be used for the lines of the polygon's path.
-        arrayOfCoords = []; 
+        //arrayOfCoords = []; 
 
         /* For loop to go through all of the coordinates. There are a total of 30148 points.
            I would also say that I think that I could take the for loop below and 
@@ -99,12 +197,13 @@ geoCallBack = function(response) {
            The first one builds an array of all of the coordinates. The second one labels those 
            coordinates lat and long. I think I could do this with only using the second for loop and 
            getting rid of the first. */
-        for (var i = 0; i < 30149; i++){
+        /*for (var i = 0; i < 30149; i++){
             //Creating a variable to hold the coordinates
             var coord = response.features[0].geometry.coordinates[0][i];
+            //response.features.length
             //pushing the coordinates into the array:
             arrayOfCoords.push(coord);
-        }
+        }*/
         //Console.logging the results to see what I got.
         //console.log(arrayOfCoords);
 
@@ -113,16 +212,16 @@ geoCallBack = function(response) {
 
         //I am working on building an array that will accept the data for the construction of the polygon.
 
-        var Coords = []
+        // var Coords = []
         //To push into the Coords array, use: 
         // Coords.push({lat: 1, lng: 2})
         //This will get the correct coords pushed into the Coords array. 
         // Coords.push({lat: response.features[0].geometry.coordinates[0][0][1], lng: response.features[0].geometry.coordinates[0][0][0]})
         // console.log(Coords)
 
-        for (var i = 0; i < 30149; i++){
-            Coords.push({lat: response.features[0].geometry.coordinates[0][i][1], lng: response.features[0].geometry.coordinates[0][i][0]})
-        }
+        // for (var i = 0; i < 30149; i++){
+        //     Coords.push({lat: response.features[0].geometry.coordinates[0][i][1], lng: response.features[0].geometry.coordinates[0][i][0]})
+        // }
 
         //console.log(Coords)
 
@@ -142,23 +241,9 @@ geoCallBack = function(response) {
         // Once that is done, it can be passed in below under the 'paths:' area. 
 
         //At this point the coordinates will be placed on the map. 
-        var map = new google.maps.Map(document.getElementById('map1'), {
-            zoom: 8,
-            center: {lat: 33.901, lng: -85.386},
-            mapTypeId: 'terrain'
-        });
-
+       
         //Construct the polygon.
-        var polyShape = new google.maps.Polygon({
-        paths: Coords,
-        strokeColor: '#FF0000',
-        strokeOpacity: 0.8,
-        strokeWeight: 2,
-        fillColor: '#FF0000',
-        fillOpacity: 0.35
-        });
-        polyShape.setMap(map);      
-    }
+       
 };
     
 /*
@@ -174,16 +259,16 @@ function retrieveData(){
     
     
     // configure the census data request
-    request.level = "state";
-    request.zip = "30519";
+    request.level = "county";
+    request.zip = "30043";
     request.api = "acs5";
     request.year = "2014";
-    //request.state = "GA";
-    //request.sublevel = true;
+    request.state = "GA";
+    request.sublevel = true;
    
     var checkedVariables = new Array();   // array to hold checked variables
     var numElems = allCheckBoxes.length;  // determines the number of checkboxes
-    console.log(numElems);
+    // console.log(numElems);
     var foundChecked = false;             // flag for at least one checked box
 
     
