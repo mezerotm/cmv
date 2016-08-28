@@ -47,7 +47,7 @@ function init_map() {
     var var_mapoptions = {
         center:var_location,
         zoom: 11
-      }
+      };
 
       var map1 = new google.maps.Map(document.getElementById("map2"), var_mapoptions);
 }
@@ -84,14 +84,14 @@ geoCallBack = function(response) {
        
        for (var tract = 0; tract < response.features.length; tract++) {
        
-            var Coords = []
+            var Coords = [];
        
             for (var i = 0; i < response.features[tract].geometry.coordinates[0].length; i++){
                 if (i % 20 === 1) {
                     Coords.push({lat: response.features[tract].geometry.coordinates[0][i][1], lng: response.features[tract].geometry.coordinates[0][i][0]});
                 }
        
-                var pickColor = Math.round((Math.random() * 10)) % colors.length
+                var pickColor = Math.round((Math.random() * 10)) % colors.length;
                 console.log(pickColor);
                 var polyShape = new google.maps.Polygon({
                     paths: Coords,
@@ -115,14 +115,14 @@ geoCallBack = function(response) {
        
        for (var tract = 0; tract < response.features.length; tract++) {
        
-            var Coords = []
+            var Coords = [];
        
             for (var i = 0; i < response.features[tract].geometry.coordinates[0].length; i++){
                 if (i % 20 === 1) {
                     Coords.push({lat: response.features[tract].geometry.coordinates[0][i][1], lng: response.features[tract].geometry.coordinates[0][i][0]});
                 }
        
-                var pickColor = Math.round((Math.random() * 10)) % colors.length
+                var pickColor = Math.round((Math.random() * 10)) % colors.length;
                 console.log(pickColor);
                 var polyShape = new google.maps.Polygon({
                     paths: Coords,
