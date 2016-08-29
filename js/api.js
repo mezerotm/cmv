@@ -129,7 +129,7 @@ geoCallBack = function(response) {
             var Coords = []
         
             for (var i = 0; i < response.features[tract].geometry.coordinates[0].length; i++){
-                if (i % 20 === 1) {
+                if (i % 10 === 1) {
                     Coords.push({lat: response.features[tract].geometry.coordinates[0][i][1], lng: response.features[tract].geometry.coordinates[0][i][0]});
                 }
 
@@ -147,36 +147,36 @@ geoCallBack = function(response) {
             }
         }
 
-        var map = new google.maps.Map(document.getElementById('map2'), {
-            zoom: 8,
-            center: {lat: 33.895, lng: -84.210},
-            mapTypeId: 'terrain'
-        });
+       //  var map = new google.maps.Map(document.getElementById('map2'), {
+       //      zoom: 8,
+       //      center: {lat: 33.895, lng: -84.210},
+       //      mapTypeId: 'terrain'
+       //  });
 
-       var colors = ["red", "green", "blue"];
+       // var colors = ["red", "green", "blue"];
   
-       for (var tract = 0; tract < response.features.length; tract++) {
+       // for (var tract = 0; tract < response.features.length; tract++) {
 
-            var Coords = []
+       //      var Coords = []
         
-            for (var i = 0; i < response.features[tract].geometry.coordinates[0].length; i++){
-                if (i % 20 === 1) {
-                    Coords.push({lat: response.features[tract].geometry.coordinates[0][i][1], lng: response.features[tract].geometry.coordinates[0][i][0]});
-                }
+       //      for (var i = 0; i < response.features[tract].geometry.coordinates[0].length; i++){
+       //          if (i % 30 === 1) {
+       //              Coords.push({lat: response.features[tract].geometry.coordinates[0][i][1], lng: response.features[tract].geometry.coordinates[0][i][0]});
+       //          }
 
-                var pickColor = Math.round((Math.random() * 10)) % colors.length
-                console.log(pickColor);
-                var polyShape = new google.maps.Polygon({
-                    paths: Coords,
-                    strokeColor: colors[pickColor],
-                    strokeOpacity: 0.8,
-                    strokeWeight: 2,
-                    fillColor: colors[pickColor],
-                    fillOpacity: 0.35
-                });
-                polyShape.setMap(map);      
-            }
-        }
+       //          var pickColor = Math.round((Math.random() * 10)) % colors.length
+       //          console.log(pickColor);
+       //          var polyShape = new google.maps.Polygon({
+       //              paths: Coords,
+       //              strokeColor: colors[pickColor],
+       //              strokeOpacity: 0.8,
+       //              strokeWeight: 2,
+       //              fillColor: colors[pickColor],
+       //              fillOpacity: 0.35
+       //          });
+       //          polyShape.setMap(map);      
+       //      }
+       //  }
 }
         //console.log(Coords);
 
