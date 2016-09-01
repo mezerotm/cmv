@@ -49,8 +49,11 @@ function updateMapViews() {
 		map4.style.width = "765px";
 		map5.style.height = "363px";
 	}
+
+	resizeMaps();
 }
 
+//reset map visibility
 function resetMapVisible() {
 	var map1 = document.getElementById("map1");
 	var map2 = document.getElementById("map2");
@@ -71,4 +74,17 @@ function resetMapVisible() {
 	map2btn.disabled = false;
 	map3btn.disabled = false;
 	map4btn.disabled = false;
+}
+
+//resize the google maps themselves to match the windows/divs they are in*
+function resizeMaps() {
+	var map1 = document.getElementById("map1");
+	var map2 = document.getElementById("map2");
+	var map3 = document.getElementById("map3");
+	var map4 = document.getElementById("map4");
+
+	google.maps.event.trigger(map1, 'resize');
+	google.maps.event.trigger(map2, 'resize');
+	google.maps.event.trigger(map3, 'resize');
+	google.maps.event.trigger(map4, 'resize');
 }

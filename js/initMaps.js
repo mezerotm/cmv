@@ -7,16 +7,15 @@
         }
 
         var map1 = new google.maps.Map(document.getElementById("map1"), var_mapoptions);
-         //The below maps, html code, has been pulled for the time being.
-      var map2 = new google.maps.Map(document.getElementById("map2"), var_mapoptions);
-      var map3 = new google.maps.Map(document.getElementById("map3"), var_mapoptions);
-      var map4 = new google.maps.Map(document.getElementById("map4"), var_mapoptions);
+        var map2 = new google.maps.Map(document.getElementById("map2"), var_mapoptions);
+        var map3 = new google.maps.Map(document.getElementById("map3"), var_mapoptions);
+        var map4 = new google.maps.Map(document.getElementById("map4"), var_mapoptions);
 
         map1.data.setStyle({
             fillColor: 'blue'
           });
 
-        //make sure maps dynamically resize to fit windows
+        //make sure maps dynamically resize to fit windows whenever they are in an idle state
         google.maps.event.addDomListener(map1, 'idle', function() {
           google.maps.event.trigger(map1, 'resize');
         });

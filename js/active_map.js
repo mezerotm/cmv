@@ -13,7 +13,7 @@ function activateMap(map_num) {
 	var map4btn = document.getElementById("map4_activate");
 
 	resetButtons();
-
+	//make the button that corresponds to the active map have bolded text
 	if(map_num == 1) {
 		active_map_holder.value = "1";
 		map1btn.style.fontWeight = "bold";
@@ -32,6 +32,7 @@ function activateMap(map_num) {
 	}
 }
 
+//reset all buttons to normal text styling
 function resetButtons() {
 	var map1btn = document.getElementById("map1_activate");
 	var map2btn = document.getElementById("map2_activate");
