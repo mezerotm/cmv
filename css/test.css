@@ -1,0 +1,29 @@
+.test {
+  padding-top: 100px;
+}
+
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+#map {
+  display: block;
+  width: 600px;
+  height: 400px;
+}
+
+/* CSS for the slider button */
+#toggle {
+  width: 200px;
+  height: 230px;
+  border: 2px solid blue;
+  display: none;
+}
+
+/* CSS for the Data Form */
+.data-form {
+  margin-top: 30px;
+  margin-left: 10px;
+}
