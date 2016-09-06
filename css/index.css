@@ -85,6 +85,11 @@ html, body {
   width: 25px;
 	height: 25px;
 }
+
+.sidebar_panel {
+	width: 200px;
+	display: none;
+}
 /* /side widget bar rules */
 
 /* top panel css rules */
