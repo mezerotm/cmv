@@ -104,16 +104,18 @@ html, body {
 
 .sidebar_panel {
 	display: block;
-	width: 150px;
-	height: 300px;
+	width: 200px;
+	height: 600px;
 	z-index: 20;
 	top: 0px;
 	right: 0;
 	overflow-x: hidden;
-	transition: 0.5s;
 	position: fixed;
 	display: none;
-	background-color: red;
+	border-color: black;
+	border-width: 1px;
+	border-style: solid;
+	background-color: white;
 }
 /* /side widget bar rules */
 
