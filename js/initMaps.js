@@ -1,4 +1,9 @@
  function init_map() {
+        //initialize the element that will track which map is the active map and set its default value
+        var active_map_holder = document.getElementById("active_map_holder");
+        activateMap(1);
+
+        //initialize and set up maps for the page
         var var_location = new google.maps.LatLng(33.957,-84.282);
 
         var var_mapoptions = {

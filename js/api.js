@@ -74,14 +74,49 @@ geoCallBack = function(response) {
         }
 
        
-         var map = new google.maps.Map(document.getElementById('map1'), {
+         /*var map = new google.maps.Map(document.getElementById('map1'), {
             zoom: 8,
             center: {lat: 33.895, lng: -84.210},
             mapTypeId: 'terrain'
-        });
+        });*/
        
        var colors = ["red", "green", "blue"];
        
+       //figure out which map is the active map and output to it accordingly
+        var active_map_holder = document.getElementById("active_map_holder");
+        if(active_map_holder.value == 1)
+        {
+            var map = new google.maps.Map(document.getElementById('map1'), {
+              zoom: 8,
+              center: {lat: 33.895, lng: -84.210},
+              mapTypeId: 'terrain'
+          });
+        }
+        else if(active_map_holder.value == 2)
+        {
+            var map = new google.maps.Map(document.getElementById('map2'), {
+              zoom: 8,
+              center: {lat: 33.895, lng: -84.210},
+              mapTypeId: 'terrain'
+          });
+        }
+        else if(active_map_holder.value == 3)
+        {
+            var map = new google.maps.Map(document.getElementById('map3'), {
+              zoom: 8,
+              center: {lat: 33.895, lng: -84.210},
+              mapTypeId: 'terrain'
+          });
+        }
+        else//value of the active_map_holder element must be 4 due to input validation in other areas of code
+        {
+            var map = new google.maps.Map(document.getElementById('map4'), {
+              zoom: 8,
+              center: {lat: 33.895, lng: -84.210},
+              mapTypeId: 'terrain'
+          });
+        }
+
        for (var tract = 0; tract < response.features.length; tract++) {
        
             var Coords = [];
@@ -104,12 +139,47 @@ geoCallBack = function(response) {
                 polyShape.setMap(map);      
             }
         }
+
+        
        
-        var map = new google.maps.Map(document.getElementById('map2'), {
+        /*var map = new google.maps.Map(document.getElementById('map1'), {
             zoom: 8,
             center: {lat: 33.895, lng: -84.210},
             mapTypeId: 'terrain'
-        });
+        });*/
+        //figure out which map is the active map and output to it accordingly
+        if(active_map_holder.value == 1)
+        {
+            var map = new google.maps.Map(document.getElementById('map1'), {
+              zoom: 8,
+              center: {lat: 33.895, lng: -84.210},
+              mapTypeId: 'terrain'
+          });
+        }
+        else if(active_map_holder.value == 2)
+        {
+            var map = new google.maps.Map(document.getElementById('map2'), {
+              zoom: 8,
+              center: {lat: 33.895, lng: -84.210},
+              mapTypeId: 'terrain'
+          });
+        }
+        else if(active_map_holder.value == 3)
+        {
+            var map = new google.maps.Map(document.getElementById('map3'), {
+              zoom: 8,
+              center: {lat: 33.895, lng: -84.210},
+              mapTypeId: 'terrain'
+          });
+        }
+        else//value of the active_map_holder element must be 4 due to input validation in other areas of code
+        {
+            var map = new google.maps.Map(document.getElementById('map4'), {
+              zoom: 8,
+              center: {lat: 33.895, lng: -84.210},
+              mapTypeId: 'terrain'
+          });
+        }
        
        var colors = ["red", "green", "blue"];
        
