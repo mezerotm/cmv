@@ -8,7 +8,8 @@
 
         var var_mapoptions = {
           center:var_location,
-          zoom: 11
+          zoom: 11,
+          scrollwheel: false
         }
 
         var map1 = new google.maps.Map(document.getElementById("map1"), var_mapoptions);
