@@ -47,7 +47,7 @@ function updateMapViews() {
 		map3.style.width = "765px";
 		map3.style.height = "363px";
 		map4.style.width = "765px";
-		map5.style.height = "363px";
+		map4.style.height = "363px";
 	}
 
 	resizeMaps();

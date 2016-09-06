@@ -59,9 +59,9 @@
 	    	<div id="map4" class="map_right"></div><!--end map4-->
 	    </div><!--end maps container div-->
 		<div class="side-panel">
-			<div class="widegtbar-pages hidden">
+			<div class="widegtbar-pages_hidden">
 
-				<div id="widgetbar-configuration" style="display:none;" class="sidebar_panel"> <!-- configuration is taken from IPO lines #1-9 -->
+				<div id="widgetbar-configuration" class="sidebar_panel"> <!-- configuration is taken from IPO lines #1-9 -->
 					<a href="#">Link 1</a>
 				  <a href="#">Link 2</a>
 				  <a href="#">Link 3</a>
@@ -69,7 +69,7 @@
 				  <a href="#">Link 5</a>
 				</div> <!-- /widgetbar-location -->
 
-				<div id="widgetbar-population" style="display:none;" class="sidebar_panel">
+				<div id="widgetbar-population" class="sidebar_panel">
 					<a href="#">Link 1</a>
 					<a href="#">Link 2</a>
 					<a href="#">Link 3</a>
@@ -77,7 +77,7 @@
 					<a href="#">Link 5</a>
 				</div> <!-- /widgetbar-population -->
 
-				<div id="widgetbar-demographic" style="display:none;" class="sidebar_panel">
+				<div id="widgetbar-demographic" class="sidebar_panel">
 					<a href="#">Link 1</a>
 					<a href="#">Link 2</a>
 					<a href="#">Link 3</a>
@@ -85,7 +85,7 @@
 					<a href="#">Link 5</a>
 				</div> <!-- /widgetbar-demographic -->
 
-				<div id="widgetbar-income" style="display:none;" class="sidebar_panel">
+				<div id="widgetbar-income" class="sidebar_panel">
 					<a href="#">Link 1</a>
 					<a href="#">Link 2</a>
 					<a href="#">Link 3</a>
@@ -93,7 +93,7 @@
 					<a href="#">Link 5</a>
 				</div> <!-- /widgetbar-income -->
 
-				<div id="widgetbar-crime" style="display:none;" class="sidebar_panel">
+				<div id="widgetbar-crime" class="sidebar_panel">
 					<a href="#">Link 1</a>
 					<a href="#">Link 2</a>
 					<a href="#">Link 3</a>
@@ -101,7 +101,7 @@
 					<a href="#">Link 5</a>
 				</div> <!-- /widgetbar-crime -->
 
-				<div id="widgetbar-transportation" style="display:none;" class="sidebar_panel">
+				<div id="widgetbar-transportation" class="sidebar_panel">
 					<a href="#">Link 1</a>
 					<a href="#">Link 2</a>
 					<a href="#">Link 3</a>
@@ -109,7 +109,7 @@
 					<a href="#">Link 5</a>
 				</div> <!-- /widgetbar-transportation -->
 
-				<div id="widgetbar-education" style="display:none;" class="sidebar_panel">
+				<div id="widgetbar-education" class="sidebar_panel">
 					<a href="#">Link 1</a>
 					<a href="#">Link 2</a>
 					<a href="#">Link 3</a>
@@ -131,7 +131,7 @@
 				<div class="widgetbar-tab">
 					<div class="widgetbar-tabcontent">
 						<div class="widgetbar-iconplace apply-common-tooltip common-tooltip-vertical">
-							<img class="widgetbar-icon" src="img/svg/input.svg" onclick="openSidebar("widgetbar-configuration")/>
+							<img class="widgetbar-icon" src="img/svg/input.svg" onclick="openSidebar(1)"/>
 						</div>
 					</div>
 				</div> <!-- /widgetbar-configuration-icon -->
@@ -139,7 +139,7 @@
 				<div class="widgetbar-tab">
 					<div class="widgetbar-tabcontent">
 						<div class="widgetbar-iconplace apply-common-tooltip common-tooltip-vertical">
-							<img class="widgetbar-icon" src="img/svg/population.svg" onclick="openSidebar("widgetbar-population")/>
+							<img class="widgetbar-icon" src="img/svg/population.svg" onclick="openSidebar(2)"/>
 						</div>
 					</div>
 				</div> <!-- /widgetbar-population-icon -->
@@ -147,7 +147,7 @@
 				<div class="widgetbar-tab">
 					<div class="widgetbar-tabcontent">
 						<div class="widgetbar-iconplace apply-common-tooltip common-tooltip-vertical">
-							<img class="widgetbar-icon" src="img/svg/demographic.svg" onclick="openSidebar("widgetbar-demographic")/>
+							<img class="widgetbar-icon" src="img/svg/demographic.svg" onclick="openSidebar(3)"/>
 						</div>
 					</div>
 				</div> <!-- /widgetbar-demographic-icon -->
@@ -155,7 +155,7 @@
 				<div class="widgetbar-tab">
 					<div class="widgetbar-tabcontent">
 						<div class="widgetbar-iconplace apply-common-tooltip common-tooltip-vertical">
-							<img class="widgetbar-icon" src="img/svg/income.svg" onclick="openSidebar("widgetbar-income")>
+							<img class="widgetbar-icon" src="img/svg/income.svg" onclick="openSidebar(4)">
 						</div>
 					</div>
 				</div> <!-- /widgetbar-income-icon -->
@@ -163,7 +163,7 @@
 				<div class="widgetbar-tab">
 					<div class="widgetbar-tabcontent">
 						<div class="widgetbar-iconplace apply-common-tooltip common-tooltip-vertical">
-							<img class="widgetbar-icon" src="img/svg/crime.svg" onclick="openSidebar("widgetbar-crime")>
+							<img class="widgetbar-icon" src="img/svg/crime.svg" onclick="openSidebar(5)">
 						</div>
 					</div>
 				</div> <!-- /widgetbar-crime-icon -->
@@ -171,7 +171,7 @@
 				<div class="widgetbar-tab">
 					<div class="widgetbar-tabcontent">
 						<div class="widgetbar-iconplace apply-common-tooltip common-tooltip-vertical">
-							<img class="widgetbar-icon" src="img/svg/transportation.svg" onclick="openSidebar("widgetbar-transportation")>
+							<img class="widgetbar-icon" src="img/svg/transportation.svg" onclick="openSidebar(6)">
 						</div>
 					</div>
 				</div> <!-- /widgetbar-transportation-icon -->
@@ -179,7 +179,7 @@
 				<div class="widgetbar-tab">
 					<div class="widgetbar-tabcontent">
 						<div class="widgetbar-iconplace apply-common-tooltip common-tooltip-vertical">
-							<img class="widgetbar-icon" src="img/svg/education.svg" onclick="openSidebar("widgetbar-education")>
+							<img class="widgetbar-icon" src="img/svg/education.svg" onclick="openSidebar(7)">
 						</div>
 					</div>
 				</div> <!-- /widgetbar-education-icon -->
@@ -197,8 +197,6 @@
 		<!-- custom javascript -->
 		<script src="js/api.js"></script>
 		<script src="js/initMaps.js"></script>
-		<script src="js/sidbar.js"></script>
-	    <script src="js/sidebarAnimation.js"></script>
 	    <script src="js/map_views.js"></script>
 	    <script src="js/active_map.js"></script>
 		<script src="js/sidebar_animations.js"></script>

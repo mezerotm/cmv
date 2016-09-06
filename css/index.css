@@ -4,6 +4,7 @@ h1, h2, h3, h4, h5, h6, p {
 	font-weight: 400;
 	margin: 0;
 }
+
 .no-select {
 	-webkit-touch-callout: none; /* iOS Safari */
   -webkit-user-select: none;   /* Chrome/Safari/Opera */
@@ -86,9 +87,33 @@ html, body {
 	height: 25px;
 }
 
+.side-panel {
+	position: fixed;
+	right: 0;
+	/*width: 200px;*/
+	width: 0px;
+	height: 500px;
+	top: 28px;
+}
+
+.widegtbar-pages_hidden {
+	display: inline-block;
+	position: fixed;
+	right: 0;
+}
+
 .sidebar_panel {
-	width: 200px;
+	display: block;
+	width: 150px;
+	height: 300px;
+	z-index: 20;
+	top: 0px;
+	right: 0;
+	overflow-x: hidden;
+	transition: 0.5s;
+	position: fixed;
 	display: none;
+	background-color: red;
 }
 /* /side widget bar rules */
 
@@ -139,15 +164,16 @@ html, body {
 #progress-bar { /* increase width to increase progress */
 	position: absolute;
 	width: 0%;
-  height: 1px;
+  	height: 1px;
 	z-index: 1;
-  background: black;
+ 	background: black;
 }
 /* /top panel css rules */
 
 /* Google Maps css rules */
 #Maps_container {
 	margin-top: 28px;
+	float: left;
 	width: 1600px;
 	height: 755px;
 	z-index = 0;
