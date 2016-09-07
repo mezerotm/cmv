@@ -18,7 +18,7 @@ function updateMapViews() {
 		map3.style.display = "none";
 		map4.style.display = "none";
 
-		map1.style.width = "1540px";
+		map1.style.width = "calc(100% - 20px)";
 		map1.style.height = "736px";
 
 		//make active_map buttons for maps that are not being shown unable to be clicked
@@ -30,9 +30,9 @@ function updateMapViews() {
 		map3.style.display = "none";
 		map4.style.display = "none";
 
-		map1.style.width = "765px";
+		map1.style.width = "calc(50% - 10px)";
 		map1.style.height = "736px";
-		map2.style.height = "765px";
+		map2.style.width = "calc(50% - 10px)";
 		map2.style.height = "736px";
 
 		//make active_map buttons for maps that are not being shown unable to be clicked
@@ -40,13 +40,13 @@ function updateMapViews() {
 		map4btn.disabled = true;
 	}
 	else {
-		map1.style.width = "765px";
+		map1.style.width = "calc(50% - 10px)";
 		map1.style.height = "363px";
-		map2.style.width = "765px";
+		map2.style.width = "calc(50% - 10px)";
 		map2.style.height = "363px";
-		map3.style.width = "765px";
+		map3.style.width = "calc(50% - 10px)";
 		map3.style.height = "363px";
-		map4.style.width = "765px";
+		map4.style.width = "calc(50% - 10px)";
 		map4.style.height = "363px";
 	}
 

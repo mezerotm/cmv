@@ -32,6 +32,6 @@ function updateMapSize(sidebar_state) {
 		map_holder.style.width = "calc(100% - 260px)";
 	}
 	else {
-		map_holder.style.width = "calc(100% - 48px)";;
+		map_holder.style.width = "calc(100% - 48px)";
 	}
 }

@@ -89,7 +89,8 @@ geoCallBack = function(response) {
             var map = new google.maps.Map(document.getElementById('map1'), {
               zoom: 8,
               center: {lat: 33.895, lng: -84.210},
-              mapTypeId: 'roadmap'
+              mapTypeId: 'roadmap',
+              scrollwheel: false
           });
         }
         else if(active_map_holder.value == 2)
@@ -97,7 +98,8 @@ geoCallBack = function(response) {
             var map = new google.maps.Map(document.getElementById('map2'), {
               zoom: 8,
               center: {lat: 33.895, lng: -84.210},
-              mapTypeId: 'roadmap'
+              mapTypeId: 'roadmap',
+              scrollwheel: false
           });
         }
         else if(active_map_holder.value == 3)
@@ -105,7 +107,8 @@ geoCallBack = function(response) {
             var map = new google.maps.Map(document.getElementById('map3'), {
               zoom: 8,
               center: {lat: 33.895, lng: -84.210},
-              mapTypeId: 'roadmap'
+              mapTypeId: 'roadmap',
+              scrollwheel: false
           });
         }
         else//value of the active_map_holder element must be 4 due to input validation in other areas of code
@@ -113,7 +116,8 @@ geoCallBack = function(response) {
             var map = new google.maps.Map(document.getElementById('map4'), {
               zoom: 8,
               center: {lat: 33.895, lng: -84.210},
-              mapTypeId: 'roadmap'
+              mapTypeId: 'roadmap',
+              scrollwheel: false
           });
         }
 
