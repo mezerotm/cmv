@@ -65,12 +65,12 @@ geoCallBack = function(response) {
 
         var dataResults = JSON.stringify(response, null, 4);
         var resultsObject = JSON.parse(dataResults);
-        processTractData(resultsObject);
+        //processTractData(resultsObject);
         // output geo data to an output panel on the UI
         if (DEBUG) {
             
-            console.log(response.features.length);
-            console.log(JSON.stringify(response, null, 4));
+            //console.log(response.features.length);
+            //console.log(JSON.stringify(response, null, 4));
         }
 
        
@@ -82,7 +82,20 @@ geoCallBack = function(response) {
        
        var colors = ["red", "green", "blue"];
 
-       alert(response.features);
+       //The below line will actually get me the information on the variable B19013_001E. 
+       //I believe that B19013_001E stands for median house hold income
+       //console.log(response.features[0].properties.B19013_001E);
+
+       var dataArray = [];
+
+       for (var i = 0; i <= response.features.length; i++){
+          //console.log(response.features[i].properties.B19013_001E);
+          //var dataPoint = response.features[i].properties.B19013_001E;
+          //console.log(dataPoint);
+          //dataArray.push(dataPoint)
+       }
+
+       console.log();
        
        for (var tract = 0; tract < response.features.length; tract++) {
        
@@ -153,7 +166,7 @@ function dataCallBack(response) {
        var dataResults = JSON.stringify(response, null, 4);
        var resultsObject = JSON.parse(dataResults);
     
-        DEBUG && console.log(resultsObject.data);
+        //DEBUG && console.log(resultsObject.data);
     } else {
         console.log("Error: dataCallBack did not get a valid response");
         return false;
@@ -221,22 +234,22 @@ function checkLoading() {
     }
 }
 
-
-function processTractData(resultsDataObject) {
+//Commenting this out becuase it is filling up my console with information that I do not need. 
+// function processTractData(resultsDataObject) {
     
-    if (resultsDataObject) {
-        var numTracts = resultsDataObject.features.length;
+//     if (resultsDataObject) {
+//         var numTracts = resultsDataObject.features.length;
 
-        for (var tract = 0; tract < numTracts; tract++) {
-            DEBUG && console.log(resultsDataObject.features[tract].properties.TRACT);
+//         for (var tract = 0; tract < numTracts; tract++) {
+//             DEBUG && console.log(resultsDataObject.features[tract].properties.TRACT);
 
-            var numStats = resultsDataObject.totals.length;
-            for (var aStat in resultsDataObject.totals) {
-                if (censusVariables.getVariableFromKey(aStat) !== "Undefined") {
-                    DEBUG && console.log(censusVariables.getVariableFromKey(aStat) + " : " + resultsDataObject.totals[aStat]);
+//             var numStats = resultsDataObject.totals.length;
+//             for (var aStat in resultsDataObject.totals) {
+//                 if (censusVariables.getVariableFromKey(aStat) !== "Undefined") {
+//                     DEBUG && console.log(censusVariables.getVariableFromKey(aStat) + " : " + resultsDataObject.totals[aStat]);
 
-                }
-            }
-        }
-    }
-}
+//                 }
+//             }
+//         }
+//     }
+// }
