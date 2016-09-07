@@ -39,7 +39,7 @@ a:active {
 		text-decoration: none;
 }
 html, body {
-  overflow: hidden;
+  overflow: auto;
 	margin: 0;
 }
 
@@ -120,6 +120,7 @@ html, body {
 	position: absolute;
   height: 28px;
 	width: calc(100% - 46px);
+	min-width: 900px;
   background: #f1f3f6;
 	border-bottom: solid #c9caca 1px;
 }
@@ -174,7 +175,7 @@ html, body {
 	margin-right: 50px;
 	float: left;
 	width: calc(100% - 48px);
-	height: 755px;
+	height: 745px;
 	z-index = 0;
 }
 .map {
@@ -183,7 +184,7 @@ html, body {
 	margin-left: 5px;
 	margin-right: 5px;
   	width: calc(50% - 10px);
-  	height: 362px;
+  	height: 360px;
 	background: #f1f3f6;
 	border-style: solid;
 	border-color: black;
@@ -193,32 +194,26 @@ html, body {
 	margin-top: 5px;
 	display: inline-block;
   	width: calc(50% - 10px);
-  	height: 363px;
+  	height: 360px;
 	background: #f1f3f6;
 	border-style: solid;
 	border-color: black;
 	border-width: 1px;
 }
+
+#active_map {
+	margin-top: 2px;
+	margin-left: 30%;
+	width: calc(25% - 10px);
+	min-width: 229px;
+}
+
 .active_map_button {
-	position: absolute;
+	display: inline-block;
 	height: 20px;
-	width: 75px;
-}
-#map1_activate {
-	left: 619px;
-	top: 3px;
-}
-#map2_activate {
-	left: 699px;
-	top: 3px;
-}
-#map3_activate {
-	left: 779px;
-	top: 3px;
-}
-#map4_activate {
-	left: 859px;
-	top: 3px;
+	width: calc(25% - 10px);
+	min-width: 53px;
+	margin-right: 1px;
 }
 /* /Google Maps css rules */
 
