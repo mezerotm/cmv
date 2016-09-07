@@ -89,7 +89,7 @@ geoCallBack = function(response) {
             var map = new google.maps.Map(document.getElementById('map1'), {
               zoom: 8,
               center: {lat: 33.895, lng: -84.210},
-              mapTypeId: 'terrain'
+              mapTypeId: 'street'
           });
         }
         else if(active_map_holder.value == 2)
@@ -97,7 +97,7 @@ geoCallBack = function(response) {
             var map = new google.maps.Map(document.getElementById('map2'), {
               zoom: 8,
               center: {lat: 33.895, lng: -84.210},
-              mapTypeId: 'terrain'
+              mapTypeId: 'street'
           });
         }
         else if(active_map_holder.value == 3)
@@ -105,7 +105,7 @@ geoCallBack = function(response) {
             var map = new google.maps.Map(document.getElementById('map3'), {
               zoom: 8,
               center: {lat: 33.895, lng: -84.210},
-              mapTypeId: 'terrain'
+              mapTypeId: 'street'
           });
         }
         else//value of the active_map_holder element must be 4 due to input validation in other areas of code
@@ -113,7 +113,7 @@ geoCallBack = function(response) {
             var map = new google.maps.Map(document.getElementById('map4'), {
               zoom: 8,
               center: {lat: 33.895, lng: -84.210},
-              mapTypeId: 'terrain'
+              mapTypeId: 'street'
           });
         }
 
@@ -148,7 +148,7 @@ geoCallBack = function(response) {
             mapTypeId: 'terrain'
         });*/
         //figure out which map is the active map and output to it accordingly
-        if(active_map_holder.value == 1)
+        /*if(active_map_holder.value == 1)
         {
             var map = new google.maps.Map(document.getElementById('map1'), {
               zoom: 8,
@@ -204,7 +204,7 @@ geoCallBack = function(response) {
                 });
                 polyShape.setMap(map);      
             }
-        }
+        }*/
        
     } else {
         console.log("Error: geoCallBack did not get a valid response");
