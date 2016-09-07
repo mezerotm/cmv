@@ -18,7 +18,7 @@ function updateMapViews() {
 		map3.style.display = "none";
 		map4.style.display = "none";
 
-		map1.style.width = "calc(100% - 20px)";
+		map1.style.width = "calc(100% - 10px)";
 		map1.style.height = "736px";
 
 		//make active_map buttons for maps that are not being shown unable to be clicked
@@ -42,7 +42,7 @@ function updateMapViews() {
 	else {
 		map1.style.width = "calc(50% - 10px)";
 		map1.style.height = "363px";
-		map2.style.width = "calc(50% - 10px)";
+		map2.style.width = "calc(50	% - 10px)";
 		map2.style.height = "363px";
 		map3.style.width = "calc(50% - 10px)";
 		map3.style.height = "363px";

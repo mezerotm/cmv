@@ -34,4 +34,5 @@ function updateMapSize(sidebar_state) {
 	else {
 		map_holder.style.width = "calc(100% - 48px)";
 	}
+	resizeMaps();
 }
