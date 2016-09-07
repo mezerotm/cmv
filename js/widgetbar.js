@@ -29,9 +29,9 @@ function updateMapSize(sidebar_state) {
 	var map_holder = document.getElementById("Maps_container");
 
 	if(sidebar_state == "active") {
-		map_holder.style.width = "1340px";
+		map_holder.style.width = "calc(100% - 260px)";
 	}
 	else {
-		map_holder.style.width = "1550px";
+		map_holder.style.width = "calc(100% - 48px)";;
 	}
 }
