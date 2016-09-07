@@ -90,12 +90,12 @@ geoCallBack = function(response) {
 
        for (var i = 0; i <= response.features.length; i++){
           //console.log(response.features[i].properties.B19013_001E);
-          //var dataPoint = response.features[i].properties.B19013_001E;
+          var dataPoint = response.features[i].properties.B19013_001E;
           //console.log(dataPoint);
-          //dataArray.push(dataPoint)
+          dataArray.push(dataPoint);
        }
 
-       console.log();
+       console.log(dataArray);
        
        for (var tract = 0; tract < response.features.length; tract++) {
        
@@ -124,7 +124,7 @@ geoCallBack = function(response) {
             center: {lat: 33.895, lng: -84.210},
             mapTypeId: 'terrain'
         });
-       
+       /////////////////////////////////////////////////////////////////
        var colors = ["red", "green", "blue"];
        
        for (var tract = 0; tract < response.features.length; tract++) {
