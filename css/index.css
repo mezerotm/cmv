@@ -86,38 +86,30 @@ html, body {
   width: 25px;
 	height: 25px;
 }
-
+.widgetbar-page {
+	position: absolute;
+	display: none;
+	background-color: white;
+}
+.widgetbar-page.active {
+	display: block;
+	right: 45px;
+	height: 100%;
+	width: 200px;
+}
+.top-panel.active {
+	width: calc(100% - 246px);
+}
+/* /side widget bar rules */
 .side-panel {
 	position: fixed;
 	right: 0;
+	margin-top: 28px;
 	/*width: 200px;*/
 	width: 0px;
 	height: 500px;
 	top: 28px;
 }
-
-.widegtbar-pages_hidden {
-	display: inline-block;
-	position: fixed;
-	right: 0;
-}
-
-.sidebar_panel {
-	display: block;
-	width: 200px;
-	height: 600px;
-	z-index: 20;
-	top: 0px;
-	right: 0;
-	overflow-x: hidden;
-	position: fixed;
-	display: none;
-	border-color: black;
-	border-width: 1px;
-	border-style: solid;
-	background-color: white;
-}
-/* /side widget bar rules */
 
 /* top panel css rules */
 .top-panel {
