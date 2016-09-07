@@ -8,9 +8,11 @@ function toggleWidget(widgetbar_tab) {
   if(this_sidebar.className == "widgetbar-page") {
   	closeActiveSidebars();
     this_sidebar.className += " active";
+    updateMapSize("active");
 	}
   else {
   	closeActiveSidebars();
+  	updateMapSize("inactive");
   }
 }
 
@@ -19,4 +21,17 @@ function closeActiveSidebars() {
   	for(var i = 0; i < active_widgetbars.length; i++) {
   		active_widgetbars[i].className = "widgetbar-page";
   	}
+}
+
+
+
+function updateMapSize(sidebar_state) {
+	var map_holder = document.getElementById("Maps_container");
+
+	if(sidebar_state == "active") {
+		map_holder.style.width = "1340px";
+	}
+	else {
+		map_holder.style.width = "1550px";
+	}
 }

@@ -96,6 +96,11 @@ html, body {
 	right: 45px;
 	height: 100%;
 	width: 200px;
+	padding: 5px;
+	border-style: solid;
+	border-width: 1px;
+	border-color: black;
+	margin-top: 5px;
 }
 .top-panel.active {
 	width: calc(100% - 246px);
@@ -104,7 +109,7 @@ html, body {
 .side-panel {
 	position: fixed;
 	right: 0;
-	margin-top: 28px;
+	margin-top: 0px;
 	/*width: 200px;*/
 	width: 0px;
 	height: 500px;
@@ -167,8 +172,9 @@ html, body {
 /* Google Maps css rules */
 #Maps_container {
 	margin-top: 28px;
+	margin-right: 50px;
 	float: left;
-	width: 1600px;
+	width: 1550px;
 	height: 755px;
 	z-index = 0;
 }
@@ -176,8 +182,8 @@ html, body {
 	display: inline-block;
 	margin-top: 5px;
 	margin-left: 5px;
-	margin-right: 5px;
-  	width: 765px;
+	margin-right: 1%;
+  	width: 49%;
   	height: 362px;
 	background: #f1f3f6;
 	border-style: solid;
@@ -187,7 +193,7 @@ html, body {
 .map_right {
 	margin-top: 5px;
 	display: inline-block;
-  	width: 765px;
+  	width: 49%;
   	height: 363px;
 	background: #f1f3f6;
 	border-style: solid;
