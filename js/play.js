@@ -86,16 +86,14 @@ geoCallBack = function(response) {
        //I believe that B19013_001E stands for median house hold income
        //console.log(response.features[0].properties.B19013_001E);
 
-       var dataArray = [];
+       var medianHouseIncome = [];
 
-       for (var i = 0; i <= response.features.length; i++){
-          //console.log(response.features[i].properties.B19013_001E);
+       for (var i = 0; i < response.features.length; i++){
           var dataPoint = response.features[i].properties.B19013_001E;
-          //console.log(dataPoint);
           dataArray.push(dataPoint);
        }
 
-       console.log(dataArray);
+       //console.log(dataArray);
        
        for (var tract = 0; tract < response.features.length; tract++) {
        
