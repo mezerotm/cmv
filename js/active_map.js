@@ -7,40 +7,40 @@ function getActiveMap() {
 function activateMap(map_num) {
 	var active_map_holder = document.getElementById("active_map_holder");
 
-	var map1btn = document.getElementById("map1_activate");
-	var map2btn = document.getElementById("map2_activate");
-	var map3btn = document.getElementById("map3_activate");
-	var map4btn = document.getElementById("map4_activate");
+	var map1 = document.getElementById("map1_shadow");
+	var map2 = document.getElementById("map2_shadow");
+	var map3 = document.getElementById("map3_shadow");
+	var map4 = document.getElementById("map4_shadow");
 
 	resetButtons();
 	//make the button that corresponds to the active map have bolded text
 	if(map_num == 1) {
 		active_map_holder.value = "1";
-		map1btn.style.fontWeight = "bold";
+		map1.style.boxShadow = " 2px 2px 2px #c9caca";
 	}
 	else if(map_num == 2) {
 		active_map_holder.value = "2";
-		map2btn.style.fontWeight = "bold";
+		map2.style.boxShadow = " 2px 2px 2px #c9caca";
 	}
 	else if(map_num == 3) {
 		active_map_holder.value = "3";
-		map3btn.style.fontWeight = "bold";
+		map3.style.boxShadow = " 2px 2px 2px #c9caca";
 	}
 	else if(map_num == 4){
 		active_map_holder.value = "4";
-		map4btn.style.fontWeight = "bold";
+		map4.style.boxShadow = " 2px 2px 2px #c9caca";
 	}
 }
 
 //reset all buttons to normal text styling
 function resetButtons() {
-	var map1btn = document.getElementById("map1_activate");
-	var map2btn = document.getElementById("map2_activate");
-	var map3btn = document.getElementById("map3_activate");
-	var map4btn = document.getElementById("map4_activate");
+	var map1 = document.getElementById("map1_shadow");
+	var map2 = document.getElementById("map2_shadow");
+	var map3 = document.getElementById("map3_shadow");
+	var map4 = document.getElementById("map4_shadow");
 
-	map1btn.style.fontWeight = "normal";
-	map2btn.style.fontWeight = "normal";
-	map3btn.style.fontWeight = "normal";
-	map4btn.style.fontWeight = "normal";
+	map1.style.boxShadow = "0px 0px 0px white";
+	map2.style.boxShadow = "0px 0px 0px white";
+	map3.style.boxShadow = "0px 0px 0px white";
+	map4.style.boxShadow = "0px 0px 0px white";
 }

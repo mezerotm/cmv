@@ -34,6 +34,14 @@
         google.maps.event.addDomListener(map4, 'idle', function() {
           google.maps.event.trigger(map4, 'resize');
         });
+
+        google.maps.event.addListener(map1, 'click', function() {activateMap(1)});
+        google.maps.event.addListener(map2, 'click', function() {activateMap(2)});
+        google.maps.event.addListener(map3, 'click', function() {activateMap(3)});
+        google.maps.event.addListener(map4, 'click', function() {activateMap(4)});
+
+        //marker.addListener('click', function() 
       }
 
       google.maps.event.addDomListener(window, 'load', init_map);/*creates a listener to where it loads the maps when the page finishes loading*/
+
