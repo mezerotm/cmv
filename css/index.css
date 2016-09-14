@@ -39,7 +39,7 @@ a:active {
 		text-decoration: none;
 }
 html, body {
-  overflow: auto;
+  overflow: hidden;
 	margin: 0;
 }
 
@@ -101,12 +101,11 @@ html, body {
 	border-width: 1px;
 	border-color: lightgrey;
 }
-.top-panel.active {
+#top-panel.active {
 	width: calc(100% - 246px);
 }
 /* /side widget bar rules */
-.side-panel {
-	position: fixed;
+#side-panel {
 	right: 0;
 	margin-top: 0px;
 	/*width: 200px;*/
@@ -116,7 +115,7 @@ html, body {
 }
 
 /* top panel css rules */
-.top-panel {
+#top-panel {
 	position: absolute;
   height: 28px;
 	width: calc(100% - 46px);
@@ -124,15 +123,15 @@ html, body {
   background: #f1f3f6;
 	border-bottom: solid #c9caca 1px;
 }
-.top-panel h1, h2, h3, h4, h5, h6, p {
+#top-panel h1, h2, h3, h4, h5, h6, p {
 	cursor: default;
 }
-.top-panel #title {
+#top-panel #title {
 	position: absolute;
 	margin-top: 1px;
 	left: 15px;
 }
-.top-panel #date {
+#top-panel #date {
 	position: absolute;
 	cursor: pointer;
 	padding: 4px 10px;
@@ -140,24 +139,24 @@ html, body {
 	border-right: solid #c9caca 1px;
 	border-left: solid #c9caca 1px;
 }
-.top-panel #date:hover  {
+#top-panel #date:hover  {
 	background: #fff;
 	border-bottom: solid #c9caca 1px;
 }
-.top-panel #map-views-title {
+#top-panel #map-views-title {
 	position: absolute;
 	margin-top: 4px;
 	right: 55px;
 	padding-left: 4px 10px;
 }
-.top-panel #map-views {
+#top-panel #map-views {
 	position: absolute;
-	margin-top: 3px;
+	margin-top: 4px;
 	right: 5px;
 }
-.top-panel #submit {
+#top-panel #submit {
 	position: absolute;
-	margin-top: 3px;
+	margin-top: 4px;
 	right: 260px;
 }
 #progress-bar { /* increase width to increase progress */
@@ -202,7 +201,7 @@ html, body {
 /* /Google Maps css rules */
 
 @-moz-document url-prefix() { /* firefox specific css rules */
-	.top-panel #date:hover  {
+	#top-panel #date:hover  {
 		background: #fff;
 		border-bottom: solid #c9caca 1px;
 		padding: 3.5px 10px; /* still having issues on linux OS, works fine on Windows */
