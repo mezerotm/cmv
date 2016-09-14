@@ -80,7 +80,7 @@ geoCallBack = function(response) {
             mapTypeId: 'terrain'
         });
        
-       var colors = ["red", "green", "blue"];
+       var colors = ["red", "green", "blue", "yellow", "pink"];
 
        //The below line will actually get me the information on the variable B19013_001E. 
        //I believe that B19013_001E stands for median house hold income
@@ -90,16 +90,36 @@ geoCallBack = function(response) {
 
        for (var i = 0; i < response.features.length; i++){
           var dataPoint = response.features[i].properties.B19013_001E;
-          dataArray.push(dataPoint);
+          medianHouseIncome.push(dataPoint);
        }
 
-       //console.log(dataArray);
+       //Take the median array, loop through it taking each value and changing the color based on the 
+       //value of the array. Push the new value into an array. 
+
+       // var medianColors = [];
+
+       // for (var i = 0; medianHouseIncome.length; i++){
+       //    if (medianHouseIncome[i] >= 100000){
+       //      medianColors.push("red");
+       //    }else if (medianHouseIncome[i] >= 50000 && medianHouseIncome[i] < 100000){
+       //      medianColors.push("yellow");
+       //    }else if (medianHouseIncome[i] < 50000){
+       //      medianColors.push("blue");
+       //    }
+       // }
+
        
        for (var tract = 0; tract < response.features.length; tract++) {
        
             var Coords = [];
+            //var medianHouseIncome = [];
        
             for (var i = 0; i < response.features[tract].geometry.coordinates[0].length; i++){
+
+                //This code is not working.
+                // var dataPoint = response.features[i].properties.B19013_001E;
+                // medianHouseIncome.push(dataPoint);
+
                 if (i % 20 === 1) {
                     Coords.push({lat: response.features[tract].geometry.coordinates[0][i][1], lng: response.features[tract].geometry.coordinates[0][i][0]});
                 }
