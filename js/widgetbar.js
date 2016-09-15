@@ -30,12 +30,12 @@ function updateMapSize(sidebar_state) {
   var top_panel = document.getElementById("top-panel");
 
 	if(sidebar_state == "active") {
-		map_holder.style.width = "calc(100% - 260px)";
-    top_panel.style.width = "calc(100% - 260px)";
+		map_holder.style.width = "calc(100% - 256px)";
+    top_panel.style.width = "calc(100% - 257px)";
 	}
 	else {
-		map_holder.style.width = "calc(100% - 48px)";
-    top_panel.style.width = "calc(100% - 48px)";
+		map_holder.style.width = "calc(100% - 44px)";
+    top_panel.style.width = "calc(100% - 45px)";
 	}
 	resizeMaps();
 }
