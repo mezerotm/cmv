@@ -35,10 +35,16 @@
           google.maps.event.trigger(map4, 'resize');
         });
 
-        google.maps.event.addListener(map1, 'click', function() {activateMap(1)});
-        google.maps.event.addListener(map2, 'click', function() {activateMap(2)});
-        google.maps.event.addListener(map3, 'click', function() {activateMap(3)});
-        google.maps.event.addListener(map4, 'click', function() {activateMap(4)});
+        google.maps.event.addListener(map1, 'mousedown', function() {activateMap(1)});
+        google.maps.event.addListener(map2, 'mousedown', function() {activateMap(2)});
+        google.maps.event.addListener(map3, 'mousedown', function() {activateMap(3)});
+        google.maps.event.addListener(map4, 'mousedown', function() {activateMap(4)});
+
+        //add listener so that whenever maps are idle, they resize to fit the current winow
+        google.maps.event.trigger(map1, 'resize');
+        google.maps.event.trigger(map2, 'resize');
+        google.maps.event.trigger(map3, 'resize');
+        google.maps.event.trigger(map4, 'resize');
 
         //marker.addListener('click', function() 
       }
