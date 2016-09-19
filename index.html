@@ -26,14 +26,13 @@
 	</head>
 	<body>
 		<input type="hidden" id="active_map_holder">
-		<div class="top-panel">
+		<div id="top-panel">
 
 			<div id="progress-bar"></div>
 
-
 			<div class="no-select">
 				<h3 id="title"> Census Map Visualization </h3>
-				<h4 id="date"> September 11, 2001 <h4> <!-- this is an example hard coded date -->
+				<h4 id="date"> September 11, 2001 </h4> <!-- this is an example hard coded date -->
 
 				<button name="submit" id="submit" onclick="retrieveData()">Submit</button>
 				<h4 id="map-views-title"> Views </h4>
@@ -43,14 +42,9 @@
 					<option value="4" selected="selected">4</option>
 				</select>
 			</div>
-			<div id="active_map">
-				<button id="map1_activate" class="active_map_button" onclick="activateMap(1)">Map 1</button>
-				<button id="map2_activate" class="active_map_button" onclick="activateMap(2)">Map 2</button>
-				<button id="map3_activate" class="active_map_button" onclick="activateMap(3)">Map 3</button>
-				<button id="map4_activate" class="active_map_button" onclick="activateMap(4)">Map 4</button>
-			</div>
 
 		</div> <!-- /top-panel -->
+
 		<div id="Maps_container">
 	    	<div id="map1_shadow" class="shadow">
 	    		<div id="map1" class="map">
@@ -58,7 +52,7 @@
 			</div><!--end map1-->
 	    	<div id="map2_shadow" class="shadow">
 	    		<div id="map2" class="map_right"></div>
-	    		
+
 	    	</div><!--end map2-->
 	    		<div id="map3_shadow" class="shadow">
 	    		<div id="map3" class="map"></div>
@@ -68,6 +62,7 @@
 	    		</div>
 	    	</div><!--end map4-->
 	    </div><!--end maps container div-->
+
 		<div class="side-panel">
 			<div class="widegtbar-pages_hidden">
 
@@ -166,7 +161,8 @@
 				</div> <!-- /widgetbar-education -->
 			</div><!-- /widgetbar-pages -->
 
-			<div class="widgetbar-tabs">
+			<div class="widgetbar-tabs no-select">
+
 				<div class="widgetbar-tabscontrols">
 					<div class="widgetbar-settings-control-button apply-common-tooltip common-tooltip-vertical">
 						<img class="widgetbar-icon" src="img/svg/settings.svg">
@@ -176,58 +172,58 @@
 					</div>
 				</div>	
 
-				<div class="widgetbar-tab">
+				<div class="widgetbar-tab" onclick="toggleWidget('widgetbar-configuration')">
 					<div class="widgetbar-tabcontent">
 						<div class="widgetbar-iconplace apply-common-tooltip common-tooltip-vertical">
-							<input type="image" class="widgetbar-icon" src="img/svg/input.svg"/>
+							<img draggable="false" class="widgetbar-icon" src="img/svg/input.svg"/>
 						</div>
 					</div>
 				</div> <!-- /widgetbar-configuration-icon -->
 
-				<div class="widgetbar-tab">
-					<div class="widgetbar-tabcontent"  onclick="toggleWidget('widgetbar-population')">
+				<div class="widgetbar-tab" onclick="toggleWidget('widgetbar-population')">
+					<div class="widgetbar-tabcontent" >
 						<div class="widgetbar-iconplace apply-common-tooltip common-tooltip-vertical">
-							<img class="widgetbar-icon" src="img/svg/population.svg"/>
+							<img draggable="false" class="widgetbar-icon" src="img/svg/population.svg"/>
 						</div>
 					</div>
 				</div> <!-- /widgetbar-population-icon -->
 
-				<div class="widgetbar-tab">
-					<div class="widgetbar-tabcontent"  onclick="toggleWidget('widgetbar-demographic')">
+				<div class="widgetbar-tab" onclick="toggleWidget('widgetbar-demographic')">
+					<div class="widgetbar-tabcontent">
 						<div class="widgetbar-iconplace apply-common-tooltip common-tooltip-vertical">
-							<img class="widgetbar-icon" src="img/svg/demographic.svg"/>
+							<img draggable="false" class="widgetbar-icon" src="img/svg/demographic.svg"/>
 						</div>
 					</div>
 				</div> <!-- /widgetbar-demographic-icon -->
 
-				<div class="widgetbar-tab">
-					<div class="widgetbar-tabcontent"  onclick="toggleWidget('widgetbar-income')">
+				<div class="widgetbar-tab" onclick="toggleWidget('widgetbar-income')">
+					<div class="widgetbar-tabcontent">
 						<div class="widgetbar-iconplace apply-common-tooltip common-tooltip-vertical">
-							<img class="widgetbar-icon" src="img/svg/income.svg">
+							<img draggable="false" class="widgetbar-icon" src="img/svg/income.svg">
 						</div>
 					</div>
 				</div> <!-- /widgetbar-income-icon -->
 
-				<div class="widgetbar-tab">
-					<div class="widgetbar-tabcontent"  onclick="toggleWidget('widgetbar-crime')">
+				<div class="widgetbar-tab" onclick="toggleWidget('widgetbar-crime')">
+					<div class="widgetbar-tabcontent">
 						<div class="widgetbar-iconplace apply-common-tooltip common-tooltip-vertical">
-							<img class="widgetbar-icon" src="img/svg/crime.svg">
+							<img draggable="false" class="widgetbar-icon" src="img/svg/crime.svg">
 						</div>
 					</div>
 				</div> <!-- /widgetbar-crime-icon -->
 
-				<div class="widgetbar-tab">
-					<div class="widgetbar-tabcontent"  onclick="toggleWidget('widgetbar-transportation')">
+				<div class="widgetbar-tab" onclick="toggleWidget('widgetbar-transportation')">
+					<div class="widgetbar-tabcontent">
 						<div class="widgetbar-iconplace apply-common-tooltip common-tooltip-vertical">
-							<img class="widgetbar-icon" src="img/svg/transportation.svg">
+							<img draggable="false" class="widgetbar-icon" src="img/svg/transportation.svg">
 						</div>
 					</div>
 				</div> <!-- /widgetbar-transportation-icon -->
 
-				<div class="widgetbar-tab">
-					<div class="widgetbar-tabcontent"  onclick="toggleWidget('widgetbar-education')">
+				<div class="widgetbar-tab"  onclick="toggleWidget('widgetbar-education')">
+					<div class="widgetbar-tabcontent">
 						<div class="widgetbar-iconplace apply-common-tooltip common-tooltip-vertical">
-							<img class="widgetbar-icon" src="img/svg/education.svg">
+							<img draggable="false" class="widgetbar-icon" src="img/svg/education.svg">
 						</div>
 					</div>
 				</div> <!-- /widgetbar-education-icon -->
@@ -236,8 +232,8 @@
 
 		</div> <!-- /side-panel -->
 
-		
-		
+
+
 		<!-- 2.2.4 jquery -->
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
 		<!-- google maps api -->
@@ -246,8 +242,8 @@
 		<script src="js/censusVariablesMap.js"></script>
 		<script src="js/api.js"></script>
 		<script src="js/initMaps.js"></script>
-	    <script src="js/map_views.js"></script>
-	    <script src="js/active_map.js"></script>
+    <script src="js/map_views.js"></script>
+    <script src="js/active_map.js"></script>
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
 		<script src="js/widgetbar.js"></script>
 	</body>
