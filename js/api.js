@@ -80,9 +80,26 @@ geoCallBack = function(response) {
             mapTypeId: 'terrain'
         });
        
-       var colors = ["red", "green", "blue"];
+       // var colors = ["red", "green", "blue"];
+       var colors = ["red", "green", "blue", "yellow", "pink"];
 
-       alert(response.features);
+       /*Creating an array to hold the median household income values. (I know that we will have to modify the 
+        code for the user to search for any variable.)  */
+       var medianHouseIncome = [];
+
+       //I loop through all of the objects, in this case all 113 of them, pulling the median house hold income data 
+       //then pushing that into the array created above.
+       for (var i = 0; i < response.features.length; i++){
+          var dataPoint = response.features[i].properties.B19013_001E;
+          medianHouseIncome.push(dataPoint);
+       }
+
+       /* Now the above for loop was simply a proof of concept. I thought I could take lne 93, 
+       place it into the for loops below and then shade the polygons a certain color. However, that does not work. 
+       I believe that my idea is 'somewhat' sound, so I am trying to think of a better way to attack the problem. 
+
+       */
+
        
        for (var tract = 0; tract < response.features.length; tract++) {
        
