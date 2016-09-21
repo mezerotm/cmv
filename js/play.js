@@ -88,10 +88,10 @@ geoCallBack = function(response) {
 
        var medianHouseIncome = [];
 
-       for (var i = 0; i < response.features.length; i++){
-          var dataPoint = response.features[i].properties.B19013_001E;
-          medianHouseIncome.push(dataPoint);
-       }
+       // for (var i = 0; i < response.features.length; i++){
+       //    var dataPoint = response.features[i].properties.B19013_001E;
+       //    medianHouseIncome.push(dataPoint);
+       // }
 
        //Take the median array, loop through it taking each value and changing the color based on the 
        //value of the array. Push the new value into an array. 
@@ -112,7 +112,9 @@ geoCallBack = function(response) {
        for (var tract = 0; tract < response.features.length; tract++) {
        
             var Coords = [];
-            //var medianHouseIncome = [];
+
+            var dataPoint = response.features[tract].properties.B19013_001E;
+            medianHouseIncome.push(dataPoint);
        
             for (var i = 0; i < response.features[tract].geometry.coordinates[0].length; i++){
 
@@ -142,6 +144,7 @@ geoCallBack = function(response) {
             center: {lat: 33.895, lng: -84.210},
             mapTypeId: 'terrain'
         });
+
        /////////////////////////////////////////////////////////////////
        var colors = ["red", "green", "blue"];
        

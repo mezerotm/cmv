@@ -79,25 +79,55 @@ geoCallBack = function(response) {
             center: {lat: 33.895, lng: -84.210},
             mapTypeId: 'terrain'
         });
+        
+        
+        /* Steps for gradient:
+         * 
+         * 1. Determine the array of colors to use with a size of num_colors
+         * 2. Determine the range of values: min to max
+         * 3. Divide the range into num_colors intervals within the min to max range
+         * 4. Assign the colors to the tracts
+         * 5. Draw the tracts with the assigned colors
+         */
+        
        
-       // var colors = ["red", "green", "blue"];
+       // Step 1: Determines the array of colors
+       // QUESTION: We may need more colors or the number of colors may be dependent on the range from min to max?
        var colors = ["red", "green", "blue", "yellow", "pink"];
-
+       
+       // Step 2: Determine the range
+       // This function returns an object (see function below)
+       var minMaxValue = getMinMaxValue(response.features);
+       
+       // Step 3: Create the intervals
+       // This returns an array of objects (see function below)
+       var intervals = generateIntervals(minMaxValue, colors.length);
+       
+       
+       // Step 4: Assign colors to tract
        /*Creating an array to hold the median household income values. (I know that we will have to modify the 
         code for the user to search for any variable.)  */
        var medianHouseIncome = [];
-
+       
        //I loop through all of the objects, in this case all 113 of them, pulling the median house hold income data 
        //then pushing that into the array created above.
        for (var i = 0; i < response.features.length; i++){
           var dataPoint = response.features[i].properties.B19013_001E;
-          medianHouseIncome.push(dataPoint);
+          
+          /** Loop over the intervals and use an if-stmt to compare the dataPoint to the lower and upper bounds for each interval
+           *  until there is a match. When there is a match, then the index of the matching interval is the colorValue
+           */
+          var colorValue = 0;
+          for (var cuurentInterval = 0; currentInterval < intervals.length; currentInterval++) {
+              colorValue = colors[currentInterval];
+          }
+
+          medianHouseIncome.push({value: dataPoint, color: colorValue});
        }
 
        /* Now the above for loop was simply a proof of concept. I thought I could take lne 93, 
        place it into the for loops below and then shade the polygons a certain color. However, that does not work. 
        I believe that my idea is 'somewhat' sound, so I am trying to think of a better way to attack the problem. 
-
        */
 
        
@@ -256,4 +286,27 @@ function processTractData(resultsDataObject) {
             }
         }
     }
+}
+
+
+function getMinMaxValue(featuresArray) {
+    var minVal, maxVal;
+    
+    
+    return {minimum: minVal, maximum: maxVal}
+}
+
+
+function generateIntervals(minMaxValue, numColors) {
+    var intervals = [];
+    
+    /* the intervals array is an array of objects with the lower/upper bound of the intervals
+     * where n = numColors - 1
+     *   intervals[0] = {lower: low0, upper: upp0}
+     *   intervals[1] = {lower: low1, upper: upp1}
+     *   ... 
+     *   intervals[n] = {lower: lown, upper: uppn}
+     */
+    
+    return intervals;
 }
