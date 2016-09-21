@@ -31,15 +31,18 @@ function closeActiveSidebars() {
 function updateMapSize(block, sidebar_state) {
 	var map_holder = document.getElementById("Maps_container");
   var top_panel = document.getElementById("top-panel");
+  var side_holder = document.getElementById("widgetbar-tab-placeholder");
 
 	if(sidebar_state == "active") {
-		map_holder.style.width = "calc(100% - 256px)";
     top_panel.style.width = "calc(100% - 257px)";
+		map_holder.style.width = "calc(100% - 261px)";
+    side_holder.style.right = "257px";
     block.style.background = "#fff";
 	}
 	else {
-		map_holder.style.width = "calc(100% - 44px)";
-    top_panel.style.width = "calc(100% - 45px)";
+		map_holder.style.width = "calc(100% - 50px)";
+    top_panel.style.width = "calc(100% - 46px)";
+    side_holder.style.right = "46px";
     block.style.background = "#f1f3f6";
 	}
 	resizeMaps();

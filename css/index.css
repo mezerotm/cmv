@@ -66,7 +66,7 @@ html, body {
 	border-left: solid #c9caca 1px;
   background: #f1f3f6;
 }
-.widgetbar-tab:hover {
+.widgetbar-tab:hover:not(#placeholder) {
   background: #fff;
 }
 .widgetbar-tab {
@@ -75,6 +75,10 @@ html, body {
   border-bottom: solid #c9caca 1px;
   background: #f1f3f6;
   padding: 8.45px 0;
+}
+.widgetbar-tab#placeholder {
+	cursor: default;
+	padding: 7px 0;
 }
 .widgetbar-iconplace {
   display: block;
@@ -110,6 +114,15 @@ html, body {
 	height: 500px;
 	top: 28px;
 }
+#widgetbar-tab-placeholder {
+	position: absolute;
+	height: 100%;
+	width: 4px;
+	right: 46px;
+	top: 28px;
+	border-left: solid #c9caca 1px;
+  background: #f1f3f6;
+}
 /* /side widget bar rules */
 
 /* top panel css rules */
@@ -117,7 +130,7 @@ html, body {
 	position: absolute;
   height: 28px;
 	width: calc(100% - 46px);
-	min-width: 900px;
+	min-width: 555px;
   background: #f1f3f6;
 	border-bottom: solid #c9caca 1px;
 }
@@ -168,10 +181,10 @@ html, body {
 
 /* Google Maps css rules */
 #Maps_container {
-	margin-top: 28px;
+	margin-top: 29px;
 	margin-right: 50px;
 	float: left;
-	width: calc(100% - 44px);
+	width: calc(100% - 50px);
 	height: 750px;
 }
 .map {
