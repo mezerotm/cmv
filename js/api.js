@@ -292,22 +292,28 @@ function processTractData(resultsDataObject) {
 //Sort the medianhousehold income array, find lowest and highest value 
 //push into object
 function getMinMaxValue(featuresArray) {
-    var minVal;
-
-    console.log("features:" + response.features);
-
-    //Setting a highest variable to use as to measure all other variables against.
-    var maxVal = response.features[0].properties.B19013_001E;
+    
+    //Setting a highest and lowest variables to use as to measure all other variables against.
+    var maxVal = featuresArray[0].properties.B19013_001E;
+    var minVal = featuresArray[0].properties.B19013_001E;
+    
 
     //Using a for loop to find the highest value. 
-    for (var i = 0; i < response.features.length; i++){
-      if (response.features[i].properties.B19013_001E > maxVal){
-        var maxVal = response.features[i].properties.B19013_001E;
+    for (var i = 0; i < featuresArray.length; i++){
+      console.log(featuresArray[i].properties.B19013_001E);
+      if (featuresArray[i].properties.B19013_001E > maxVal){
+        maxVal = featuresArray[i].properties.B19013_001E;
       }
     }
+    alert("Highest: " + maxVal);
+    // for (var i = 0; i < featuresArray.length; i++){
+    //   if (featuresArray[i].properties.B19013_001E < minVal){
+    //     var minVal = featuresArray[i].properties.B19013_001E;
+    //   }
+    // }
 
-    //Testing to see if something, anything is returned. 
-    alert("Highest value is: " + maxVal);
+    // alert("Highest Value: " + maxVal);
+    // alert("Lowest Value: " + minVal);
 
     //Will be returning an object that holds the minimum and maximum values.   
     return {minimum: minVal, maximum: maxVal}
