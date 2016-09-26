@@ -70,7 +70,7 @@ geoCallBack = function(response) {
         if (DEBUG) {
             
             //console.log(response.features.length);
-            console.log(JSON.stringify(response, null, 4));
+            //console.log(JSON.stringify(response, null, 4));
         }
 
        
@@ -83,8 +83,8 @@ geoCallBack = function(response) {
         
         /* Steps for gradient:
          * 
-         * 1. Determine the array of colors to use with a size of num_colors
-         * 2. Determine the range of values: min to max
+         * 1. Determine the array of colors to use with a size of num_colors-Done 
+         * 2. Determine the range of values: min to max -Done
          * 3. Divide the range into num_colors intervals within the min to max range
          * 4. Assign the colors to the tracts
          * 5. Draw the tracts with the assigned colors
@@ -290,35 +290,33 @@ function checkLoading() {
 function getMinMaxValue(featuresArray) {
     
     //Setting a highest and lowest variables to use as to measure all other variables against.
-    var maxVal = featuresArray[0].properties.B19013_001E;
-    var minVal = featuresArray[0].properties.B19013_001E;
+    var maxVal, minVal;
 
-    alert(featuresArray[100].properties.B19013_001E);
-
-    //Using a for loop to find the highest value. 
-    for (var i = 0; i < featuresArray.length; i++){
-      console.log(featuresArray[i].properties.B19013_001E);
-      if (featuresArray[i].properties.B19013_001E > maxVal){
-        maxVal = featuresArray[i].properties.B19013_001E;
-      }
+    //Creating an array to hold all of the median household income variables.
+    medianhousehold = [];
+    //Use this for loop to push the values into the array.
+    for (var i = 0; i < featuresArray.length ; i++){
+      var points = featuresArray[i].properties.B19013_001E;
+      medianhousehold.push(points);
     }
-    // alert("Highest: " + maxVal);
-    // for (var i = 0; i < featuresArray.length; i++){
-    //   if (featuresArray[i].properties.B19013_001E < minVal){
-    //     var minVal = featuresArray[i].properties.B19013_001E;
-    //   }
-    // }
 
-    // alert("Highest Value: " + maxVal);
-    // alert("Lowest Value: " + minVal);
+    maxVal = Math.max.apply(null, medianhousehold);
+    minVal = Math.min.apply(null, medianhousehold);
+
+    //Setting up an object to return the minimum and maximum values. 
+    values = [];
+    values.push({minimum: minVal, maximum: maxVal});
 
     //Will be returning an object that holds the minimum and maximum values.   
-    return {minimum: minVal, maximum: maxVal}
+    return values; 
 }
 
 
 function generateIntervals(minMaxValue, numColors) {
     var intervals = [];
+
+    //134625-highest
+    //26519-lowest
     
     /* the intervals array is an array of objects with the lower/upper bound of the intervals
      * where n = numColors - 1

@@ -294,34 +294,33 @@ function processTractData(resultsDataObject) {
 function getMinMaxValue(featuresArray) {
     
     //Setting a highest and lowest variables to use as to measure all other variables against.
-    var maxVal = featuresArray[0].properties.B19013_001E;
-    var minVal = featuresArray[0].properties.B19013_001E;
-    
+    var maxVal, minVal;
 
-    //Using a for loop to find the highest value. 
-    for (var i = 0; i < featuresArray.length; i++){
-      console.log(featuresArray[i].properties.B19013_001E);
-      if (featuresArray[i].properties.B19013_001E > maxVal){
-        maxVal = featuresArray[i].properties.B19013_001E;
-      }
+    //Creating an array to hold all of the median household income variables.
+    medianhousehold = [];
+    //Use this for loop to push the values into the array.
+    for (var i = 0; i < featuresArray.length ; i++){
+      var points = featuresArray[i].properties.B19013_001E;
+      medianhousehold.push(points);
     }
-    alert("Highest: " + maxVal);
-    // for (var i = 0; i < featuresArray.length; i++){
-    //   if (featuresArray[i].properties.B19013_001E < minVal){
-    //     var minVal = featuresArray[i].properties.B19013_001E;
-    //   }
-    // }
 
-    // alert("Highest Value: " + maxVal);
-    // alert("Lowest Value: " + minVal);
+    maxVal = Math.max.apply(null, medianhousehold);
+    minVal = Math.min.apply(null, medianhousehold);
+
+    //Setting up an object to return the minimum and maximum values. 
+    values = [];
+    values.push({minimum: minVal, maximum: maxVal});
 
     //Will be returning an object that holds the minimum and maximum values.   
-    return {minimum: minVal, maximum: maxVal}
+    return values; 
 }
 
 
 function generateIntervals(minMaxValue, numColors) {
     var intervals = [];
+
+    //134625-highest
+    //26519-lowest
     
     /* the intervals array is an array of objects with the lower/upper bound of the intervals
      * where n = numColors - 1

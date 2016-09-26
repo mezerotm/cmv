@@ -1,4 +1,8 @@
-// nums = [1,2,3,4,100,6,7,9, 1000, 2,3,3245,2];
+alert("connected!");
+
+nums = [1,2,3,4,100,6,7,9, 1000, 2,3,3245,2];
+
+alert(Math.max.apply(null, nums));
 
 // var highest = nums[0];
 
