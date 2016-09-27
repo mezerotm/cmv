@@ -85,7 +85,7 @@ geoCallBack = function(response) {
          * 
          * 1. Determine the array of colors to use with a size of num_colors-Done 
          * 2. Determine the range of values: min to max -Done
-         * 3. Divide the range into num_colors intervals within the min to max range
+         * 3. Divide the range into num_colors intervals within the min to max range -Done
          * 4. Assign the colors to the tracts
          * 5. Draw the tracts with the assigned colors
          */
@@ -102,7 +102,6 @@ geoCallBack = function(response) {
        // This returns an array of objects (see function below)
        var intervals = generateIntervals(minMaxValue, colors.length);
        
-       
        // Step 4: Assign colors to tract
        /*Creating an array to hold the median household income values. (I know that we will have to modify the 
         code for the user to search for any variable.)  */
@@ -116,18 +115,27 @@ geoCallBack = function(response) {
           /** Loop over the intervals and use an if-stmt to compare the dataPoint to the lower and upper bounds for each interval
            *  until there is a match. When there is a match, then the index of the matching interval is the colorValue
            */
-          var colorValue = 0;
-          for (var cuurentInterval = 0; currentInterval < intervals.length; currentInterval++) {
-              colorValue = colors[currentInterval];
+          // var colorValue = 0;
+          // for (var currentInterval = 0; currentInterval < intervals.length; currentInterval++) {
+          //     if (dataPoint >= intervals[0].lower && dataPoint < intervals[0].upper){
+          //       colorValue = colors[currentInterval];
+          //     }  
+          // }
+          if (dataPoint >= intervals[0].lower && dataPoint < intervals[0].upper){
+                colorValue = colors[0];
+          }else if (dataPoint >= intervals[1].lower && dataPoint < intervals[1].upper){
+                colorValue = colors[1];
+          }else if (dataPoint >= intervals[2].lower && dataPoint < intervals[2].upper){
+                colorValue = colors[2]
+          }else if (dataPoint >= intervals[3].lower && dataPoint < intervals[3].upper){
+                colorValue = colors[3]
+          }else{
+                colorValue = colors[4]
           }
 
           medianHouseIncome.push({value: dataPoint, color: colorValue});
        }
 
-       /* Now the above for loop was simply a proof of concept. I thought I could take lne 93, 
-       place it into the for loops below and then shade the polygons a certain color. However, that does not work. 
-       I believe that my idea is 'somewhat' sound, so I am trying to think of a better way to attack the problem. 
-       */
        for (var tract = 0; tract < response.features.length; tract++) {
        
             var Coords = [];
@@ -149,7 +157,8 @@ geoCallBack = function(response) {
                 polyShape.setMap(map);      
             }
         }
-       /////////////////////////////////////////////////////////////
+
+       /////////////////// MAP TWO WORK HERE DO NOT NEED TO DUPLICATE CODE BELOW HERE. /////////////////////
         var map = new google.maps.Map(document.getElementById('map2'), {
             zoom: 8,
             center: {lat: 33.895, lng: -84.210},
@@ -305,7 +314,7 @@ function getMinMaxValue(featuresArray) {
 
     //Setting up an object to return the minimum and maximum values. 
     values = [];
-    values.push({minimum: minVal, maximum: maxVal});
+    values.push({ minimum: minVal, maximum: maxVal });
 
     //Will be returning an object that holds the minimum and maximum values.   
     return values; 
@@ -313,11 +322,7 @@ function getMinMaxValue(featuresArray) {
 
 
 function generateIntervals(minMaxValue, numColors) {
-    var intervals = [];
 
-    //134625-highest
-    //26519-lowest
-    
     /* the intervals array is an array of objects with the lower/upper bound of the intervals
      * where n = numColors - 1
      *   intervals[0] = {lower: low0, upper: upp0}
@@ -325,6 +330,24 @@ function generateIntervals(minMaxValue, numColors) {
      *   ... 
      *   intervals[n] = {lower: lown, upper: uppn}
      */
+
+    //An array to hold the array of objects for the lower and upper bounds. 
+    var intervals = [];
+
+    //Setting out the variables for the max and min values.
+    var max = minMaxValue[0].maximum;
+    var min = minMaxValue[0].minimum;
+
+    //Calculating the entire length from the max and min values.
+    var length = max - min;
+    //Determining the interval value
+    var intervalValue = length / numColors;
+    //Using a for loop to push the lower/upper bounds into the intervals array.
+    for (var i = 0; i < numColors; i++){
+      intervals.push({ lower: min, upper: min + intervalValue })
+      min = min + intervalValue;
+    }
     
     return intervals;
+
 }
