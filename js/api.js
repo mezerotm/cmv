@@ -151,7 +151,7 @@ geoCallBack = function(response) {
                 var pickColor = Math.round((Math.random() * 10)) % colors.length;
                 var polyShape = new google.maps.Polygon({
                     paths: Coords,
-                    strokeColor: colors[pickColor], //medianHouseIncome[tract].color,
+                    //strokeColor: colors[pickColor], //medianHouseIncome[tract].color,
                     strokeOpacity: 0.8,
                     strokeWeight: 2,
                     fillColor:  medianHouseIncome[tract].color, //colors[pickColor]
@@ -182,7 +182,7 @@ geoCallBack = function(response) {
                 var pickColor = Math.round((Math.random() * 10)) % colors.length;
                 var polyShape = new google.maps.Polygon({
                     paths: Coords,
-                    //strokeColor: colors[pickColor],
+                    strokeColor: colors[pickColor],
                     strokeOpacity: 0.8,
                     strokeWeight: 2,
                     fillColor: colors[pickColor],
