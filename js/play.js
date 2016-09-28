@@ -121,6 +121,7 @@ geoCallBack = function(response) {
           //       colorValue = colors[currentInterval];
           //     }  
           // }
+          
           if (dataPoint >= intervals[0].lower && dataPoint < intervals[0].upper){
                 colorValue = colors[0];
           }else if (dataPoint >= intervals[1].lower && dataPoint < intervals[1].upper){
@@ -136,6 +137,8 @@ geoCallBack = function(response) {
           medianHouseIncome.push({value: dataPoint, color: colorValue});
        }
 
+       //console.log(medianHouseIncome[0]);
+
        for (var tract = 0; tract < response.features.length; tract++) {
        
             var Coords = [];
@@ -148,11 +151,11 @@ geoCallBack = function(response) {
                 var pickColor = Math.round((Math.random() * 10)) % colors.length;
                 var polyShape = new google.maps.Polygon({
                     paths: Coords,
-                    strokeColor: colors[pickColor],
+                    strokeColor: colors[pickColor], //medianHouseIncome[tract].color,
                     strokeOpacity: 0.8,
                     strokeWeight: 2,
-                    fillColor: colors[pickColor],
-                    fillOpacity: 0.35
+                    fillColor:  medianHouseIncome[tract].color, //colors[pickColor]
+                    fillOpacity: 0.75
                 });
                 polyShape.setMap(map);      
             }
@@ -179,7 +182,7 @@ geoCallBack = function(response) {
                 var pickColor = Math.round((Math.random() * 10)) % colors.length;
                 var polyShape = new google.maps.Polygon({
                     paths: Coords,
-                    strokeColor: colors[pickColor],
+                    //strokeColor: colors[pickColor],
                     strokeOpacity: 0.8,
                     strokeWeight: 2,
                     fillColor: colors[pickColor],
