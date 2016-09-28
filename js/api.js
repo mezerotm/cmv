@@ -65,12 +65,12 @@ geoCallBack = function(response) {
 
         var dataResults = JSON.stringify(response, null, 4);
         var resultsObject = JSON.parse(dataResults);
-        processTractData(resultsObject);
+        //processTractData(resultsObject);
         // output geo data to an output panel on the UI
         if (DEBUG) {
             
-            console.log(response.features.length);
-            console.log(JSON.stringify(response, null, 4));
+            //console.log(response.features.length);
+            //console.log(JSON.stringify(response, null, 4));
         }
 
        
@@ -83,17 +83,16 @@ geoCallBack = function(response) {
         
         /* Steps for gradient:
          * 
-         * 1. Determine the array of colors to use with a size of num_colors
-         * 2. Determine the range of values: min to max
-         * 3. Divide the range into num_colors intervals within the min to max range
+         * 1. Determine the array of colors to use with a size of num_colors-Done 
+         * 2. Determine the range of values: min to max -Done
+         * 3. Divide the range into num_colors intervals within the min to max range -Done
          * 4. Assign the colors to the tracts
          * 5. Draw the tracts with the assigned colors
          */
-        
-       
+
        // Step 1: Determines the array of colors
        // QUESTION: We may need more colors or the number of colors may be dependent on the range from min to max?
-       var colors = ["red", "green", "blue", "yellow", "pink"];
+       var colors = ["red", "pink", "yellow", "blue", "green" ];
        
        // Step 2: Determine the range
        // This function returns an object (see function below)
@@ -103,7 +102,6 @@ geoCallBack = function(response) {
        // This returns an array of objects (see function below)
        var intervals = generateIntervals(minMaxValue, colors.length);
        
-       
        // Step 4: Assign colors to tract
        /*Creating an array to hold the median household income values. (I know that we will have to modify the 
         code for the user to search for any variable.)  */
@@ -111,20 +109,7 @@ geoCallBack = function(response) {
        
        //I loop through all of the objects, in this case all 113 of them, pulling the median house hold income data 
        //then pushing that into the array created above.
-       ataPoint >= intervals[3].lower && dataPoint < intervals[3].upper){
-                colorValue = colors[3]
-          }else{
-                colorValue = colors[4]
-          }
-
-          medianHouseIncome.push({value: dataPoint, color: colorValue});
-       }
-
-       /* Now the above for loop was simply a proof of concept. I thought I could take lne 93, 
-       place it into the for loops below and then shade the polygons a certain color. However, that does not work. 
-       I believe that my idea is 'somewhat' sound, so I am trying to think of a better way to attack the problem. 
-       */
-        for (var i = 0; i < response.features.length; i++){
+       for (var i = 0; i < response.features.length; i++){
           var dataPoint = response.features[i].properties.B19013_001E;
           
           /** Loop over the intervals and use an if-stmt to compare the dataPoint to the lower and upper bounds for each interval
@@ -152,6 +137,8 @@ geoCallBack = function(response) {
           medianHouseIncome.push({value: dataPoint, color: colorValue});
        }
 
+       //console.log(medianHouseIncome[0]);
+
        for (var tract = 0; tract < response.features.length; tract++) {
        
             var Coords = [];
@@ -173,7 +160,8 @@ geoCallBack = function(response) {
                 polyShape.setMap(map);      
             }
         }
-      
+
+       /////////////////// MAP TWO WORK HERE DO NOT NEED TO DUPLICATE CODE BELOW HERE. /////////////////////
         var map = new google.maps.Map(document.getElementById('map2'), {
             zoom: 8,
             center: {lat: 33.895, lng: -84.210},
@@ -194,7 +182,7 @@ geoCallBack = function(response) {
                 var pickColor = Math.round((Math.random() * 10)) % colors.length;
                 var polyShape = new google.maps.Polygon({
                     paths: Coords,
-                    strokeColor: colors[pickColor],
+                    //strokeColor: colors[pickColor],
                     strokeOpacity: 0.8,
                     strokeWeight: 2,
                     fillColor: colors[pickColor],
