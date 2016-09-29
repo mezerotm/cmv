@@ -99,6 +99,7 @@ html, body {
 	background-color: white;
 }
 .widgetbar-page.active {
+	top: 0;
 	display: block;
 	right: 45px;
 	height: 100%;

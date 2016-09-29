@@ -23,7 +23,7 @@ function closeActiveSidebars() {
   	}
 
     for(var i = 0; i < widgetbar_tab_background.length; i++) {
-  		widgetbar_tab_background[i].style.background = "#f1f3f6";
+  		widgetbar_tab_background[i].style.background = null;
   	}
 }
 
