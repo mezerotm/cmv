@@ -72,24 +72,16 @@ geoCallBack = function(response) {
             //console.log(response.features.length);
             //console.log(JSON.stringify(response, null, 4));
         }
-
        
          var map = new google.maps.Map(document.getElementById('map1'), {
             zoom: 8,
             center: {lat: 33.895, lng: -84.210},
             mapTypeId: 'terrain'
         });
-        
-        
-        /* Steps for gradient:
-         * 
-         * 1. Determine the array of colors to use with a size of num_colors-Done 
-         * 2. Determine the range of values: min to max -Done
-         * 3. Divide the range into num_colors intervals within the min to max range -Done
-         * 4. Assign the colors to the tracts
-         * 5. Draw the tracts with the assigned colors
-         */
 
+        // console.log(request.variables[1])
+        console.log(response.features);
+      
        // Step 1: Determines the array of colors
        // QUESTION: We may need more colors or the number of colors may be dependent on the range from min to max?
        var colors = ["red", "pink", "yellow", "blue", "green" ];
@@ -111,16 +103,6 @@ geoCallBack = function(response) {
        //then pushing that into the array created above.
        for (var i = 0; i < response.features.length; i++){
           var dataPoint = response.features[i].properties.B19013_001E;
-          
-          /** Loop over the intervals and use an if-stmt to compare the dataPoint to the lower and upper bounds for each interval
-           *  until there is a match. When there is a match, then the index of the matching interval is the colorValue
-           */
-          // var colorValue = 0;
-          // for (var currentInterval = 0; currentInterval < intervals.length; currentInterval++) {
-          //     if (dataPoint >= intervals[0].lower && dataPoint < intervals[0].upper){
-          //       colorValue = colors[currentInterval];
-          //     }  
-          // }
           
           if (dataPoint >= intervals[0].lower && dataPoint < intervals[0].upper){
                 colorValue = colors[0];
@@ -209,7 +191,7 @@ function dataCallBack(response) {
        var dataResults = JSON.stringify(response, null, 4);
        var resultsObject = JSON.parse(dataResults);
     
-        DEBUG && console.log(resultsObject.data);
+        //DEBUG && console.log(resultsObject.data);
     } else {
         console.log("Error: dataCallBack did not get a valid response");
         return false;
@@ -258,8 +240,8 @@ function retrieveData(){
         request.variables = checkedVariables;
     else // default vars
         request.variables = ["population", "income"];
-    
-  //  checkLoading();
+
+    //checkLoading();
 
     // This request is used to get geographical data for D3
     census.geoRequest(request, geoCallBack);
