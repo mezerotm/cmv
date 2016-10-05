@@ -26,6 +26,14 @@ var sdk = new CitySdk(); //Create the CitySDK Instance
 var census = new CensusModule(censusAPIKey); //Create an instance of the module
 var censusVariables = new CensusVariablesMap(); // Create a mapping object for the census variables.
 
+//This variable is a global variable and will be used in two functions to use to hold what the user 
+//enters to look at, i.e. income, population. I set it equal to 0 just so that it is not undefined. 
+var variable = 0;
+
+//Creating an object to be used to convert the variable names, i.e. income, population to their key that 
+//the SDK uses like B19013_001E. 
+convertionObject = new CensusVariablesMap();
+
 //Here is where I set up and make my call to google maps API. 
 function init_map() {
       var var_location = new google.maps.LatLng(33.895,-84.210);
@@ -34,6 +42,7 @@ function init_map() {
         center:var_location,
         zoom: 11
       }
+
 
       var map1 = new google.maps.Map(document.getElementById("map1"), var_mapoptions);
 
@@ -53,7 +62,6 @@ function init_map() {
 }
 
 google.maps.event.addDomListener(window, 'load', init_map);
-
 
 /*
  * geoCallBack : This is the callback function that responds to the responses 
@@ -79,9 +87,11 @@ geoCallBack = function(response) {
             mapTypeId: 'terrain'
         });
 
-        // console.log(request.variables[1])
-        console.log(response.features);
-      
+        // console.log(response.features);
+
+        //This is the variable being converted from, something like income, to the SKD key of B19013_001E
+        variableConverted = parseInt(convertionObject.getVariableFromValue(variable));
+        //alert(typeof(variableConverted));
        // Step 1: Determines the array of colors
        // QUESTION: We may need more colors or the number of colors may be dependent on the range from min to max?
        var colors = ["red", "pink", "yellow", "blue", "green" ];
@@ -170,7 +180,13 @@ geoCallBack = function(response) {
                     fillColor: colors[pickColor],
                     fillOpacity: 0.35
                 });
-                polyShape.setMap(map);      
+                polyShape.setMap(map);
+
+                 var marker = new google.maps.Marker({
+                    position: myLatLng,
+                    map: map,
+                  title: 'Hello World!'
+              });      
             }
         }
        
@@ -240,6 +256,10 @@ function retrieveData(){
         request.variables = checkedVariables;
     else // default vars
         request.variables = ["population", "income"];
+
+      variable = request.variables[1]
+
+      // console.log(request.variables[1]);
 
     //checkLoading();
 
