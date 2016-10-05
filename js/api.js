@@ -26,14 +26,30 @@ var sdk = new CitySdk(); //Create the CitySDK Instance
 var census = new CensusModule(censusAPIKey); //Create an instance of the module
 var censusVariables = new CensusVariablesMap(); // Create a mapping object for the census variables.
 
+<<<<<<< HEAD
 //Here is where I set up and make my call to google maps API. 
 /*function init_map() {
       var var_location = new google.maps.LatLng(33.895,-84.210);
 
+=======
+//This variable is a global variable and will be used in two functions to use to hold what the user 
+//enters to look at, i.e. income, population. I set it equal to 0 just so that it is not undefined. 
+var variable = 0;
+
+//Creating an object to be used to convert the variable names, i.e. income, population to their key that 
+//the SDK uses like B19013_001E. 
+convertionObject = new CensusVariablesMap();
+
+//Here is where I set up and make my call to google maps API. 
+function init_map() {
+      var var_location = new google.maps.LatLng(33.895,-84.210);
+
+>>>>>>> mikebranch
       var var_mapoptions = {
         center:var_location,
         zoom: 11
       }
+<<<<<<< HEAD
 
       var map1 = new google.maps.Map(document.getElementById("map1"), var_mapoptions);
 
@@ -233,6 +249,178 @@ function dataCallBack(response) {
         console.log("Error: dataCallBack did not get a valid response");
         return false;
     }
+=======
+
+
+      var map1 = new google.maps.Map(document.getElementById("map1"), var_mapoptions);
+
+      // map1.data.setStyle({
+      //     fillColor: 'blue'
+      //   });
+
+    //MAP TWO 
+    var var_location = new google.maps.LatLng(33.895,-84.210);
+
+    var var_mapoptions = {
+        center:var_location,
+        zoom: 11
+      };
+
+      var map1 = new google.maps.Map(document.getElementById("map2"), var_mapoptions);
+}
+
+google.maps.event.addDomListener(window, 'load', init_map);
+
+/*
+ * geoCallBack : This is the callback function that responds to the responses 
+ * from the geographical based api of the City SDK.
+ *        response: The JSON response from the City SDK
+ */
+geoCallBack = function(response) {
+    if (response) {
+
+        var dataResults = JSON.stringify(response, null, 4);
+        var resultsObject = JSON.parse(dataResults);
+        //processTractData(resultsObject);
+        // output geo data to an output panel on the UI
+        if (DEBUG) {
+            
+            //console.log(response.features.length);
+            //console.log(JSON.stringify(response, null, 4));
+        }
+       
+         var map = new google.maps.Map(document.getElementById('map1'), {
+            zoom: 8,
+            center: {lat: 33.895, lng: -84.210},
+            mapTypeId: 'terrain'
+        });
+
+        // console.log(response.features);
+
+        //This is the variable being converted from, something like income, to the SKD key of B19013_001E
+        variableConverted = parseInt(convertionObject.getVariableFromValue(variable));
+        //alert(typeof(variableConverted));
+       // Step 1: Determines the array of colors
+       // QUESTION: We may need more colors or the number of colors may be dependent on the range from min to max?
+       var colors = ["red", "pink", "yellow", "blue", "green" ];
+       
+       // Step 2: Determine the range
+       // This function returns an object (see function below)
+       var minMaxValue = getMinMaxValue(response.features);
+       
+       // Step 3: Create the intervals
+       // This returns an array of objects (see function below)
+       var intervals = generateIntervals(minMaxValue, colors.length);
+       
+       // Step 4: Assign colors to tract
+       /*Creating an array to hold the median household income values. (I know that we will have to modify the 
+        code for the user to search for any variable.)  */
+       var medianHouseIncome = [];
+       
+       //I loop through all of the objects, in this case all 113 of them, pulling the median house hold income data 
+       //then pushing that into the array created above.
+       for (var i = 0; i < response.features.length; i++){
+          var dataPoint = response.features[i].properties.B19013_001E;
+          
+          if (dataPoint >= intervals[0].lower && dataPoint < intervals[0].upper){
+                colorValue = colors[0];
+          }else if (dataPoint >= intervals[1].lower && dataPoint < intervals[1].upper){
+                colorValue = colors[1];
+          }else if (dataPoint >= intervals[2].lower && dataPoint < intervals[2].upper){
+                colorValue = colors[2]
+          }else if (dataPoint >= intervals[3].lower && dataPoint < intervals[3].upper){
+                colorValue = colors[3]
+          }else{
+                colorValue = colors[4]
+          }
+
+          medianHouseIncome.push({value: dataPoint, color: colorValue});
+       }
+
+       //console.log(medianHouseIncome[0]);
+
+       for (var tract = 0; tract < response.features.length; tract++) {
+       
+            var Coords = [];
+       
+            for (var i = 0; i < response.features[tract].geometry.coordinates[0].length; i++){
+                if (i % 20 === 1) {
+                    Coords.push({lat: response.features[tract].geometry.coordinates[0][i][1], lng: response.features[tract].geometry.coordinates[0][i][0]});
+                }
+       
+                var pickColor = Math.round((Math.random() * 10)) % colors.length;
+                var polyShape = new google.maps.Polygon({
+                    paths: Coords,
+                    //strokeColor: colors[pickColor], //medianHouseIncome[tract].color,
+                    strokeOpacity: 0.8,
+                    strokeWeight: 2,
+                    fillColor:  medianHouseIncome[tract].color, //colors[pickColor]
+                    fillOpacity: 0.75
+                });
+                polyShape.setMap(map);      
+            }
+        }
+
+       /////////////////// MAP TWO WORK HERE DO NOT NEED TO DUPLICATE CODE BELOW HERE. /////////////////////
+        var map = new google.maps.Map(document.getElementById('map2'), {
+            zoom: 8,
+            center: {lat: 33.895, lng: -84.210},
+            mapTypeId: 'terrain'
+        });
+       
+       var colors = ["red", "green", "blue"];
+       
+       for (var tract = 0; tract < response.features.length; tract++) {
+       
+            var Coords = [];
+       
+            for (var i = 0; i < response.features[tract].geometry.coordinates[0].length; i++){
+                if (i % 20 === 1) {
+                    Coords.push({lat: response.features[tract].geometry.coordinates[0][i][1], lng: response.features[tract].geometry.coordinates[0][i][0]});
+                }
+       
+                var pickColor = Math.round((Math.random() * 10)) % colors.length;
+                var polyShape = new google.maps.Polygon({
+                    paths: Coords,
+                    strokeColor: colors[pickColor],
+                    strokeOpacity: 0.8,
+                    strokeWeight: 2,
+                    fillColor: colors[pickColor],
+                    fillOpacity: 0.35
+                });
+                polyShape.setMap(map);
+
+                 var marker = new google.maps.Marker({
+                    position: myLatLng,
+                    map: map,
+                  title: 'Hello World!'
+              });      
+            }
+        }
+       
+    } else {
+        console.log("Error: geoCallBack did not get a valid response");
+        return false;
+    }
+};
+
+
+/*
+ * dataCallBack : This is the callback function that responds to the responses 
+ * from the census data based api of the City SDK.
+ *        response: The JSON response from the City SDK
+ */
+function dataCallBack(response) {
+   if (response) {  
+       var dataResults = JSON.stringify(response, null, 4);
+       var resultsObject = JSON.parse(dataResults);
+    
+        //DEBUG && console.log(resultsObject.data);
+    } else {
+        console.log("Error: dataCallBack did not get a valid response");
+        return false;
+    }
+>>>>>>> mikebranch
     
    // processTractData(resultsObject);
 }
@@ -259,9 +447,6 @@ function retrieveData(){
     request.state = "GA";
     request.sublevel = true;
    
-    
-    
-    
     var checkedVariables = new Array();   // array to hold checked variables
     var numElems = allCheckBoxes.length;  // determines the number of checkboxes
     var foundChecked = false;             // flag for at least one checked box
@@ -280,14 +465,115 @@ function retrieveData(){
         request.variables = checkedVariables;
     else // default vars
         request.variables = ["population", "income"];
+<<<<<<< HEAD
     
   //  checkLoading();
 
+=======
+
+      variable = request.variables[1]
+
+      // console.log(request.variables[1]);
+
+    //checkLoading();
+
+>>>>>>> mikebranch
     // This request is used to get geographical data for D3
     census.geoRequest(request, geoCallBack);
 
     // This request is used to get the data to correlate with the Geo location data.
     census.apiRequest(request, dataCallBack);
+<<<<<<< HEAD
+=======
+}
+
+function checkLoading() {
+    if (census.SUPPLEMENTAL_REQUESTS_IN_FLIGHT === 0) {
+        jQuery(".loading-icon-initialstate").hide();
+        return;
+    } else if (census.SUPPLEMENTAL_REQUESTS_IN_FLIGHT > 0) {
+        window.setTimeout(checkLoading, 1500);
+    }
+}
+
+
+function processTractData(resultsDataObject) {
+    
+    if (resultsDataObject) {
+        var numTracts = resultsDataObject.features.length;
+
+        for (var tract = 0; tract < numTracts; tract++) {
+            DEBUG && console.log(resultsDataObject.features[tract].properties.TRACT);
+
+            var numStats = resultsDataObject.totals.length;
+            for (var aStat in resultsDataObject.totals) {
+                if (censusVariables.getVariableFromKey(aStat) !== "Undefined") {
+                    DEBUG && console.log(censusVariables.getVariableFromKey(aStat) + " : " + resultsDataObject.totals[aStat]);
+
+                }
+            }
+        }
+    }
+}
+
+
+//Sort the medianhousehold income array, find lowest and highest value 
+//push into object
+function getMinMaxValue(featuresArray) {
+    
+    //Setting a highest and lowest variables to use as to measure all other variables against.
+    var maxVal, minVal;
+
+    //Creating an array to hold all of the median household income variables.
+    medianhousehold = [];
+    //Use this for loop to push the values into the array.
+    for (var i = 0; i < featuresArray.length ; i++){
+      var points = featuresArray[i].properties.B19013_001E;
+      medianhousehold.push(points);
+    }
+
+    maxVal = Math.max.apply(null, medianhousehold);
+    minVal = Math.min.apply(null, medianhousehold);
+
+    //Setting up an object to return the minimum and maximum values. 
+    values = [];
+    values.push({ minimum: minVal, maximum: maxVal });
+
+    //Will be returning an object that holds the minimum and maximum values.   
+    return values; 
+}
+
+
+function generateIntervals(minMaxValue, numColors) {
+
+    /* the intervals array is an array of objects with the lower/upper bound of the intervals
+     * where n = numColors - 1
+     *   intervals[0] = {lower: low0, upper: upp0}
+     *   intervals[1] = {lower: low1, upper: upp1}
+     *   ... 
+     *   intervals[n] = {lower: lown, upper: uppn}
+     */
+
+    //An array to hold the array of objects for the lower and upper bounds. 
+    var intervals = [];
+
+    //Setting out the variables for the max and min values.
+    var max = minMaxValue[0].maximum;
+    var min = minMaxValue[0].minimum;
+
+    //Calculating the entire length from the max and min values.
+    var length = max - min;
+    //Determining the interval value
+    var intervalValue = length / numColors;
+    //Using a for loop to push the lower/upper bounds into the intervals array.
+    for (var i = 0; i < numColors; i++){
+      intervals.push({ lower: min, upper: min + intervalValue })
+      min = min + intervalValue;
+    }
+    
+    return intervals;
+
+>>>>>>> mikebranch
 }
 
 function checkLoading() {
