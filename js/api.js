@@ -87,11 +87,10 @@ geoCallBack = function(response) {
             mapTypeId: 'terrain'
         });
 
-        // console.log(response.features);
-
         //This is the variable being converted from, something like income, to the SKD key of B19013_001E
-        variableConverted = parseInt(convertionObject.getVariableFromValue(variable));
-        //alert(typeof(variableConverted));
+        variable = convertionObject.getVariableFromValue(variable);
+        alert(variable);
+
        // Step 1: Determines the array of colors
        // QUESTION: We may need more colors or the number of colors may be dependent on the range from min to max?
        var colors = ["red", "pink", "yellow", "blue", "green" ];
