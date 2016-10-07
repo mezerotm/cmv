@@ -80,7 +80,7 @@ geoCallBack = function(response) {
             //console.log(response.features.length);
             //console.log(JSON.stringify(response, null, 4));
         }
-       
+
          var map = new google.maps.Map(document.getElementById('map1'), {
             zoom: 8,
             center: {lat: 33.895, lng: -84.210},
@@ -88,8 +88,7 @@ geoCallBack = function(response) {
         });
 
         //This is the variable being converted from, something like income, to the SKD key of B19013_001E
-        variable = convertionObject.getVariableFromValue(variable);
-        alert(variable);
+        variableConverted = convertionObject.getVariableFromValue(variable);
 
        // Step 1: Determines the array of colors
        // QUESTION: We may need more colors or the number of colors may be dependent on the range from min to max?
@@ -111,7 +110,7 @@ geoCallBack = function(response) {
        //I loop through all of the objects, in this case all 113 of them, pulling the median house hold income data 
        //then pushing that into the array created above.
        for (var i = 0; i < response.features.length; i++){
-          var dataPoint = response.features[i].properties.B19013_001E;
+          var dataPoint = response.features[i].properties[variableConverted];
           
           if (dataPoint >= intervals[0].lower && dataPoint < intervals[0].upper){
                 colorValue = colors[0];
@@ -256,9 +255,8 @@ function retrieveData(){
     else // default vars
         request.variables = ["population", "income"];
 
-      variable = request.variables[1]
 
-      // console.log(request.variables[1]);
+      variable = request.variables[0];
 
     //checkLoading();
 
@@ -310,7 +308,7 @@ function getMinMaxValue(featuresArray) {
     medianhousehold = [];
     //Use this for loop to push the values into the array.
     for (var i = 0; i < featuresArray.length ; i++){
-      var points = featuresArray[i].properties.B19013_001E;
+      var points = featuresArray[i].properties[variableConverted];
       medianhousehold.push(points);
     }
 
