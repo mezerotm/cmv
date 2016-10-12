@@ -3,10 +3,6 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-//<<<<<<< HEAD
-
-//=======
-//>>>>>>> mikebranch
 class CensusVariablesMap {
     constructor() {
         this.CENSUS_VARS = [
@@ -37,14 +33,6 @@ class CensusVariablesMap {
             if (this.CENSUS_VARS[i].key === keyValue)
                     return this.CENSUS_VARS[i].value;
         }
-//<<<<<<< HEAD
-
-        return "Undefined";
-    }
-
-
-}
-//=======
         return "Undefined";
     }
 
@@ -58,4 +46,4 @@ class CensusVariablesMap {
 }
 
 
-//>>>>>>> mikebranch
+
