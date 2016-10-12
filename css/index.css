@@ -182,14 +182,14 @@ html, body {
 /* /top panel css rules */
 
 /* Google Maps css rules */
-table#Maps_container {
+#Maps_container {
 	margin: 29px 50px 0 0;
 	width: calc(100% - 50px);
 	height: 100%;
 }
 .shadow {
-	height: 100%;
-	width: 100%;
+	height: 50%;
+	width: 50%;
 }
 .map {
 	height: 100%;
@@ -203,4 +203,13 @@ table#Maps_container {
 			border-bottom: solid #c9caca 1px;
 			padding: 3.5px 10px; /* still having issues on linux OS, works fine on Windows */
 	}
+}
+
+@-moz-document url-prefix() { 
+  .remove-me {
+    border:1px solid red;
+    position:absolute;
+    right:0;
+    top:0;
+  }
 }
