@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+//<<<<<<< HEAD
  function init_map() {
         //initialize the element that will track which map is the active map and set its default value
         var active_map_holder = document.getElementById("active_map_holder");
@@ -52,7 +52,7 @@
 
       google.maps.event.addDomListener(window, 'load', init_map);/*creates a listener to where it loads the maps when the page finishes loading*/
 
-=======
+//=======
 // function init_map() {
 //       var var_location = new google.maps.LatLng(33.957,-84.282);
 
@@ -73,4 +73,4 @@
 //     }
 
 //     google.maps.event.addDomListener(window, 'load', init_map);/*creates a listener to where it loads the maps when the page finishes loading*/
->>>>>>> mikebranch
+//>>>>>>> mikebranch
