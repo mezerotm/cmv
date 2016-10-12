@@ -1,0 +1,215 @@
+@import url(https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,900);
+h1, h2, h3, h4, h5, h6, p {
+	font-family: 'Source Sans Pro', sans-serif;
+	font-weight: 400;
+	margin: 0;
+}
+
+.no-select {
+	-webkit-touch-callout: none; /* iOS Safari */
+  -webkit-user-select: none;   /* Chrome/Safari/Opera */
+  -khtml-user-select: none;    /* Konqueror */
+  -moz-user-select: none;      /* Firefox */
+  -ms-user-select: none;       /* Internet Explorer/Edge */
+	-o-user-select: none;
+	user-select: none;
+}
+.normal-style-text {
+	font-weight: 400;
+}
+.bold-style-text {
+	font-weight: 900;
+}
+/* unvisited link */
+a:link {
+  color: #D9DFEB;
+	text-decoration: none;
+}
+/* visited link */
+a:visited {
+  color: #D9DFEB;
+	text-decoration: none;
+}
+/* mouse over link */
+a:hover {
+  color: #ABB4C7;
+	text-decoration: none;
+}
+/* selected link */
+a:active {
+  color: #D9DFEB;
+	text-decoration: none;
+}
+html, body {
+  overflow: hidden;
+	margin: 0;
+	height: 100%;
+}
+
+/* side widget bar css rules */
+.widgetbar-tabscontrols {
+  position: absolute;
+  width: 100%;
+  bottom: 0;
+}
+.widgetbar-tabscontrols .widgetbar-settings-control-button, .widgetbar-tabscontrols .widgetbar-help-button {
+  margin: 5px auto;
+  width: 30px;
+  height: 30px;
+  cursor: pointer;
+}
+.widgetbar-tabs {
+  position: absolute;
+  height: 100%;
+  width: 45px;
+  right: 0;
+  top: 0;
+	border-left: solid #c9caca 1px;
+  background: #f1f3f6;
+}
+.widgetbar-tab:hover:not(#placeholder) {
+  background: #fff;
+}
+.widgetbar-tab {
+  cursor: pointer;
+  position: relative;
+  border-bottom: solid #c9caca 1px;
+  background: #f1f3f6;
+  padding: 8.45px 0;
+}
+.widgetbar-tab#placeholder {
+	cursor: default;
+	padding: 7px 0;
+}
+.widgetbar-iconplace {
+  display: block;
+  position: relative;
+  margin: 1px;
+  padding: 6px 0;
+}
+.widgetbar-icon {
+  display: block;
+  margin: 0 auto;
+  width: 25px;
+	height: 25px;
+}
+.widgetbar-page {
+	position: absolute;
+	display: none;
+	background-color: white;
+}
+.widgetbar-page.active {
+	top: 0;
+	display: block;
+	right: 45px;
+	height: 100%;
+	width: 200px;
+	padding: 5px;
+	border-style: solid;
+	border-width: 1px;
+	border-color: lightgrey;
+}
+#side-panel {
+	right: 0;
+	margin-top: 0px;
+	width: 0px;
+	height: 500px;
+	top: 28px;
+}
+#widgetbar-tab-placeholder {
+	position: absolute;
+	height: 100%;
+	width: 4px;
+	right: 46px;
+	top: 28px;
+	border-left: solid #c9caca 1px;
+  background: #f1f3f6;
+}
+/* /side widget bar rules */
+
+/* top panel css rules */
+#top-panel {
+	position: absolute;
+  height: 28px;
+	width: calc(100% - 46px);
+	min-width: 555px;
+  background: #f1f3f6;
+	border-bottom: solid #c9caca 1px;
+}
+#top-panel h1, h2, h3, h4, h5, h6, p {
+	cursor: default;
+}
+#top-panel #title {
+	position: absolute;
+	margin-top: 1px;
+	left: 15px;
+}
+#top-panel #date {
+	position: absolute;
+	cursor: pointer;
+	padding: 4px 10px;
+	right: 100px;
+	border-right: solid #c9caca 1px;
+	border-left: solid #c9caca 1px;
+}
+#top-panel #date:hover  {
+	background: #fff;
+	border-bottom: solid #c9caca 1px;
+}
+#top-panel #map-views-title {
+	position: absolute;
+	margin-top: 4px;
+	right: 55px;
+	padding-left: 4px 10px;
+}
+#top-panel #map-views {
+	position: absolute;
+	margin-top: 4px;
+	right: 5px;
+}
+#top-panel #submit {
+	position: absolute;
+	margin-top: 4px;
+	right: 260px;
+}
+#progress-bar { /* increase width to increase progress */
+	position: absolute;
+	width: 0%;
+  height: 1px;
+	z-index: 1;
+ 	background: black;
+}
+/* /top panel css rules */
+
+/* Google Maps css rules */
+#Maps_container {
+	margin: 29px 50px 0 0;
+	width: calc(100% - 50px);
+	height: 100%;
+}
+.shadow {
+	height: 50%;
+	width: 50%;
+}
+.map {
+	height: 100%;
+	width: 100%;
+}
+/* /Google Maps css rules */
+
+@-moz-document url-prefix() { /* firefox specific css rules */
+		#top-panel #date:hover  {
+			background: #fff;
+			border-bottom: solid #c9caca 1px;
+			padding: 3.5px 10px; /* still having issues on linux OS, works fine on Windows */
+	}
+}
+
+@-moz-document url-prefix() { 
+  .remove-me {
+    border:1px solid red;
+    position:absolute;
+    right:0;
+    top:0;
+  }
+}
