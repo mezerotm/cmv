@@ -116,6 +116,9 @@ html, body {
 	height: 500px;
 	top: 28px;
 }
+.grey_box {
+	background-color: #f1f3f6;
+}
 /* /side widget bar rules */
 
 /* top panel css rules */
