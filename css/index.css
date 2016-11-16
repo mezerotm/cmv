@@ -117,7 +117,7 @@ html, body {
 }
 .checkbox-content {
 	height: 50%;
-	overflow-y: scroll;
+	overflow-y: auto;
 }
 .checkbox {
 	padding-top: 10px;
