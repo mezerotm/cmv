@@ -1,0 +1,28 @@
+.map_holder
+{
+	display: inline-block;
+	border: 1px solid black;
+	height: calc(25% - 10px);
+	width: calc(25% - 10px);
+	margin: auto;
+}
+
+#maps_main
+{
+	height: 750px;
+	width: 100%;
+}
+
+#buttons
+{
+	height: auto;
+	width: auto;
+}
+
+.map_disp_btn
+{
+	height: 50px;
+	min-width: 20px;
+	display: inline-block;
+	margin: 2px;
+}
