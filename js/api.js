@@ -18,7 +18,11 @@
 // flag for debug output
 // true: debug output on
 // false: debug output off
-var DEBUG = true; 
+var DEBUG = true;
+var num_polygons = 0;
+var all_polygons = [];
+var is_first_apirequest = false;
+var is_first_georequest  = false;
 
 // Enable module with the API key
 var censusAPIKey = "c83e06ec87c35c0d3ffb0f6d7640afbf52b7071c";
@@ -35,7 +39,7 @@ var variable = 0;
 convertionObject = new CensusVariablesMap();
 
 //Here is where I set up and make my call to google maps API. 
-function init_map() {
+/*function init_map() {
       var var_location = new google.maps.LatLng(33.895,-84.210);
 
       var var_mapoptions = {
@@ -61,15 +65,18 @@ function init_map() {
       var map1 = new google.maps.Map(document.getElementById("map2"), var_mapoptions);
 }
 
-google.maps.event.addDomListener(window, 'load', init_map);
+google.maps.event.addDomListener(window, 'load', init_map);*/
 
 /*
  * geoCallBack : This is the callback function that responds to the responses 
  * from the geographical based api of the City SDK.
  *        response: The JSON response from the City SDK
  */
-geoCallBack = function(response) {
-    if (response) {
+geoCallBack = function (response) {
+    //console.log("geocallback");
+    //console.log("state: " + response.readyState + " status: " + response.status);
+    if (response && is_first_georequest) {
+
 
         var dataResults = JSON.stringify(response, null, 4);
         var resultsObject = JSON.parse(dataResults);
@@ -81,7 +88,7 @@ geoCallBack = function(response) {
             //console.log(JSON.stringify(response, null, 4));
         }
 
-         var map = new google.maps.Map(document.getElementById('map1'), {
+         var map = new google.maps.Map(document.getElementById('map' + document.getElementById("active_map_holder").value), {
             zoom: 8,
             center: {lat: 33.895, lng: -84.210},
             mapTypeId: 'terrain'
@@ -109,6 +116,7 @@ geoCallBack = function(response) {
        
        //I loop through all of the objects, in this case all 113 of them, pulling the median house hold income data 
        //then pushing that into the array created above.
+        //console.log("response length: " + response.features.length);
        for (var i = 0; i < response.features.length; i++){
           var dataPoint = response.features[i].properties[variableConverted];
           
@@ -127,8 +135,15 @@ geoCallBack = function(response) {
           medianHouseIncome.push({value: dataPoint, color: colorValue});
        }
 
-       //console.log(medianHouseIncome[0]);
+        //clear out all shapes previously on the mapE
+        for(var i = all_polygons.length; i > 0; i--)
+        {
+            if(all_polygons[i] != null) all_polygons[i].setMap(null);
+            all_polygons.pop();
+        }
 
+       //console.log(medianHouseIncome[0]);
+        console.log("starting loop - drawing");
        for (var tract = 0; tract < response.features.length; tract++) {
        
             var Coords = [];
@@ -147,12 +162,17 @@ geoCallBack = function(response) {
                     fillColor:  medianHouseIncome[tract].color, //colors[pickColor]
                     fillOpacity: 0.75
                 });
-                polyShape.setMap(map);      
+                polyShape.setMap(map);
+                num_polygons++;
+                all_polygons.push(polyShape);
+
             }
+           //console.log( "tract # " + tract + ": - " + all_polygons.length);
         }
+        console.log("ending loop");
 
        /////////////////// MAP TWO WORK HERE DO NOT NEED TO DUPLICATE CODE BELOW HERE. /////////////////////
-        var map = new google.maps.Map(document.getElementById('map2'), {
+       /* var map = new google.maps.Map(document.getElementById('map2'), {
             zoom: 8,
             center: {lat: 33.895, lng: -84.210},
             mapTypeId: 'terrain'
@@ -186,12 +206,17 @@ geoCallBack = function(response) {
                   title: 'Hello World!'
               });      
             }
-        }
+        }*/
        
-    } else {
+    } else if(!is_first_georequest)
+    {
+        console.log("Duplicate callback - geo");
+    }
+    else {
         console.log("Error: geoCallBack did not get a valid response");
         return false;
     }
+    is_first_georequest = false;
 };
 
 
@@ -201,15 +226,21 @@ geoCallBack = function(response) {
  *        response: The JSON response from the City SDK
  */
 function dataCallBack(response) {
-   if (response) {  
+   if (response && is_first_apirequest) {
        var dataResults = JSON.stringify(response, null, 4);
        var resultsObject = JSON.parse(dataResults);
     
         //DEBUG && console.log(resultsObject.data);
-    } else {
+    } else if(!is_first_apirequest)
+   {
+       console.log("Duplicate callback - api");
+   }
+    else {
         console.log("Error: dataCallBack did not get a valid response");
         return false;
     }
+
+    is_first_apirequest = false;
     
    // processTractData(resultsObject);
 }
@@ -222,6 +253,8 @@ function dataCallBack(response) {
  */
  
 function retrieveData(){
+    is_first_apirequest = true;
+    is_first_georequest = true;
  
     // get checkboxes from the web page
     var allCheckBoxes = document.getElementsByName("censusVarz");
@@ -261,9 +294,11 @@ function retrieveData(){
     //checkLoading();
 
     // This request is used to get geographical data for D3
+    //console.log("georequesting");
     census.geoRequest(request, geoCallBack);
 
     // This request is used to get the data to correlate with the Geo location data.
+    //console.log("apirequesting");
     census.apiRequest(request, dataCallBack);
 }
 
@@ -289,7 +324,6 @@ function processTractData(resultsDataObject) {
             for (var aStat in resultsDataObject.totals) {
                 if (censusVariables.getVariableFromKey(aStat) !== "Undefined") {
                     DEBUG && console.log(censusVariables.getVariableFromKey(aStat) + " : " + resultsDataObject.totals[aStat]);
-
                 }
             }
         }
