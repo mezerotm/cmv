@@ -73,6 +73,7 @@ google.maps.event.addDomListener(window, 'load', init_map);*/
  *        response: The JSON response from the City SDK
  */
 geoCallBack = function (response) {
+    num_polygons_now = 0;
     //console.log("geocallback");
     //console.log("state: " + response.readyState + " status: " + response.status);
     if (response && is_first_georequest) {
@@ -89,7 +90,7 @@ geoCallBack = function (response) {
         }
 
          var map = new google.maps.Map(document.getElementById('map' + document.getElementById("active_map_holder").value), {
-            zoom: 8,
+            zoom: 10,
             center: {lat: 33.895, lng: -84.210},
             mapTypeId: 'terrain'
         });
@@ -155,21 +156,23 @@ geoCallBack = function (response) {
        
                 var pickColor = Math.round((Math.random() * 10)) % colors.length;
                 var polyShape = new google.maps.Polygon({
+                    map: map,
                     paths: Coords,
                     //strokeColor: colors[pickColor], //medianHouseIncome[tract].color,
-                    strokeOpacity: 0.8,
+                    strokeOpacity: 0.01,
                     strokeWeight: 2,
                     fillColor:  medianHouseIncome[tract].color, //colors[pickColor]
-                    fillOpacity: 0.75
+                    fillOpacity: 0.01
                 });
-                polyShape.setMap(map);
+                //polyShape.setMap(map);
                 num_polygons++;
+                num_polygons_now++;
                 all_polygons.push(polyShape);
 
             }
            //console.log( "tract # " + tract + ": - " + all_polygons.length);
         }
-        console.log("ending loop");
+        console.log("ending loop - number of polygons: " + num_polygons_now);
 
        /////////////////// MAP TWO WORK HERE DO NOT NEED TO DUPLICATE CODE BELOW HERE. /////////////////////
        /* var map = new google.maps.Map(document.getElementById('map2'), {
