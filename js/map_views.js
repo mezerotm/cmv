@@ -68,7 +68,7 @@ function resetMapVisible() {
 
 //resize the google maps themselves to match the windows/divs they are in*
 function resizeMaps() {
-	var map1 = document.getElementById("map1");
+	/*var map1 = document.getElementById("map1");
 	var map2 = document.getElementById("map2");
 	var map3 = document.getElementById("map3");
 	var map4 = document.getElementById("map4");
@@ -76,7 +76,7 @@ function resizeMaps() {
 	google.maps.resize(map1);
 	google.maps.resize(map2);
 	google.maps.resize(map3);
-	google.maps.resize(map4);
+	google.maps.resize(map4);*/
 
 	
 }

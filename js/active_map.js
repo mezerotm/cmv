@@ -44,3 +44,19 @@ function resetButtons() {
 	map3.style.boxShadow = "0px 0px 0px white";
 	map4.style.boxShadow = "0px 0px 0px white";
 }
+
+function getActiveMap()
+{
+	var map_num = document.getElementById("active_map_holder").value;
+
+	if(map_num == 1)
+		return all_maps[0];
+	else if(map_num == 2)
+		return all_maps[1];
+	else if(map_num == 3)
+		return all_maps[2];
+	else if(map_num == 4)
+		return all_maps[3];
+	else
+		console.log("Invalid map is currently active");
+}

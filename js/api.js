@@ -89,11 +89,12 @@ geoCallBack = function (response) {
             //console.log(JSON.stringify(response, null, 4));
         }
 
-         var map = new google.maps.Map(document.getElementById('map' + document.getElementById("active_map_holder").value), {
+         var map = getActiveMap();
+        /*new google.maps.Map(document.getElementById('map' + document.getElementById("active_map_holder").value), {
             zoom: 10,
             center: {lat: 33.895, lng: -84.210},
             mapTypeId: 'terrain'
-        });
+        });*/
 
         //This is the variable being converted from, something like income, to the SKD key of B19013_001E
         variableConverted = convertionObject.getVariableFromValue(variable);
@@ -154,22 +155,23 @@ geoCallBack = function (response) {
                     Coords.push({lat: response.features[tract].geometry.coordinates[0][i][1], lng: response.features[tract].geometry.coordinates[0][i][0]});
                 }
        
-                var pickColor = Math.round((Math.random() * 10)) % colors.length;
-                var polyShape = new google.maps.Polygon({
-                    map: map,
-                    paths: Coords,
-                    //strokeColor: colors[pickColor], //medianHouseIncome[tract].color,
-                    strokeOpacity: 0.01,
-                    strokeWeight: 2,
-                    fillColor:  medianHouseIncome[tract].color, //colors[pickColor]
-                    fillOpacity: 0.01
-                });
-                //polyShape.setMap(map);
-                num_polygons++;
-                num_polygons_now++;
-                all_polygons.push(polyShape);
+
 
             }
+           var pickColor = Math.round((Math.random() * 10)) % colors.length;
+           var polyShape = new google.maps.Polygon({
+               map: map,
+               paths: Coords,
+               //strokeColor: colors[pickColor], //medianHouseIncome[tract].color,
+               strokeOpacity: 0.75,
+               strokeWeight: 2,
+               fillColor:  medianHouseIncome[tract].color, //colors[pickColor]
+               fillOpacity: 0.75
+           });
+           polyShape.setMap(map);
+           num_polygons++;
+           num_polygons_now++;
+           all_polygons.push(polyShape);
            //console.log( "tract # " + tract + ": - " + all_polygons.length);
         }
         console.log("ending loop - number of polygons: " + num_polygons_now);
