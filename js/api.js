@@ -19,10 +19,14 @@
 // true: debug output on
 // false: debug output off
 var DEBUG = true;
-var num_polygons = 0;
-var all_polygons = [];
+//var num_polygons = 0;
+//var all_polygons = [];
 var is_first_apirequest = false;
 var is_first_georequest  = false;
+var map1_polygons = [];
+var map2_polygons = [];
+var map3_polygons = [];
+var map4_polygons = [];
 
 // Enable module with the API key
 var censusAPIKey = "c83e06ec87c35c0d3ffb0f6d7640afbf52b7071c";
@@ -73,7 +77,7 @@ google.maps.event.addDomListener(window, 'load', init_map);*/
  *        response: The JSON response from the City SDK
  */
 geoCallBack = function (response) {
-    num_polygons_now = 0;
+    //num_polygons_now = 0;
     //console.log("geocallback");
     //console.log("state: " + response.readyState + " status: " + response.status);
     if (response && is_first_georequest) {
@@ -137,15 +141,10 @@ geoCallBack = function (response) {
           medianHouseIncome.push({value: dataPoint, color: colorValue});
        }
 
-        //clear out all shapes previously on the mapE
-        for(var i = all_polygons.length; i > 0; i--)
-        {
-            if(all_polygons[i] != null) all_polygons[i].setMap(null);
-            all_polygons.pop();
-        }
+        clearActiveMapDrawing()
 
        //console.log(medianHouseIncome[0]);
-        console.log("starting loop - drawing");
+       // console.log("starting loop - drawing");
        for (var tract = 0; tract < response.features.length; tract++) {
        
             var Coords = [];
@@ -169,12 +168,24 @@ geoCallBack = function (response) {
                fillOpacity: 0.75
            });
            polyShape.setMap(map);
-           num_polygons++;
-           num_polygons_now++;
-           all_polygons.push(polyShape);
+           //num_polygons++;
+           //num_polygons_now++;
+           //all_polygons.push(polyShape);
+           var map_num = document.getElementById("active_map_holder").value;
+           //console.log(map_num);
+           if(map_num == 1)
+                   map1_polygons.push(polyShape);
+           else if(map_num == 2)
+                   map2_polygons.push(polyShape);
+           else if(map_num == 3)
+                   map3_polygons.push(polyShape);
+           else if(map_num == 4)
+                   map4_polygons.push(polyShape);
+           else
+                   console.log("Invalid map currently active");
            //console.log( "tract # " + tract + ": - " + all_polygons.length);
         }
-        console.log("ending loop - number of polygons: " + num_polygons_now);
+        //console.log("ending loop - number of polygons: " + num_polygons_now);
 
        /////////////////// MAP TWO WORK HERE DO NOT NEED TO DUPLICATE CODE BELOW HERE. /////////////////////
        /* var map = new google.maps.Map(document.getElementById('map2'), {
@@ -212,6 +223,7 @@ geoCallBack = function (response) {
               });      
             }
         }*/
+       //console.log(map1_polygons.length);
        
     } else if(!is_first_georequest)
     {
@@ -391,5 +403,34 @@ function generateIntervals(minMaxValue, numColors) {
     }
     
     return intervals;
+
+}
+
+function clearActiveMapDrawing() {
+    var map_num = document.getElementById("active_map_holder").value;
+
+    if (map_num == 1)
+    {
+        while (map1_polygons.length) {
+            map1_polygons.pop().setMap(null);
+        }
+    }
+     else if(map_num == 2) {
+        while (map2_polygons.length) {
+            map2_polygons.pop().setMap(null);
+        }
+    }
+    else if(map_num == 3) {
+        while (map3_polygons.length) {
+            map3_polygons.pop().setMap(null);
+        }
+    }
+    else if(map_num == 4) {
+        while (map4_polygons.length) {
+            map4_polygons.pop().setMap(null);
+        }
+    }
+    else
+            console.log("Invalid map currently active");
 
 }
