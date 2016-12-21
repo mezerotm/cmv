@@ -7,10 +7,10 @@ h1, h2, h3, h4, h5, h6, p {
 
 .no-select {
 	-webkit-touch-callout: none; /* iOS Safari */
-  -webkit-user-select: none;   /* Chrome/Safari/Opera */
-  -khtml-user-select: none;    /* Konqueror */
-  -moz-user-select: none;      /* Firefox */
-  -ms-user-select: none;       /* Internet Explorer/Edge */
+    -webkit-user-select: none;   /* Chrome/Safari/Opera */
+    -khtml-user-select: none;    /* Konqueror */
+    -moz-user-select: none;      /* Firefox */
+    -ms-user-select: none;       /* Internet Explorer/Edge */
 	-o-user-select: none;
 	user-select: none;
 }
@@ -75,7 +75,7 @@ html, body {
   position: relative;
   border-bottom: solid #c9caca 1px;
   background: #f1f3f6;
-  padding: 8.45px 0;
+  padding: 8px 0;
 }
 .widgetbar-tab#placeholder {
 	cursor: default;
@@ -104,14 +104,12 @@ html, body {
 	right: 45px;
 	height: 100%;
 	width: 210px;
-	border-style: solid;
-	border-width: 1px;
-	border-color: #c9caca;
+    border: 1px solid #c9caca;
 }
 #side-panel {
 	right: 0;
-	margin-top: 0px;
-	width: 0px;
+	margin-top: 0;
+	width: 0;
 	height: 500px;
 	top: 28px;
 }
@@ -181,7 +179,7 @@ html, body {
 }
 #progress-bar { /* increase width to increase progress */
 	position: absolute;
-	width: 0%;
+	width: 0;
   height: 1px;
 	z-index: 1;
  	background: black;
@@ -208,6 +206,6 @@ html, body {
 	#top-panel #date:hover  {
 		background: #fff;
 		border-bottom: solid #c9caca 1px;
-		padding: 3.5px 10px; /* still having issues on linux OS, works fine on Windows */
+		padding: 4px 10px; /* still having issues on linux OS, works fine on Windows */
 	}
 }
