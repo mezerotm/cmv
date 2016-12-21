@@ -169,7 +169,7 @@ html, body {
 #top-panel #map-views-title {
 	margin: 4px 10px 0 5px;
 	float: right;
-	padding-left: 4px 10px;
+	padding-left: 10px;
 }
 #top-panel #map-views {
 	margin: 5px 5px 0 5px;
@@ -205,18 +205,9 @@ html, body {
 /* /Google Maps css rules */
 
 @-moz-document url-prefix() { /* firefox specific css rules */
-		/*#top-panel #date:hover  {
-			background: #fff;
-			border-bottom: solid #c9caca 1px;
-			padding: 3.5px 10px; /* still having issues on linux OS, works fine on Windows */
-	}*/
-}
-
-@-moz-document url-prefix() {
-  .remove-me {
-    border:1px solid red;
-    position:absolute;
-    right:0;
-    top:0;
-  }
+	#top-panel #date:hover  {
+		background: #fff;
+		border-bottom: solid #c9caca 1px;
+		padding: 3.5px 10px; /* still having issues on linux OS, works fine on Windows */
+	}
 }
