@@ -24,7 +24,7 @@
 
 				<button name="submit" id="submit" onclick="retrieveData()">Submit</button>
 				<h4 id="map-views-title"> Views </h4>
-				<select id="map-views" onchange="updateMapViews()">
+				<select id="map-views" onchange="updateMapViews()" title="map-views">
 					<option value="1">1</option>
 					<option value="2">2</option>
 					<option value="4" selected="selected">4</option>
@@ -70,7 +70,7 @@
         	    </div>
         	    
         	  </div>
-        	  <div id="widgetbar-demographic-description" class="widgetbar-description">
+        	  <div id="widgetbar-population-description" class="widgetbar-description">
         		<p>Population Sample Text</p>
         	  </div>
 			</div> <!-- /widgetbar-population -->
@@ -107,7 +107,7 @@
 		         </div>
 		        
   			   </div>
-               <div id="widgetbar-demographic-description" class="widgetbar-description">	
+               <div id="widgetbar-income-description" class="widgetbar-description">
           	     <div class="decription-content">
         	       <p>Income Sample Text</p>
         	     </div>
@@ -123,7 +123,7 @@
                   <label><input name="censusVarz" type="radio" value="employment_not_labor_force">Not In Labor Force</label>
                 </div>
               </div>
-              <div id="widgetbar-demographic-description" class="widgetbar-description">
+              <div id="widgetbar-crime-description" class="widgetbar-description">
         		<p>Crime Sample Text</p>
         	  </div>
 		    </div> <!-- /widgetbar-crime -->
@@ -132,7 +132,7 @@
 			<div class="checkbox-content">
 				
 			  <div class="checkbox grey_box">
-    		    <label><input name"censusVarz" type="radio" value="commute_time">Commute Time</label>
+    		    <label><input name="censusVarz" type="radio" value="commute_time">Commute Time</label>
         	  </div>
         	  <div class="checkbox">
           	    <label><input name="censusVarz" type="radio" value="commute_time_carpool">Car Pool</label>
@@ -145,7 +145,7 @@
          	   </div>
          	
          	</div>
-         	  <div id="widgetbar-demographic-description" class="widgetbar-description">
+         	  <div id="widgetbar-transportation-description" class="widgetbar-description">
         	    <p>Transportation Sample Text</p>
         	  </div>
 			</div> <!-- /widgetbar-transportation -->
@@ -174,7 +174,7 @@
 		          <label><input name="censusVarz" type="radio" value="education_professional">Professional</label>
 		        </div>
 	          </div>
-	          <div id="widgetbar-demographic-description" class="widgetbar-description">
+	          <div id="widgetbar-education-description" class="widgetbar-description">
 			     <p>Education Sample Text</p>
 		       </div>
 			 </div> <!-- /widgetbar-education -->
