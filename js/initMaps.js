@@ -49,7 +49,7 @@ var all_maps = [];
         google.maps.event.trigger(map3, 'resize');
         google.maps.event.trigger(map4, 'resize');*/
 
-        //marker.addListener('click', function() 
+        //marker.addListener('click', function()
       }
 
       google.maps.event.addDomListener(window, 'load', init_map);/*creates a listener to where it loads the maps when the page finishes loading*/
