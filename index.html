@@ -34,7 +34,7 @@
 				<h3 id="title"> Census Map Visualization </h3>
 				<h4 id="date"> September 11, 2001 </h4> <!-- this is an example hard coded date -->
 
-				<button name="submit" id="submit" onclick="retrieveData()">Submit</button>
+				<button name="submit" id="submit" onclick="cmv.retrieveData()">Submit</button>
 				<h4 id="map-views-title"> Views </h4>
 				<select id="map-views" onchange="updateMapViews()">
 					<option value="1">1</option>
@@ -99,79 +99,79 @@
 
 				<div id="widgetbar-demographic" class="widgetbar-page">
 					<div class="checkbox">
-            			<label><input name="censusVarz" type="checkbox" value="population">Population</label>
+            			<label><input name="censusVar" type="checkbox" value="population">Population</label>
 	              	</div>
 	              	<div class="checkbox">
-	                	<label><input name="censusVarz" type="checkbox" value="income">Income</label>
+	                	<label><input name="censusVar" type="checkbox" value="income">Income</label>
 	              	</div>
 	              	<div class="checkbox">
-	              		<label><input name="censusVarz" type="checkbox" value="median_male_age">Median Male Age</label>
+	              		<label><input name="censusVar" type="checkbox" value="median_male_age">Median Male Age</label>
 	            	</div>
 	            	<div class="checkbox">
-	              		<label><input name="censusVarz" type="checkbox" value="median_female_age">Median Female Age</label>
+	              		<label><input name="censusVar" type="checkbox" value="median_female_age">Median Female Age</label>
 	            	</div>
 				</div> <!-- /widgetbar-demographic -->
 
 				<div id="widgetbar-income" class="widgetbar-page">
 					<div class="checkbox">
-                  		<label><input name="censusVarz" type="checkbox" value="income">Income</label>
+                  		<label><input name="censusVar" type="checkbox" value="income">Income</label>
 	                </div>
 	                <div class="checkbox">
-	                  <label><input name="censusVarz" type="checkbox" value="income_per_capita">Income Per Capita</label>
+	                  <label><input name="censusVar" type="checkbox" value="income_per_capita">Income Per Capita</label>
 	                </div>
 	                <div class="checkbox">
-	                	<label><input name="censusVarz" type="checkbox" value="poverty">Poverty</label>
+	                	<label><input name="censusVar" type="checkbox" value="poverty">Poverty</label>
 	                </div>
 				</div> <!-- /widgetbar-income -->
 
 				<div id="widgetbar-crime" class="widgetbar-page">
 					<div class="checkbox">
-                  		<label><input name="censusVarz" type="checkbox" value="employment_unemployed">Unemployment</label>
+                  		<label><input name="censusVar" type="checkbox" value="employment_unemployed">Unemployment</label>
 	                </div>
 	                <div class="checkbox">
-	                  <label><input name="censusVarz" type="checkbox" value="employment_not_labor_force">People not in the Labor Force</label>
+	                  <label><input name="censusVar" type="checkbox" value="employment_not_labor_force">People not in the Labor Force</label>
 	                </div>
 				</div> <!-- /widgetbar-crime -->
 
 				<div id="widgetbar-transportation" class="widgetbar-page">
 					<div class="checkbox">
-                  		<label><input name="censusVarz" type="checkbox" value="commute_time">Commute Time</label>
+                  		<label><input name="censusVar" type="checkbox" value="commute_time">Commute Time</label>
                   	</div>
 	                <div class="checkbox">
-	                  <label><input name="censusVarz" type="checkbox" value="commute_time_carpool">Car Pool Commute Time</label>
+	                  <label><input name="censusVar" type="checkbox" value="commute_time_carpool">Car Pool Commute Time</label>
 	                </div>
 	                <div class="checkbox">
-	                  <label><input name="censusVarz" type="checkbox" value="commute_time_public_transport">Public Transport Commute Time</label>
+	                  <label><input name="censusVar" type="checkbox" value="commute_time_public_transport">Public Transport Commute Time</label>
 	                </div>
 	                <div class="checkbox">
-	                  <label><input name="censusVarz" type="checkbox" value="commute_time_solo_automobile">Solo Car Commute Time</label>
+	                  <label><input name="censusVar" type="checkbox" value="commute_time_solo_automobile">Solo Car Commute Time</label>
 	                 </div>
 	                <div class="checkbox">
-	                  <label><input name="censusVarz" type="checkbox" value="commute_time_solo_automobile">Solo Car Commute Time</label>
+	                  <label><input name="censusVar" type="checkbox" value="commute_time_solo_automobile">Solo Car Commute Time</label>
 	                 </div>
 				</div> <!-- /widgetbar-transportation -->
 
 				<div id="widgetbar-education" class="widgetbar-page">
 	                <div class="checkbox">
-	                  <label><input name="censusVarz" type="checkbox" value="education_bachelors">Bachelor's Degrees</label>
+	                  <label><input name="censusVar" type="checkbox" value="education_bachelors">Bachelor's Degrees</label>
 	                </div>
 	                <div class="checkbox">
-	                  <label><input name="censusVarz" type="checkbox" value="education_masters">Master's Degrees</label>
+	                  <label><input name="censusVar" type="checkbox" value="education_masters">Master's Degrees</label>
 	                </div>
 	                <div class="checkbox">
-	                  <label><input name="censusVarz" type="checkbox" value="education_high_school">Eduction High School</label>
+	                  <label><input name="censusVar" type="checkbox" value="education_high_school">Eduction High School</label>
 	                  </div>
 	                <div class="checkbox">
-	                  <label><input name="censusVarz" type="checkbox" value="education_ged">GED</label>
+	                  <label><input name="censusVar" type="checkbox" value="education_ged">GED</label>
 	                </div>
 	                <div class="checkbox">
-	                  <label><input name="censusVarz" type="checkbox" value="education_none">No Education</label>
+	                  <label><input name="censusVar" type="checkbox" value="education_none">No Education</label>
 	                </div>
 	                <div class="checkbox">
-	                  <label><input name="censusVarz" type="checkbox" value="education_associates">Associate's Degree</label>
+	                  <label><input name="censusVar" type="checkbox" value="education_associates">Associate's Degree</label>
 	                </div>
 	                <div class="checkbox">
-	                  <label><input name="censusVarz" type="checkbox" value="education_professional">Professional Education</label>
+	                  <label><input name="censusVar" type="checkbox" value="education_professional">Professional Education</label>
 	                </div>
 
 				</div> <!-- /widgetbar-education -->
@@ -258,11 +258,12 @@
  		<script src="http://maps.google.com/maps/api/js?key=AIzaSyAhgSIK7GcSzuKZ8acLE2oOeGCY52C-7qw"></script>
 		<!-- custom javascript -->
 		<script src="js/censusVariablesMap.js"></script>
-		<script src="js/api.js"></script>
+
 		<script src="js/initMaps.js"></script>
-    <script src="js/map_views.js"></script>
-    <script src="js/active_map.js"></script>
+    	<script src="js/map_views.js"></script>
+		<script src="js/active_map.js"></script>
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
 		<script src="js/widgetbar.js"></script>
+		<script src="js/api-overhaul.js"></script>
 	</body>
 </html>

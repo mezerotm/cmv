@@ -93,8 +93,7 @@ geoCallBack = function (response) {
             //console.log(JSON.stringify(response, null, 4));
         }
 
-         var map = getActiveMap();
-        /*new google.maps.Map(document.getElementById('map' + document.getElementById("active_map_holder").value), {
+         var map = getActiveMap(); /*new google.maps.Map(document.getElementById('map' + document.getElementById("active_map_holder").value), {
             zoom: 10,
             center: {lat: 33.895, lng: -84.210},
             mapTypeId: 'terrain'
@@ -274,7 +273,7 @@ function retrieveData(){
     is_first_georequest = true;
  
     // get checkboxes from the web page
-    var allCheckBoxes = document.getElementsByName("censusVarz");
+    var allCheckBoxes = document.getElementsByName("censusVar");
     var request = {}; // empty census data request
     
     
@@ -366,12 +365,12 @@ function getMinMaxValue(featuresArray) {
     maxVal = Math.max.apply(null, medianhousehold);
     minVal = Math.min.apply(null, medianhousehold);
 
-    //Setting up an object to return the minimum and maximum values. 
+    //Setting up an object to return the minimum and maximum values.
     values = [];
     values.push({ minimum: minVal, maximum: maxVal });
 
-    //Will be returning an object that holds the minimum and maximum values.   
-    return values; 
+    //Will be returning an object that holds the minimum and maximum values.
+    return values;
 }
 
 

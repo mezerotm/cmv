@@ -10,7 +10,7 @@ var all_maps = [];
         var var_location = new google.maps.LatLng(33.895,-84.210);
 
         var var_mapoptions = {
-            zoom: 10,
+            zoom: 7,
             center:var_location,
             scrollwheel: false
         }
