@@ -2,18 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="6050e70e-b326-41b7-9644-96f749552615" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/CMV.iml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/CensusMapVisualization.iml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/dictionaries/Carlos.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/encodings.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/profiles_settings.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/jsLibraryMappings.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/modules.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/vcs.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/watcherTasks.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -354,7 +343,7 @@
       <workItem from="1482355967369" duration="731000" />
       <workItem from="1482544218000" duration="22000" />
       <workItem from="1482953540169" duration="3785000" />
-      <workItem from="1482957973832" duration="36179000" />
+      <workItem from="1482957973832" duration="36270000" />
     </task>
     <task id="LOCAL-00001" summary="Did a js-overhaul on api.js">
       <created>1483006581984</created>
@@ -370,11 +359,18 @@
       <option name="project" value="LOCAL" />
       <updated>1483007169474</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="removed .idea file (this file was never meant to be in the repo)">
+      <created>1483007421212</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1483007421212</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="60081000" />
+    <option name="totallyTimeSpent" value="60172000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -445,7 +441,8 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Did a js-overhaul on api.js" />
     <MESSAGE value="Merge branch 'master' into js-overhaul&#10;&#10;# Conflicts:&#10;#&#9;css/index.css&#10;#&#9;index.html&#10;#&#9;js/active_map.js&#10;#&#9;js/api.js&#10;#&#9;js/censusVariablesMap.js&#10;#&#9;js/initMaps.js&#10;#&#9;js/map_views.js&#10;" />
-    <option name="LAST_COMMIT_MESSAGE" value="Merge branch 'master' into js-overhaul&#10;&#10;# Conflicts:&#10;#&#9;css/index.css&#10;#&#9;index.html&#10;#&#9;js/active_map.js&#10;#&#9;js/api.js&#10;#&#9;js/censusVariablesMap.js&#10;#&#9;js/initMaps.js&#10;#&#9;js/map_views.js&#10;" />
+    <MESSAGE value="removed .idea file (this file was never meant to be in the repo)" />
+    <option name="LAST_COMMIT_MESSAGE" value="removed .idea file (this file was never meant to be in the repo)" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
