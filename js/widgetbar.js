@@ -36,13 +36,13 @@ function updateMapSize(block, sidebar_state) {
 	if(sidebar_state == "active") {
     top_panel.style.width = "calc(100% - 257px)";
 		map_holder.style.width = "calc(100% - 261px)";
-    side_holder.style.right = "257px";
+    //side_holder.style.right = "257px";
     block.style.background = "#fff";
 	}
 	else {
 		map_holder.style.width = "calc(100% - 50px)";
     top_panel.style.width = "calc(100% - 46px)";
-    side_holder.style.right = "46px";
+    //side_holder.style.right = "46px";
     block.style.background = "#f1f3f6";
 	}
 	resizeMaps();
