@@ -81,6 +81,7 @@ geoCallBack = function (response) {
     //console.log("geocallback");
     //console.log("state: " + response.readyState + " status: " + response.status);
     if (response && is_first_georequest) {
+        console.log('geoCallBack invoked');
 
 
         var dataResults = JSON.stringify(response, null, 4);
@@ -152,10 +153,11 @@ geoCallBack = function (response) {
                 if (i % 20 === 1) {
                     Coords.push({lat: response.features[tract].geometry.coordinates[0][i][1], lng: response.features[tract].geometry.coordinates[0][i][0]});
                 }
-       
-
 
             }
+
+           console.log(`features loop - features array length: ${response.features.length}`);
+
            var pickColor = Math.round((Math.random() * 10)) % colors.length;
            var polyShape = new google.maps.Polygon({
                map: map,
@@ -242,6 +244,7 @@ geoCallBack = function (response) {
  *        response: The JSON response from the City SDK
  */
 function dataCallBack(response) {
+    console.log('dataCallBack invoked');
    if (response && is_first_apirequest) {
        var dataResults = JSON.stringify(response, null, 4);
        var resultsObject = JSON.parse(dataResults);
@@ -269,6 +272,8 @@ function dataCallBack(response) {
  */
  
 function retrieveData(){
+    console.log('retrieveData invoked');
+
     is_first_apirequest = true;
     is_first_georequest = true;
  
@@ -285,7 +290,7 @@ function retrieveData(){
     request.state = "GA";
     request.sublevel = true;
    
-    var checkedVariables = new Array();   // array to hold checked variables
+    var checkedVariables = new Array();   // array to hold checked variables/
     var numElems = allCheckBoxes.length;  // determines the number of checkboxes
     var foundChecked = false;             // flag for at least one checked box
     
