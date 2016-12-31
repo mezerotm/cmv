@@ -1,26 +1,30 @@
-// create cmv module (This will reduce chances of variable clobber, and modularize our code)
-let cmv = {};
-
-// flag for debug output
-cmv.debug = true;
-
-// Census Module Developer Documentation - (https://goo.gl/Wg20Wz)
-cmv.census = new CensusModule("c83e06ec87c35c0d3ffb0f6d7640afbf52b7071c");
+/*
+ * main.js
+ *
+ * This file contains the functions that interact with the City SDK (US Census).
+ *
+ * In this file you will find:
+ *
+ * apiCallBack : This is callback function that responds to the responses from the
+ * basic api calls made to the City SDK.
+ *
+ * geoCAllBack : This is the callback function that respondes to the responses
+ * from the geographical based api of the City SDK.
+ *
+ * retrieveData : This function is called by the submit button to connect with the City
+ * SDK and obtain the data.
+ */
 
 /*
 * "Please note, that the "place" level currently only supports incorporated places." - (https://goo.gl/CHdOWp)
-*  A list of all available APIs to choose from - (https://goo.gl/ErNc5l)
+*  Please see './documentation.js' for additional information
 * */
-cmv.level = 'county';    // 'blockGroup', 'tract', 'county', 'state', 'us', 'place'
-cmv.zip = '30043';       // atlanta: 30303, duluth: 30096, Lawrenceville: 30043 - (https://goo.gl/IJGxoJ)
-cmv.api = 'acs5';        // acs5: 5yr 09-15 - (https://goo.gl/1tBXON)
-cmv.year = '2014';
-cmv.state = 'GA';
-cmv.sublevel = true;
-
-// Will log all census variables in RAW
-//console.log(cmv.census.getACSVariableDictionary(cmv.api, cmv.year));
-//console.log(cmv.census.aliases);
+cmv.map.level = 'county';    // 'blockGroup', 'tract', 'county', 'state', 'us', 'place'
+cmv.map.zip = '30043';       // atlanta: 30303, duluth: 30096, Lawrenceville: 30043 - (https://goo.gl/IJGxoJ)
+cmv.map.api = 'acs5';        // acs5: 5yr 09-15 - (https://goo.gl/1tBXON)
+cmv.map.year = '2014';
+cmv.map.state = 'GA';
+cmv.map.sublevel = true;
 
 // toggles to prevent duplicate requests
 cmv.geoRequestToggle = false;
@@ -29,16 +33,13 @@ cmv.apiRequestToggle = false;
 // determines the data that will displayed on the selected map
 cmv.userInput = 'population';
 
-// 2D array containing maps; and they're related polygon data
-cmv.polygonMaps = [];
-
 /*
  * polygonDetail : Sets the level of cords a tract will have
  * set x to 1 and y to 0 for 100% detail
  * or set x to any value above 2 and y to 1 for more control
  */
-cmv.polygonDetail = function(iterate){
-    let x = 0; let y = 0;
+cmv.map.polygonDetail = function(iterate){
+    let x = 1; let y = 0;
     return ((iterate % x) === y);
 };
 
@@ -48,20 +49,22 @@ cmv.polygonDetail = function(iterate){
  * response: The JSON response from the City SDK
  */
 cmv.geoCallBack = function (response){
-    if(cmv.debug)
+    if(cmv.debugger.debug)
         console.log(`geoCallBack: invoked, geoRequestToggle: ${cmv.geoRequestToggle}`);
 
     if(response && cmv.geoRequestToggle){
-        if(cmv.debug) {
+        if(cmv.debugger.debug) {
             console.log('geoCallBack: response:'); console.log(response);
         }
 
         // this is the variable being converted from, something like income, to the SKD key of B19013_001E
-        let censusVarsMap = new CensusVariablesMap();
-        let convertedVariable = cmv.census.parseToValidVariable(cmv.userInput, cmv.api, cmv.year);
+        let convertedVariable = cmv.census.parseToValidVariable(cmv.userInput, cmv.map.api, cmv.map.year) + '';
+
+        if(cmv.debugger.debug)
+            console.log(`convertedVariable: ${convertedVariable}`);
 
         // Step 1: Determines the array of colors
-        let colors = ["red", "pink", "yellow", "blue", "green" ];
+        let colors = ['#FEEDDE', '#FDBE85', '#FD8D3C', '#E6550D', '#A63603'];
 
         // Step 2: Determine the range
         let minMaxValue = (function(){
@@ -75,7 +78,7 @@ cmv.geoCallBack = function (response){
 
             // pushes values into variables array
             for(let i = 0; i < response.features.length; i++){
-                let points = response.features[convertedVariable];
+                let points = response.features[i].properties[convertedVariable];
                 variablesArray.push(points);
             }
 
@@ -118,19 +121,22 @@ cmv.geoCallBack = function (response){
            let dataPoint =  response.features[i].properties[convertedVariable];
            let colorValue;
 
-           for(let j = 0; j < colors.length; j++){
-               if(dataPoint >= intervals[j].lower && dataPoint < intervals[j].upper)
+           for(let j = 0; j < colors.length; j++)
+               if (dataPoint >= intervals[j].lower && dataPoint < intervals[j].upper) {
                    colorValue = colors[j];
-               else
-                   colorValue = colors.length;
+                   break;
+               }else
+                   colorValue = colors[colors.length - 1];
 
-               variablesArray.push({value: dataPoint, color: colorValue});
-           }
+            variablesArray.push({value: dataPoint, color: colorValue});
         }
 
-        // clear active map drawing
+        if(cmv.debugger.debug) {
+            console.log(`geoCallBack: variablesArray:`); console.log(variablesArray);
+        }
+
+        // get active map
         let activeMap = document.getElementById('active_map_holder').value;
-        cmv.polygonMaps = [];
 
         // create a new map
         let map = new google.maps.Map(document.getElementById(`map${activeMap}`), {
@@ -145,30 +151,25 @@ cmv.geoCallBack = function (response){
         for(let tract = 0; tract < response.features.length; tract++){
             let coords = [];
             for (let j  = 0; j < response.features[tract].geometry.coordinates[0].length; j++)
-                if(cmv.polygonDetail(j))
+                if(cmv.map.polygonDetail(j))
                     coords.push({lat: response.features[tract].geometry.coordinates[0][j][1], lng: response.features[tract].geometry.coordinates[0][j][0]});
 
-            if(cmv.debug)
-                console.log(`geoCallBack: response.features.length: ${response.features.length}`);
 
             let mapOverlay = new google.maps.Polygon({
                 map: map,
                 paths: coords,
-                strokeOpacity: 0.75,
-                strokeWeight: 2,
+                strokeOpacity: 1.5,
+                strokeWeight: 1,
+                strokeColor: variablesArray[tract].color,
                 fillColor:  variablesArray[tract].color,
-                fillOpacity: 0.75
+                fillOpacity: .75
             });
 
-            // TEMPORARY: creating a new map on every call is inefficient, i did this to remove dependency from './active_map.js'
-            // todo: overhaul './active_map.js' to retain modular dependency
-            mapOverlay.setMap(map);
-
-            // todo: do checks to see if this 2D array works, and is properly pushing
-            cmv.polygonMaps.push(mapOverlay);
+            if(cmv.debugger.debug)
+                console.log(`geoCallBack: response.features.length: ${response.features.length}`);
         }
 
-    }else if(!cmv.geoRequestToggle && cmv.debug)
+    }else if(!cmv.geoRequestToggle && cmv.debugger.debug)
         console.log('geoCallBack: duplicate geo request callback');
 
     cmv.geoRequestToggle = false;
@@ -180,13 +181,13 @@ cmv.geoCallBack = function (response){
  * response: The JSON response from the City SDK
  */
 cmv.dataCallBack = function(response) {
-    if (cmv.apiRequestToggle && cmv.debug){
+    if (cmv.apiRequestToggle && cmv.debugger.debug){
         console.log('dataCallBack: invoked');
 
-    }else if(!cmv.apiRequestToggle && cmv.debug) {
+    }else if(!cmv.apiRequestToggle && cmv.debugger.debug) {
         console.log('dataCallBack: duplicate api request callback')
 
-    }else if(cmv.debug) {
+    }else if(cmv.debugger.debug) {
         console.log("dataCallBack: data callback did not get a valid response");
         return false;
     }
@@ -199,7 +200,7 @@ cmv.dataCallBack = function(response) {
  * SDK and obtain the data.
  */
  cmv.retrieveData = function(){
-    if(cmv.debug)
+    if(cmv.debugger.debug)
         console.log('retrieveData: invoked');
 
     cmv.geoRequestToggle = true;
@@ -214,12 +215,12 @@ cmv.dataCallBack = function(response) {
 
     // configure the census data request
     let request = {
-        level: cmv.level,
-        zip: cmv.zip,
-        api: cmv.api,
-        year: cmv.year,
-        state: cmv.state,
-        sublevel: cmv.sublevel,
+        level: cmv.map.level,
+        zip: cmv.map.zip,
+        api: cmv.map.api,
+        year: cmv.map.year,
+        state: cmv.map.state,
+        sublevel: cmv.map.sublevel,
     };
 
     // processes each checkbox and determines which boxes have been checked
@@ -238,14 +239,14 @@ cmv.dataCallBack = function(response) {
 
     cmv.userInput = request.variables[0];
 
-    if(cmv.debug) {
+    if(cmv.debugger.debug) {
         console.log(`retrieveData: request.variables: ${request.variables}`);
         console.log('retrieveData: request:'); console.log(request);
     }
 
     // This request is used to get geographical data
-    cmv.census.geoRequest(request, cmv.geoCallBack);
+     cmv.census.geoRequest(request, cmv.geoCallBack);
 
     // This request is used to get the data to correlate with the Geo location data
-    cmv.census.apiRequest(request, cmv.dataCallBack);
+     cmv.census.apiRequest(request, cmv.dataCallBack);
 };
