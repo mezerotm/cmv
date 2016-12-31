@@ -22,7 +22,7 @@
 				<input id="search_bar" type="search" placeholder="Search">
 
 
-				<button name="submit" id="submit" onclick="retrieveData()">Submit</button>
+				<button name="submit" id="submit" onclick="cmv.retrieveData()">Submit</button>
 				<h4 id="map-views-title"> Views </h4>
 				<select id="map-views" onchange="updateMapViews()" title="map-views">
 					<option value="1">1</option>
@@ -256,8 +256,6 @@
 
 		<!-- 2.2.4 jquery -->
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
-		<!-- google api -->
-		<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
 		<!-- google maps api -->
  		<script src="https://maps.google.com/maps/api/js?key=AIzaSyAhgSIK7GcSzuKZ8acLE2oOeGCY52C-7qw"></script>
 		<!-- citysdk api -->
@@ -266,13 +264,15 @@
 		<script src="citysdk/dist/js/core/citysdk.js"></script>
 		<script src="citysdk/dist/js/modules/citysdk.census.js"></script>
 		<!-- custom javascript -->
-		<script src="js/censusVariablesMap.js"></script>
+		<script src="js/census-init.js"></script>
+        <script src="js/documentation.js"></script>
+
 		<script src="js/initMaps.js"></script>
     	<script src="js/map_views.js"></script>
 		<script src="js/topbar.js"></script>
     	<script src="js/active_map.js"></script>
-		<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
 		<script src="js/widgetbar.js"></script>
-		<script src="js/api.js"></script>
+
+		<script src="js/main.js"></script>
 	</body>
 </html>
