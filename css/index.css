@@ -47,18 +47,18 @@ html, body {
 }
 
 /* side widget bar css rules */
-.widgetbar-tabscontrols {
+.sidebar-tabscontrols {
   position: absolute;
   width: 100%;
   bottom: 0;
 }
-.widgetbar-tabscontrols .widgetbar-settings-control-button, .widgetbar-tabscontrols .widgetbar-help-button {
+.sidebar-tabscontrols .sidebar-settings-control-button, .sidebar-tabscontrols .sidebar-help-button {
   margin: 5px auto;
   width: 30px;
   height: 30px;
   cursor: pointer;
 }
-.widgetbar-tabs {
+.sidebar-tabs {
   position: absolute;
   height: 100%;
   width: 45px;
@@ -67,38 +67,38 @@ html, body {
 	border-left: solid #c9caca 1px;
   background: #f1f3f6;
 }
-.widgetbar-tab:hover:not(#placeholder) {
+.sidebar-tab:hover:not(#placeholder) {
   background: #fff;
 }
-.widgetbar-tab {
+.sidebar-tab {
   cursor: pointer;
   position: relative;
   border-bottom: solid #c9caca 1px;
   background: #f1f3f6;
   padding: 8px 0;
 }
-.widgetbar-tab#placeholder {
+.sidebar-tab#placeholder {
 	cursor: default;
 	padding: 7px 0;
 }
-.widgetbar-iconplace {
+.sidebar-iconplace {
   display: block;
   position: relative;
   margin: 1px;
   padding: 6px 0;
 }
-.widgetbar-icon {
+.sidebar-icon {
   display: block;
   margin: 0 auto;
   width: 25px;
   height: 25px;
 }
-.widgetbar-page {
+.sidebar-page {
 	position: absolute;
 	display: none;
 	background-color: white;
 }
-.widgetbar-page.active {
+.sidebar-page.active {
 	top: 0;
 	display: block;
 	right: 45px;
@@ -121,10 +121,10 @@ html, body {
 	padding-top: 10px;
 	font-size: 1.1em;
 }
-.grey_box {
+.grey-box {
 	background-color: #f1f3f6;
 }
-.widgetbar-description {
+.sidebar-description {
 	border-top: 1px solid #c9caca;
     position: absolute;
     top: 50%;
@@ -149,7 +149,7 @@ html, body {
 #top-panel h1, h2, h3, h4, h5, h6, p { /* inspect this selection more closely */
 	cursor: default;
 }
-#top-panel #search_bar {
+#top-panel #search-bar {
 	margin: 4px 1px 0 5px;
 	float: left;
 }
@@ -187,12 +187,12 @@ html, body {
 /* /top panel css rules */
 
 /* Google Maps css rules */
-#Maps_container {
+#map-container {
 	margin: 29px 50px 0 0;
 	width: calc(100% - 50px);
 	height: 100%;
 }
-.shadow {
+.map-container {
 	height: 50%;
 	width: 50%;
 }
