@@ -12,7 +12,6 @@
       <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/js/display.sidebar.js" />
       <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/js/display.topbar.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/css/index.css" afterPath="$PROJECT_DIR$/css/index.css" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/index.html" afterPath="$PROJECT_DIR$/index.html" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
@@ -356,7 +355,7 @@
       <option name="presentableId" value="Default" />
       <updated>1483149500571</updated>
       <workItem from="1483149502246" duration="16776000" />
-      <workItem from="1483205211979" duration="26934000" />
+      <workItem from="1483205211979" duration="27235000" />
     </task>
     <task id="LOCAL-00001" summary="changed the name of index-overhaul to index&#10;Added additional external scripts imports for: 'census-init.js', 'documentation.js'">
       <created>1483175183785</created>
@@ -400,11 +399,25 @@
       <option name="project" value="LOCAL" />
       <updated>1483250120367</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="can't seem to delete this...">
+      <created>1483250348244</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1483250348244</updated>
+    </task>
+    <task id="LOCAL-00008" summary="fixed styling ( like syntax styling ) &#10;https://goo.gl/DhNSnw">
+      <created>1483250421293</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1483250421293</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="43735000" />
+    <option name="totallyTimeSpent" value="44036000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1066" extended-state="6" />
@@ -444,7 +457,9 @@
     <MESSAGE value="Created census.init.js&#10;declares and all needed global variables and modules that are used throughout the project" />
     <MESSAGE value="removed all dependencies from non js-overhaul code" />
     <MESSAGE value="Added module chart, and moved all doc related comments into this file" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added module chart, and moved all doc related comments into this file" />
+    <MESSAGE value="can't seem to delete this..." />
+    <MESSAGE value="fixed styling ( like syntax styling ) &#10;https://goo.gl/DhNSnw" />
+    <option name="LAST_COMMIT_MESSAGE" value="fixed styling ( like syntax styling ) &#10;https://goo.gl/DhNSnw" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
