@@ -65,5 +65,6 @@ if(cmv.debugger.documentation){
  geoloaction (https://goo.gl/k0jdcw)
  controls (https://goo.gl/l39fb)
  map type (https://goo.gl/lEkZX)
+ map styles (https://goo.gl/RXXb2) also see './display.map.styles.js'
 
  */
