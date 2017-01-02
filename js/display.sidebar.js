@@ -3,6 +3,14 @@
  *
  */
 
+cmv.display.sidebar = function(self){
+
+};
+
+let sidebarToggle = function(){
+	console.log(this);
+};
+
 
 // Description: Checks current `sidebar_tab` for `active` flags and toggles that flag
 // function toggleWidget(block, sidebar_tab){
