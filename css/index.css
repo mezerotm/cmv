@@ -142,18 +142,19 @@ html, body, .container {
 
 /* sidepage css rules */
 .sidepage.inactive {
-	position: absolute;
 	display: none;
-	background-color: white;
 }
 
 .sidepage.active {
-	top: 0;
-	display: block;
-	right: 45px;
+	border-left: 1px solid #C9CACA;
+	position: absolute;
+	top: 28px;
+	right: 47px;
+	width: 245px;
+	background: white;
+	word-wrap: break-word;
+	padding: 3px;
 	height: 100%;
-	width: 210px;
-	border: 1px solid #C9CACA;
 }
 
 .sidepage-description {
