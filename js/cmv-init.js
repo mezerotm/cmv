@@ -17,5 +17,5 @@ cmv.debugger = {};
 
 cmv.display = {};
 cmv.display.topbar = {};
-cmv.display.sidebar = {};
-cmv.display.maps = []; // see './js/display.maps.js' for additional information
+cmv.display.sidebars = [];
+cmv.display.maps = []; // see './js/display.map.js' for additional information
