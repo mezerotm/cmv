@@ -8,22 +8,26 @@
  */
 
 /*
-A list of all possible CMV modules, in order of dependency
+ A list of all possible CMV modules, in order of dependency
 
-CMV
-|- documentation
-|- display
-|    |- topbar
-|    |- sidebar
-|    |- maps
-|- cmv
-*/
+ CMV : cmv-init     - defines all the need global variables and modules
+ |- documentation
+ |- display         - all display related modules, things that effect the look
+ |    | map         - contains a map constructor witch creates map objects, and also contains functions related to these objects
+ |    |    \- styles - google map custom styles
+ |    |- maps       - an array witch contains map objects
+ |    |- topbar
+ |    \- sidebar
+ |- cmv             - contains all census data callbacks and interactions
+ */
 
 /*
-Census Module Developer Documentation - (https://goo.gl/Wg20Wz)
-How to Use the Census Module # requestingVariables - (https://goo.gl/CHdOWp)
-A list of all available APIs to choose from - (https://goo.gl/ErNc5l)
-*/
+ Census Module Developer Documentation - (https://goo.gl/Wg20Wz)
+ How to Use the Census Module # requestingVariables - (https://goo.gl/CHdOWp)
+ A list of all available APIs to choose from - (https://goo.gl/ErNc5l)
+ ArcGIS geoCoding (https://goo.gl/IaQ3qR)
+ Ersi Terraformer (https://goo.gl/oYbVNJ)
+ */
 
 // flag for debug output
 cmv.debugger.debug = true;
@@ -43,20 +47,23 @@ if(cmv.debugger.documentation){
 }
 
 /*
-"Please note, that the "place" level currently only supports incorporated places." - (https://goo.gl/CHdOWp)
-Please see './documentation.js' for additional information
+ "Please note, that the "place" level currently only supports incorporated places." - (https://goo.gl/CHdOWp)
+ Please see './documentation.js' for additional information
 
-'blockGroup', 'tract', 'county', 'state', 'us', 'place'
-atlanta: 30303, duluth: 30096, Lawrenceville: 30043 - (https://goo.gl/IJGxoJ)
-acs5: 5yr 09-15 - (https://goo.gl/1tBXON)
-*/
+ 'blockGroup', 'tract', 'county', 'state', 'us', 'place'
+ atlanta: 30303, duluth: 30096, Lawrenceville: 30043 - (https://goo.gl/IJGxoJ)
+ acs5: 5yr 09-15 - (https://goo.gl/1tBXON)
+ */
 
 
 
 /*
---- Google Maps API ---
-(https://goo.gl/vRl6Gi)
+ --- Google Maps API ---
+ (https://goo.gl/vRl6Gi)
 
-examples/polygon-simple (https://goo.gl/4famC3)
-geoloaction (https://goo.gl/k0jdcw)
-*/
+ examples/polygon-simple (https://goo.gl/4famC3)
+ geoloaction (https://goo.gl/k0jdcw)
+ controls (https://goo.gl/l39fb)
+ map type (https://goo.gl/lEkZX)
+
+ */
