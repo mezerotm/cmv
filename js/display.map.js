@@ -9,7 +9,7 @@
  * This is a constructor for creating map objects
  * Creation of this object looks like
  *
- * cmv.maps[0] = new cmv.map(0);
+ * cmv.display.maps[0] = new cmv.display.map(0);
  */
 cmv.display.map = function(idNumber){
 	this.id = document.getElementById(`map${idNumber}`);
