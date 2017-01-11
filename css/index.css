@@ -1,4 +1,5 @@
 @import url(https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,900);
+
 h1, h2, h3, h4, h5, h6, p {
 	font-family: 'Source Sans Pro', sans-serif;
 	font-weight: 400;
@@ -7,105 +8,114 @@ h1, h2, h3, h4, h5, h6, p {
 
 .no-select {
 	-webkit-touch-callout: none; /* iOS Safari */
-    -webkit-user-select: none;   /* Chrome/Safari/Opera */
-    -khtml-user-select: none;    /* Konqueror */
-    -moz-user-select: none;      /* Firefox */
-    -ms-user-select: none;       /* Internet Explorer/Edge */
+	-webkit-user-select: none; /* Chrome/Safari/Opera */
+	-khtml-user-select: none; /* Konqueror */
+	-moz-user-select: none; /* Firefox */
+	-ms-user-select: none; /* Internet Explorer/Edge */
 	-o-user-select: none;
 	user-select: none;
 }
+
+.no-drag {
+	user-drag: none;
+	user-select: none;
+	-moz-user-select: none;
+	-webkit-user-drag: none;
+	-webkit-user-select: none;
+	-ms-user-select: none;
+}
+
+.no-display {
+	display: none;
+}
+
 .normal-style-text {
 	font-weight: 400;
 }
+
 .bold-style-text {
 	font-weight: 900;
 }
+
 /* unvisited link */
 a:link {
-  color: #D9DFEB;
+	color: #D9DFEB;
 	text-decoration: none;
 }
+
 /* visited link */
 a:visited {
-  color: #D9DFEB;
+	color: #D9DFEB;
 	text-decoration: none;
 }
+
 /* mouse over link */
 a:hover {
-  color: #ABB4C7;
+	color: #ABB4C7;
 	text-decoration: none;
 }
+
 /* selected link */
 a:active {
-  color: #D9DFEB;
+	color: #D9DFEB;
 	text-decoration: none;
 }
-html, body {
-  overflow: hidden;
+
+html, body, .container {
+	overflow: hidden;
 	margin: 0;
 	height: 100%;
 }
 
-/* side widget bar css rules */
-.widgetbar-tabscontrols {
-  position: absolute;
-  width: 100%;
-  bottom: 0;
+/* sidebar css rules */
+.sidebar-controls {
+	position: absolute;
+	width: 100%;
+	bottom: 0;
 }
-.widgetbar-tabscontrols .widgetbar-settings-control-button, .widgetbar-tabscontrols .widgetbar-help-button {
-  margin: 5px auto;
-  width: 30px;
-  height: 30px;
-  cursor: pointer;
+
+#sidebar-control-settings, #sidebar-control-help {
+	margin: 5px auto;
+	width: 30px;
+	height: 30px;
+	cursor: pointer;
 }
-.widgetbar-tabs {
-  position: absolute;
-  height: 100%;
-  width: 45px;
-  right: 0;
-  top: 0;
-	border-left: solid #c9caca 1px;
-  background: #f1f3f6;
+
+.sidebar {
+	position: absolute;
+	height: 100%;
+	width: 45px;
+	right: 0;
+	top: 0;
+	border-left: solid #C9CACA 1px;
+	background: #F1F3F6;
 }
-.widgetbar-tab:hover:not(#placeholder) {
-  background: #fff;
+
+.sidebar-tab:hover:not(#placeholder) {
+	background: #FFF;
 }
-.widgetbar-tab {
-  cursor: pointer;
-  position: relative;
-  border-bottom: solid #c9caca 1px;
-  background: #f1f3f6;
-  padding: 8px 0;
+
+.sidebar-tab {
+	cursor: pointer;
+	position: relative;
+	border-bottom: solid #C9CACA 1px;
+	background: #F1F3F6;
+	padding: 8px 0;
 }
-.widgetbar-tab#placeholder {
+
+#placeholder {
 	cursor: default;
 	padding: 7px 0;
 }
-.widgetbar-iconplace {
-  display: block;
-  position: relative;
-  margin: 1px;
-  padding: 6px 0;
-}
-.widgetbar-icon {
-  display: block;
-  margin: 0 auto;
-  width: 25px;
-  height: 25px;
-}
-.widgetbar-page {
-	position: absolute;
-	display: none;
-	background-color: white;
-}
-.widgetbar-page.active {
-	top: 0;
+
+.sidebar-icon {
 	display: block;
-	right: 45px;
-	height: 100%;
-	width: 210px;
-    border: 1px solid #c9caca;
+	margin: 0 auto;
+	width: 25px;
+	height: 25px;
+	padding: 6px 0;
 }
+
 #side-panel {
 	right: 0;
 	margin-top: 0;
@@ -113,99 +123,133 @@ html, body {
 	height: 500px;
 	top: 28px;
 }
+
 .checkbox-content {
 	height: 50%;
 	overflow-y: auto;
 }
+
 .checkbox {
 	padding-top: 10px;
 	font-size: 1.1em;
 }
-.grey_box {
-	background-color: #f1f3f6;
+
+.grey-box {
+	background-color: #F1F3F6;
 }
-.widgetbar-description {
-	border-top: 1px solid #c9caca;
-    position: absolute;
-    top: 50%;
-    width: 205px;
-    word-wrap: break-word;
-    padding: 3px;
-    background: white;
-    height: 50%;
+
+/* /sidebar rules */
+
+/* sidepage css rules */
+.sidepage.inactive {
+	display: none;
 }
-/* /side widget bar rules */
+
+.sidepage.active {
+	border-left: 1px solid #C9CACA;
+	position: absolute;
+	top: 28px;
+	right: 47px;
+	width: 245px;
+	background: white;
+	word-wrap: break-word;
+	padding: 3px;
+	height: 100%;
+}
+
+.sidepage-description {
+	border-top: 1px solid #C9CACA;
+	position: absolute;
+	top: 50%;
+	width: 205px;
+	word-wrap: break-word;
+	padding: 3px;
+	background: white;
+	height: 50%;
+}
+
+/* /sidepage bar rules */
 
 /* top panel css rules */
 #top-panel {
 	position: absolute;
-  height: 28px;
+	height: 28px;
 	width: calc(100% - 46px);
 	min-width: 555px;
-  background: #f1f3f6;
+	background: #F1F3F6;
 	cursor: default;
-	border-bottom: solid #c9caca 1px;
+	border-bottom: solid #C9CACA 1px;
+	z-index: 1;
 }
+
 #top-panel h1, h2, h3, h4, h5, h6, p { /* inspect this selection more closely */
 	cursor: default;
 }
-#top-panel #search_bar {
+
+#search-bar {
 	margin: 4px 1px 0 5px;
 	float: left;
 }
-#top-panel #date {
+
+#date {
 	float: right;
 	cursor: pointer;
 	padding: 4px 10px;
-	border-right: solid #c9caca 1px;
-	border-left: solid #c9caca 1px;
+	border-right: solid #C9CACA 1px;
+	border-left: solid #C9CACA 1px;
 }
-#top-panel #date:hover  {
-	background: #fff;
-	border-bottom: solid #c9caca 1px;
+
+#date:hover {
+	background: #FFF;
+	border-bottom: solid #C9CACA 1px;
 }
-#top-panel #map-views-title {
+
+#mapviews-title {
 	margin: 4px 10px 0 5px;
 	float: right;
 	padding-left: 10px;
 }
-#top-panel #map-views {
+
+#mapviews {
 	margin: 5px 5px 0 5px;
 	float: right;
 }
-#top-panel #submit {
+
+#submit {
 	margin: 4px 5px 0 0;
 	float: left;
 }
+
 #progress-bar { /* increase width to increase progress */
 	position: absolute;
 	width: 0;
-  height: 1px;
-	z-index: 1;
- 	background: black;
+	max-width: 100%;
+	top: 29px;
+	height: 1px;
+	z-index: 2;
+	background: black;
 }
+
 /* /top panel css rules */
 
 /* Google Maps css rules */
-#Maps_container {
-	margin: 29px 50px 0 0;
-	width: calc(100% - 50px);
-	height: 100%;
+#map-container {
+	margin: 28px 0 0 0;
+	width: calc(100% - 45px);
+	height: calc(197% - 28px);
 }
-.shadow {
-	height: 50%;
-	width: 50%;
-}
+
 .map {
 	height: 100%;
 	width: 100%;
 }
+
 /* /Google Maps css rules */
 
 @-moz-document url-prefix() { /* firefox specific css rules */
-	#top-panel #date:hover  {
-		background: #fff;
-		border-bottom: solid #c9caca 1px;
+	#date:hover {
+		background: #FFF;
+		border-bottom: solid #C9CACA 1px;
 		padding: 4px 10px; /* still having issues on linux OS, works fine on Windows */
 	}
 }
