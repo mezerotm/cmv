@@ -74,6 +74,23 @@ html, body, .container {
 	bottom: 0;
 }
 
+#canvas-control-help {
+	position: absolute;
+	left: 50%;
+	top: 15%;
+	height: 100%;
+}
+
+#canvas-control-help-center {
+	background: #FFF;
+	position: relative;
+	left: -50%;
+	height: 65%;
+	overflow: auto;
+	padding: 20px;
+	border-radius: 5px;
+}
+
 #sidebar-control-settings, #sidebar-control-help {
 	margin: 5px auto;
 	width: 30px;

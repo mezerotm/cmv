@@ -3,9 +3,9 @@
   <component name="BookmarkManager">
     <bookmark url="file://$PROJECT_DIR$/js/cmv.js" line="118" />
     <bookmark url="file://$PROJECT_DIR$/css/index.css" line="69" />
-    <bookmark url="file://$PROJECT_DIR$/css/index.css" line="171" />
-    <bookmark url="file://$PROJECT_DIR$/css/index.css" line="233" />
-    <bookmark url="file://$PROJECT_DIR$/css/index.css" line="245" />
+    <bookmark url="file://$PROJECT_DIR$/css/index.css" line="188" />
+    <bookmark url="file://$PROJECT_DIR$/css/index.css" line="250" />
+    <bookmark url="file://$PROJECT_DIR$/css/index.css" line="262" />
     <bookmark url="file://$PROJECT_DIR$/js/documentation.js" line="10" />
     <bookmark url="file://$PROJECT_DIR$/js/documentation.js" line="35" />
     <bookmark url="file://$PROJECT_DIR$/js/documentation.js" line="60" />
@@ -14,32 +14,38 @@
     <bookmark url="file://$PROJECT_DIR$/js/display.map.js" line="74" />
     <bookmark url="file://$PROJECT_DIR$/index.html" line="39" />
     <bookmark url="file://$PROJECT_DIR$/index.html" line="18" />
-    <bookmark url="file://$PROJECT_DIR$/index.html" line="123" />
-    <bookmark url="file://$PROJECT_DIR$/index.html" line="136" />
-    <bookmark url="file://$PROJECT_DIR$/index.html" line="154" />
-    <bookmark url="file://$PROJECT_DIR$/index.html" line="175" />
-    <bookmark url="file://$PROJECT_DIR$/index.html" line="190" />
+    <bookmark url="file://$PROJECT_DIR$/index.html" line="201" />
     <bookmark url="file://$PROJECT_DIR$/index.html" line="214" />
-    <bookmark url="file://$PROJECT_DIR$/css/index.css" line="142" />
-    <bookmark url="file://$PROJECT_DIR$/index.html" line="65" />
-    <bookmark url="file://$PROJECT_DIR$/index.html" line="71" />
-    <bookmark url="file://$PROJECT_DIR$/index.html" line="77" />
-    <bookmark url="file://$PROJECT_DIR$/index.html" line="83" />
-    <bookmark url="file://$PROJECT_DIR$/index.html" line="89" />
-    <bookmark url="file://$PROJECT_DIR$/index.html" line="95" />
-    <bookmark url="file://$PROJECT_DIR$/index.html" line="101" />
-    <bookmark url="file://$PROJECT_DIR$/index.html" line="107" />
-    <bookmark url="file://$PROJECT_DIR$/index.html" line="110" />
-    <bookmark url="file://$PROJECT_DIR$/index.html" line="61" />
+    <bookmark url="file://$PROJECT_DIR$/index.html" line="232" />
+    <bookmark url="file://$PROJECT_DIR$/index.html" line="253" />
+    <bookmark url="file://$PROJECT_DIR$/index.html" line="268" />
+    <bookmark url="file://$PROJECT_DIR$/index.html" line="292" />
+    <bookmark url="file://$PROJECT_DIR$/css/index.css" line="159" />
+    <bookmark url="file://$PROJECT_DIR$/index.html" line="143" />
+    <bookmark url="file://$PROJECT_DIR$/index.html" line="149" />
+    <bookmark url="file://$PROJECT_DIR$/index.html" line="155" />
+    <bookmark url="file://$PROJECT_DIR$/index.html" line="161" />
+    <bookmark url="file://$PROJECT_DIR$/index.html" line="167" />
+    <bookmark url="file://$PROJECT_DIR$/index.html" line="173" />
+    <bookmark url="file://$PROJECT_DIR$/index.html" line="179" />
+    <bookmark url="file://$PROJECT_DIR$/index.html" line="185" />
+    <bookmark url="file://$PROJECT_DIR$/index.html" line="188" />
+    <bookmark url="file://$PROJECT_DIR$/index.html" line="139" />
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6050e70e-b326-41b7-9644-96f749552615" name="Default" comment="Added js-overhaul specific index for easier debugging">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/css/index.css" afterPath="$PROJECT_DIR$/css/index.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/index.html" afterPath="$PROJECT_DIR$/index.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/cmv-init.js" afterPath="$PROJECT_DIR$/js/cmv-init.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/display.map.js" afterPath="$PROJECT_DIR$/js/display.map.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/display.sidebar.js" afterPath="$PROJECT_DIR$/js/display.sidebar.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/display.topbar.js" afterPath="$PROJECT_DIR$/js/display.topbar.js" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
     <ignored path="$PROJECT_DIR$/tmp/" />
+    <ignored path="C:\Users\Carlos\Google Drive\Documents\Technology\Programming\Web Development\CensusMapVisualization\.idea\shelf/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -56,26 +62,14 @@
     <favorites_list name="CMV" />
   </component>
   <component name="FileEditorManager">
-    <splitter split-orientation="horizontal" split-proportion="0.54373026">
+    <splitter split-orientation="horizontal" split-proportion="0.48470306">
       <split-first>
         <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-          <file leaf-file-name="documentation.js" pinned="false" current-in-tab="true">
-            <entry file="file://$PROJECT_DIR$/js/documentation.js">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="729">
-                  <caret line="67" column="28" lean-forward="false" selection-start-line="67" selection-start-column="28" selection-end-line="67" selection-end-column="28" />
-                  <folding>
-                    <element signature="n#!!doc" expanded="true" />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="index.html" pinned="false" current-in-tab="false">
+          <file leaf-file-name="index.html" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/index.html">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="396">
-                  <caret line="22" column="86" lean-forward="false" selection-start-line="22" selection-start-column="86" selection-end-line="22" selection-end-column="86" />
+                <state relative-caret-position="387">
+                  <caret line="28" column="32" lean-forward="false" selection-start-line="28" selection-start-column="24" selection-end-line="28" selection-end-column="32" />
                   <folding />
                 </state>
               </provider>
@@ -84,24 +78,36 @@
         </leaf>
       </split-first>
       <split-second>
-        <splitter split-orientation="vertical" split-proportion="0.64737403">
+        <splitter split-orientation="vertical" split-proportion="0.7352626">
           <split-first>
             <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-              <file leaf-file-name="display.topbar.js" pinned="false" current-in-tab="true">
+              <file leaf-file-name="display.topbar.js" pinned="false" current-in-tab="false">
                 <entry file="file://$PROJECT_DIR$/js/display.topbar.js">
                   <provider selected="true" editor-type-id="text-editor">
-                    <state relative-caret-position="305">
-                      <caret line="53" column="0" lean-forward="false" selection-start-line="53" selection-start-column="0" selection-end-line="53" selection-end-column="0" />
+                    <state relative-caret-position="78">
+                      <caret line="49" column="79" lean-forward="false" selection-start-line="49" selection-start-column="79" selection-end-line="49" selection-end-column="79" />
                       <folding />
                     </state>
                   </provider>
                 </entry>
               </file>
-              <file leaf-file-name="display.sidebar.js" pinned="false" current-in-tab="false">
+              <file leaf-file-name="display.map.js" pinned="false" current-in-tab="false">
+                <entry file="file://$PROJECT_DIR$/js/display.map.js">
+                  <provider selected="true" editor-type-id="text-editor">
+                    <state relative-caret-position="366">
+                      <caret line="94" column="24" lean-forward="false" selection-start-line="94" selection-start-column="24" selection-end-line="94" selection-end-column="24" />
+                      <folding>
+                        <element signature="n#!!doc" expanded="true" />
+                      </folding>
+                    </state>
+                  </provider>
+                </entry>
+              </file>
+              <file leaf-file-name="display.sidebar.js" pinned="false" current-in-tab="true">
                 <entry file="file://$PROJECT_DIR$/js/display.sidebar.js">
                   <provider selected="true" editor-type-id="text-editor">
-                    <state relative-caret-position="450">
-                      <caret line="28" column="2" lean-forward="false" selection-start-line="28" selection-start-column="2" selection-end-line="28" selection-end-column="2" />
+                    <state relative-caret-position="524">
+                      <caret line="36" column="2" lean-forward="true" selection-start-line="36" selection-start-column="2" selection-end-line="36" selection-end-column="2" />
                       <folding />
                     </state>
                   </provider>
@@ -114,8 +120,8 @@
               <file leaf-file-name="index.css" pinned="false" current-in-tab="true">
                 <entry file="file://$PROJECT_DIR$/css/index.css">
                   <provider selected="true" editor-type-id="text-editor">
-                    <state relative-caret-position="18">
-                      <caret line="211" column="0" lean-forward="false" selection-start-line="211" selection-start-column="0" selection-end-line="211" selection-end-column="0" />
+                    <state relative-caret-position="210">
+                      <caret line="84" column="21" lean-forward="true" selection-start-line="84" selection-start-column="21" selection-end-line="84" selection-end-column="21" />
                       <folding />
                     </state>
                   </provider>
@@ -136,10 +142,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>request</find>
-      <find>geoRequestToggle</find>
-      <find>apiRequestToggle</find>
-      <find>cmv.display.</find>
       <find>decription-content</find>
       <find>toggleWidget</find>
       <find>sidebar-tabcontent</find>
@@ -166,6 +168,10 @@
       <find>summaryRequest</find>
       <find>mapRequestASync</find>
       <find>map-container</find>
+      <find>jqu</find>
+      <find>help</find>
+      <find>disableMaps</find>
+      <find>toggleDrag</find>
     </findStrings>
     <replaceStrings>
       <replace>cmv.debugger.basicDebug</replace>
@@ -193,6 +199,7 @@
       <replace>sidepage</replace>
       <replace />
       <replace>sidebar-icon no-drag</replace>
+      <replace>disableMap</replace>
     </replaceStrings>
   </component>
   <component name="Git.Settings">
@@ -213,15 +220,17 @@
         <option value="$PROJECT_DIR$/js/initMaps.js" />
         <option value="/" />
         <option value="$PROJECT_DIR$/js/display.maps.js" />
-        <option value="$PROJECT_DIR$/js/cmv-init.js" />
         <option value="$PROJECT_DIR$/js/display.map.styles.js" />
-        <option value="$PROJECT_DIR$/js/display.map.js" />
-        <option value="$PROJECT_DIR$/css/index.css" />
-        <option value="$PROJECT_DIR$/js/display.topbar.js" />
         <option value="$PROJECT_DIR$/js/cmv.js" />
         <option value="$PROJECT_DIR$/js/documentation.js" />
+        <option value="$PROJECT_DIR$/js/cmv-init.js" />
+        <option value="$PROJECT_DIR$/js/cmv.display.help.js" />
+        <option value="$PROJECT_DIR$/js/display.help.js" />
+        <option value="$PROJECT_DIR$/css/index.css" />
         <option value="$PROJECT_DIR$/index.html" />
         <option value="$PROJECT_DIR$/js/display.sidebar.js" />
+        <option value="$PROJECT_DIR$/js/display.topbar.js" />
+        <option value="$PROJECT_DIR$/js/display.map.js" />
       </list>
     </option>
   </component>
@@ -232,10 +241,9 @@
     <sorting>DEFINITION_ORDER</sorting>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="-8" />
-    <option name="y" value="-8" />
-    <option name="width" value="1936" />
-    <option name="height" value="1066" />
+    <option name="x" value="-7" />
+    <option name="width" value="1425" />
+    <option name="height" value="1057" />
   </component>
   <component name="ProjectView">
     <navigator currentView="ProjectPane" proportions="" version="1">
@@ -266,6 +274,7 @@
           </PATH>
         </subPane>
       </pane>
+      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -308,7 +317,6 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -416,6 +424,7 @@
       <workItem from="1483561027692" duration="743000" />
       <workItem from="1483570679553" duration="74000" />
       <workItem from="1483570888040" duration="111000" />
+      <workItem from="1484593637324" duration="10348000" />
     </task>
     <task id="LOCAL-00001" summary="changed the name of index-overhaul to index&#10;Added additional external scripts imports for: 'census-init.js', 'documentation.js'">
       <created>1483175183785</created>
@@ -603,7 +612,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="77300000" />
+    <option name="totallyTimeSpent" value="87648000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -615,12 +624,13 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1936" height="1066" extended-state="6" />
+    <frame x="-7" y="0" width="1425" height="1057" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.12170706" sideWeight="0.6505895" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.16510454" sideWeight="0.6505895" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3279743" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2636656" sideWeight="0.5073762" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32683983" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32368702" sideWeight="0.49209693" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.13751318" sideWeight="0.5781022" order="1" side_tool="false" content_ui="tabs" />
@@ -634,7 +644,6 @@
       <window_info id="npm" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.12170706" sideWeight="0.5063492" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="TypeScript" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32900432" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32690248" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
@@ -701,13 +710,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/package.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/terraformer/terraformer-1.0.5.min.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="298">
@@ -855,13 +857,13 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/citysdk/showcase/css/bootstrap.css.map">
-      <provider editor-type-id="sourcemapFileViewerProvider">
-        <state />
-      </provider>
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="190">
           <caret line="0" column="56804" lean-forward="false" selection-start-line="0" selection-start-column="56804" selection-end-line="0" selection-end-column="56804" />
         </state>
+      </provider>
+      <provider editor-type-id="sourcemapFileViewerProvider">
+        <state />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/citysdk/showcase/css/bootstrap.min.css">
@@ -872,13 +874,13 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/citysdk/showcase/css/bootstrap-theme.css.map">
-      <provider editor-type-id="sourcemapFileViewerProvider">
-        <state />
-      </provider>
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="190">
           <caret line="0" column="4540" lean-forward="false" selection-start-line="0" selection-start-column="4540" selection-end-line="0" selection-end-column="4540" />
         </state>
+      </provider>
+      <provider editor-type-id="sourcemapFileViewerProvider">
+        <state />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/citysdk/showcase/css/bootstrap-theme.css">
@@ -934,13 +936,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/js/display.map.styles.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="10" column="28" lean-forward="true" selection-start-line="10" selection-start-column="28" selection-end-line="10" selection-end-column="28" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/citysdk/dist/js/modules/citysdk.census.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="292">
@@ -948,69 +943,88 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/js/display.map.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="522">
-          <caret line="32" column="33" lean-forward="true" selection-start-line="32" selection-start-column="33" selection-end-line="32" selection-end-column="33" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/js/cmv-init.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="234">
-          <caret line="21" column="0" lean-forward="false" selection-start-line="21" selection-start-column="0" selection-end-line="21" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/js/topbar.js" />
     <entry file="file://$PROJECT_DIR$/js/api-overhaul.js" />
     <entry file="file://$PROJECT_DIR$/js/documentation.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="729">
-          <caret line="67" column="28" lean-forward="false" selection-start-line="67" selection-start-column="28" selection-end-line="67" selection-end-column="28" />
-          <folding>
-            <element signature="n#!!doc" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="396">
-          <caret line="22" column="86" lean-forward="false" selection-start-line="22" selection-start-column="86" selection-end-line="22" selection-end-column="86" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/css/index.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="18">
-          <caret line="211" column="0" lean-forward="false" selection-start-line="211" selection-start-column="0" selection-end-line="211" selection-end-column="0" />
+        <state relative-caret-position="99">
+          <caret line="32" column="26" lean-forward="true" selection-start-line="32" selection-start-column="26" selection-end-line="32" selection-end-column="26" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/js/cmv.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="491">
+        <state relative-caret-position="2574">
           <caret line="158" column="42" lean-forward="false" selection-start-line="158" selection-start-column="42" selection-end-line="158" selection-end-column="42" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/js/display.sidebar.js">
+    <entry file="file://$PROJECT_DIR$/js/display.map.styles.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="450">
-          <caret line="28" column="2" lean-forward="false" selection-start-line="28" selection-start-column="2" selection-end-line="28" selection-end-column="2" />
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/display.help.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="126">
+          <caret line="7" column="10" lean-forward="true" selection-start-line="7" selection-start-column="10" selection-end-line="7" selection-end-column="10" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/css/index.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="210">
+          <caret line="84" column="21" lean-forward="true" selection-start-line="84" selection-start-column="21" selection-end-line="84" selection-end-column="21" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/cmv-init.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="324">
+          <caret line="18" column="22" lean-forward="false" selection-start-line="18" selection-start-column="22" selection-end-line="18" selection-end-column="22" />
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/js/display.topbar.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="305">
-          <caret line="53" column="0" lean-forward="false" selection-start-line="53" selection-start-column="0" selection-end-line="53" selection-end-column="0" />
+        <state relative-caret-position="78">
+          <caret line="49" column="79" lean-forward="false" selection-start-line="49" selection-start-column="79" selection-end-line="49" selection-end-column="79" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="387">
+          <caret line="28" column="32" lean-forward="false" selection-start-line="28" selection-start-column="24" selection-end-line="28" selection-end-column="32" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/display.map.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="366">
+          <caret line="94" column="24" lean-forward="false" selection-start-line="94" selection-start-column="24" selection-end-line="94" selection-end-column="24" />
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/display.sidebar.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="524">
+          <caret line="36" column="2" lean-forward="true" selection-start-line="36" selection-start-column="2" selection-end-line="36" selection-end-column="2" />
           <folding />
         </state>
       </provider>

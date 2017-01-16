@@ -85,7 +85,21 @@ cmv.display.map.getActiveMap = function(){
 			return cmv.display.maps[i];
 };
 
+// disable all maps
+cmv.display.map.disableMap = function(){
+	let toggle = cmv.display.map.disableMap.toggle;
 
+	for(let i = 0; i < cmv.display.maps.length; i++)
+		cmv.display.maps[i].googleMap.setOptions({draggable: toggle});
 
+	// disable #mapviews
+	$("#mapviews").prop("disabled", !toggle);
+
+	// toggle drag
+	cmv.display.map.disableMap.toggle = !cmv.display.map.disableMap.toggle;
+};
+
+// static variable within disableMap function
+cmv.display.map.disableMap.toggle = false;
 
 
