@@ -270,3 +270,16 @@ html, body, .container {
 		padding: 4px 10px; /* still having issues on linux OS, works fine on Windows */
 	}
 }
+
+/* Map Legend CSS styles */
+  .maplegend {
+    font-family: Arial, sans-serif;
+    background: #fff;
+    padding: 10px;
+    margin: 10px;
+    border: 3px solid #000;
+  }
+  
+  
+  
+  

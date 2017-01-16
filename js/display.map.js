@@ -9,7 +9,9 @@
  * This is a constructor for creating map objects
  * Creation of this object looks like
  *
- * cmv.display.maps[0] = new cmv.display.map(0);
+ * cmv.display.maps[index] = new cmv.display.map(index);
+ * 
+ * where the index a value from 0  - 3 indicating map location on the screen.
  */
 cmv.display.map = function(idNumber){
 	this.id = document.getElementById(`map${idNumber}`);
@@ -36,13 +38,17 @@ cmv.display.map = function(idNumber){
 			style: google.maps.MapTypeControlStyle.DROPDOWN_MENU,
 			mapTypeIds: ['roadmap', 'terrain', 'silver']
 		},
+                zoomControlOptions: {
+                        position: google.maps.ControlPosition.LEFT_CENTER
+                },
 		// sets defualt map type ID
 		mapTypeId: 'roadmap'
 	});
 
 	// adds custom styles from display.map.styles.js
 	this.googleMap.mapTypes.set('silver', cmv.display.mapStyles.silver);
-
+        
+      
 	// google map display properties
 	this.googleProperties = new google.maps.Polygon({
 		map: this.googleMap,
@@ -52,7 +58,20 @@ cmv.display.map = function(idNumber){
 		fillColor: '#2D2E32',
 		fillOpacity: .75
 	});
-
+        
+        // create map legend html div and add it to the map element
+        var mapLegendDiv = document.createElement('div');
+        mapLegendDiv.innerHTML = '<center><h3>Legend</h3></center>';
+        mapLegendDiv.setAttribute("class", "maplegend");
+        mapLegendDiv.setAttribute("id", "mapLegend" + idNumber);
+       
+        var mapContainer = document.getElementById('map' + idNumber);
+        mapContainer.appendChild(mapLegendDiv);
+        if(cmv.debugger.debug) console.log(mapContainer.innerHTML);
+        // placing the map legend onto the map
+        this.googleMap.controls[google.maps.ControlPosition.RIGHT_BOTTOM].push(document.getElementById('mapLegend' + idNumber));
+        
+        
 	// adds dom listener
 	google.maps.event.addDomListener(this.id.firstElementChild, 'click', function(){
 		cmv.display.map.reFocus();
@@ -61,6 +80,8 @@ cmv.display.map = function(idNumber){
 		if(cmv.debugger.debug)
 			console.log(this);
 	}.bind(this));
+        
+     
 };
 
 
