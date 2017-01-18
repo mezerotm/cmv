@@ -18,7 +18,7 @@ cmv.display.sidebar.help.open = function(){
 	    cmv.display.map.disableMaps();
 	    cmv.display.sidebar.open('');
 	}else{
-	    //$("#canvas-control-help-center").toggle();
+	    $("#canvas-control-help-center").toggle();
 	    cmv.display.map.enableMaps();
 	}
 	
