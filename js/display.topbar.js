@@ -73,3 +73,15 @@ cmv.display.topbar.ProgressBarStop = function(){
 	cmv.display.topbar.progressBar.style.width = null;
 	cmv.display.topbar.ProgressBar = false;
 };
+
+//This function will contain the code for the date on the index page. 
+cmv.display.showDate = function(){
+  var d = new Date();
+  document.getElementById("date").innerHTML = d.toDateString();
+}();
+
+
+
+
+
+
