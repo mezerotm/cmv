@@ -7,7 +7,7 @@ cmv.display.topbar.mapContainer = document.getElementById('map-container');
 cmv.display.topbar.progressBar = document.getElementById('progress-bar');
 
 // is used to determine weather a page is open or not
-cmv.display.sidebars.isOpened = undefined;
+cmv.display.sidebar.isOpened = undefined;
 
 // updates map views
 cmv.display.topbar.updateMapView = function(self){
@@ -44,7 +44,7 @@ cmv.display.topbar.updateMapView = function(self){
 		cmv.display.maps[i].googleMap.setCenter(mapCenter);
 	}
 
-	if(!cmv.display.sidebars.isOpened)
+	if(!cmv.display.sidebar.isOpened)
 		cmv.display.topbar.mapContainer.style.width = 'calc(100% - 45px)';
 	else
 		cmv.display.topbar.mapContainer.style.width = 'calc(100% - 290px)';

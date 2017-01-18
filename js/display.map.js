@@ -107,20 +107,21 @@ cmv.display.map.getActiveMap = function(){
 };
 
 // disable all maps
-cmv.display.map.disableMap = function(){
-	let toggle = cmv.display.map.disableMap.toggle;
-
+cmv.display.map.disableMaps = function(){
 	for(let i = 0; i < cmv.display.maps.length; i++)
-		cmv.display.maps[i].googleMap.setOptions({draggable: toggle});
+		cmv.display.maps[i].googleMap.setOptions({draggable: false});
 
 	// disable #mapviews
-	$("#mapviews").prop("disabled", !toggle);
-
-	// toggle drag
-	cmv.display.map.disableMap.toggle = !cmv.display.map.disableMap.toggle;
+	$("#mapviews").prop("disabled", true);
 };
 
-// static variable within disableMap function
-cmv.display.map.disableMap.toggle = false;
+// enable all maps
+cmv.display.map.enableMaps = function(){
+	for(let i = 0; i < cmv.display.maps.length; i++)
+		cmv.display.maps[i].googleMap.setOptions({draggable: true});
+
+	// disable #mapviews
+	$("#mapviews").prop("disabled", false);
+};
 
 
