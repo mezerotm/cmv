@@ -199,6 +199,9 @@ cmv.retrieveData = function(){
 	// set active map
 	cmv.activeMap = cmv.display.map.getActiveMap();
 
+	//set location details for the current request using the google places api
+	cmv.display.location.setLocationDetails();
+
 	if(cmv.debugger.debug)
 		console.log(cmv.activeMap);
 
@@ -236,4 +239,6 @@ cmv.retrieveData = function(){
 
 	// This request is used to get the data to correlate with the Geo location data
 	cmv.census.apiRequest(cmv.activeMap.request, cmv.dataCallBack);
+
+	cmv.activeMap.request = cmv.display.map_request_template;
 };

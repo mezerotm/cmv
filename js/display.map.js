@@ -11,20 +11,23 @@
  *
  * cmv.display.maps[0] = new cmv.display.map(0);
  */
+ //template for empty map request
+cmv.display.map_request_template = {
+		level: 'county',
+		//zip: '30043',
+		api: 'acs5',
+		year: '2014',
+		//state: 'GA',
+		sublevel: true,
+		variables: ['population']
+	};
+
 cmv.display.map = function(idNumber){
 	this.id = document.getElementById(`map${idNumber}`);
 	this.focus = false;
 
 	// cmv properties
-	this.request = {
-		level: 'county',
-		zip: '30043',
-		api: 'acs5',
-		year: '2014',
-		state: 'GA',
-		sublevel: true,
-		variables: ['population']
-	};
+	this.request = cmv.display.map_request_template;
 
 	// creates a new map on instantiation
 	this.googleMap = new google.maps.Map(this.id, {
