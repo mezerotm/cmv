@@ -139,10 +139,13 @@ cmv.geoCallBack = function(response){
 			let coords = [];
 			for(let j = 0; j < response.features[tract].geometry.coordinates[0].length; j++)
 				if(cmv.display.map.polygonDetail(j))
-					coords.push({
+					coords.push(new google.maps.LatLng(response.features[tract].geometry.coordinates[0][j][1], response.features[tract].geometry.coordinates[0][j][0]))
+					//this manual cast to LatLng object only works for most zip codes, not all. The constructor given by google maps API works for all zip codes
+					/*coords.push({
 						lat: response.features[tract].geometry.coordinates[0][j][1],
 						lng: response.features[tract].geometry.coordinates[0][j][0]
-					});
+					});*/
+
 
 			new google.maps.Polygon({
 				map: cmv.activeMap.googleMap,
