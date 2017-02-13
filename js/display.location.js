@@ -16,35 +16,56 @@ cmv.display.location.location_input = new google.maps.places.Autocomplete(
 //set the variables in the citysdk data request to the values input by the user using the google places api
 cmv.display.location.setLocationDetails = function()
 {
-	console.log(cmv.display.location.location_input.getPlace());
-	cmv.display.location.setZip();
-	//cmv.display.location.setCity();
-	cmv.display.location.setState();
-	//cmv.display.location.setCounty();
-	//cmv.display.location.setCountry();
+	//console.log(cmv.display.location.location_input.getPlace());
 
-	console.log(cmv.activeMap.request.city);
+		if(cmv.display.location.setPlace())
+		{
+			if(cmv.debugger.debug)
+				console.log(cmv.activeMap.request.city);
+			return true;
+		}
+		else
+			return false;
 };
 
 //set zip code
-cmv.display.location.setZip = function()
+cmv.display.location.setPlace = function()
 {
-	zip = null;
+	var place;
+	var zip;
+	var state;
+	place = null; //the place that is being sent to the citysdk request
 
-	for(var i = 0; i < cmv.display.location.location_input.getPlace().address_components.length; i++)
+	try
 	{
-		if(cmv.display.location.location_input.getPlace().address_components[i].types[0] == 'postal_code')
-			zip = parseInt(cmv.display.location.location_input.getPlace().address_components[i].short_name);
-	}
+		place = cmv.display.location.location_input.getPlace();
+		//find zip and state within place information
+		for(var i = 0; i < place.address_components.length; i++)
+		{
+			if(place.address_components[i].types[0] == 'postal_code') //zip code
+				zip = parseInt(place.address_components[i].short_name);
+			if(cmv.display.location.location_input.getPlace().address_components[i].types[0] == 'administrative_area_level_1') //state
+				state = cmv.display.location.location_input.getPlace().address_components[i].short_name;
+		}
 
-	if(zip != null)
 		cmv.activeMap.request.zip = zip;
-	else
-		console.log("Invalid zip code");
+		cmv.activeMap.request.state = state;
+		
+		return true;
+	}
+	catch (err)
+	{
+		if(!cmv.display.location.location_input.getPlace())
+			console.log("Invalid Place. User must select option from given dropdown menu when typing location input");
+		else
+			console.log(err.message);
+
+		return false;
+	}
 };
 
 //set city
-cmv.display.location.setCity = function()
+/*cmv.display.location.setCity = function()
 {
 	city = null;
 
@@ -58,24 +79,32 @@ cmv.display.location.setCity = function()
 		cmv.activeMap.request.city = city;
 	else
 		console.log("Invalid city");
-};
+};*/
 
-//set state
-cmv.display.location.setState = function()
+//set state ****NOW INCLUDED IN SETPLACE METHOD***
+/*cmv.display.location.setState = function()
 {
-	state = null;
+	var state;
 
-	for(var i = 0; i < cmv.display.location.location_input.getPlace().address_components.length; i++)
+	try
 	{
-		if(cmv.display.location.location_input.getPlace().address_components[i].types[0] == 'administrative_area_level_1')
-			state = cmv.display.location.location_input.getPlace().address_components[i].short_name;
-	}
-
-	if(state != null)
+		//find the state in the place object
+		for(var i = 0; i < cmv.display.location.location_input.getPlace().address_components.length; i++)
+		{
+			if(cmv.display.location.location_input.getPlace().address_components[i].types[0] == 'administrative_area_level_1')
+				state = cmv.display.location.location_input.getPlace().address_components[i].short_name;
+		}
+		//set the state of the citysdk request
 		cmv.activeMap.request.state = state;
-	else
-		console.log("Invalid state");
-};
+	}
+	catch(err)
+	{
+		if(!cmv.display.location.location_input.getPlace())
+			console.log("Invalid Place. User must select option from given dropdown menu when typing location input");
+		else
+			console.log(err.message);
+	}
+};*/
 
 //set county
 /*cmv.display.location.setCounty = function()
@@ -98,7 +127,7 @@ cmv.display.location.setState = function()
 };*/
 
 //set country
-cmv.display.location.setCountry = function()
+/*cmv.display.location.setCountry = function()
 {
 	country = null;
 
@@ -112,4 +141,4 @@ cmv.display.location.setCountry = function()
 		cmv.activeMap.request.country = country;
 	else
 		console.log("Invalid country");
-};
+};*/

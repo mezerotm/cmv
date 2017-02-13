@@ -201,9 +201,12 @@ cmv.retrieveData = function(){
 
 	// set active map
 	cmv.activeMap = cmv.display.map.getActiveMap();
+	//reset active map request to an empty one (with only default values filled)
+	//cmv.activeMap.request = cmv.display.map_request_template;
 
 	//set location details for the current request using the google places api
-	cmv.display.location.setLocationDetails();
+	if(!cmv.display.location.setLocationDetails())
+		cmv.display.topbar.ProgressBarStop();
 
 	if(cmv.debugger.debug)
 		console.log(cmv.activeMap);
