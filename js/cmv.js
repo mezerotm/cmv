@@ -155,6 +155,8 @@ cmv.geoCallBack = function(response){
 				fillOpacity: cmv.activeMap.googleProperties.fillOpacity
 			});
 		}
+
+     cmv.activeMap.centerMap();
                 
                 // Step: 5 create the legend markers
                 
