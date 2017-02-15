@@ -16,7 +16,7 @@
  */
 
 // creates an active map
-cmv.activeMap = cmv.display.map.getActiveMap();
+cmv.activeMap;
 
 // toggles to prevent duplicate requests
 cmv.geoRequestASync = false;
