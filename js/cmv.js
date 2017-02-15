@@ -43,7 +43,7 @@ cmv.display.map.polygonDetail = function(iterate){
  */
 cmv.geoCallBack = function(response){
 	if(cmv.debugger.debug)
-		console.log(`geoCallBack: invoked, geoRequestASync: ${cmv.geoRequestASync}`);
+		console.log('geoCallBack: invoked, geoRequestASync: ${cmv.geoRequestASync}');
 
 	if(response && cmv.geoRequestASync){
 		if(cmv.debugger.debug){
@@ -162,6 +162,8 @@ cmv.geoCallBack = function(response){
 		cmv.display.topbar.ProgressBarStop();
 	}else if(!cmv.geoRequestASync && cmv.debugger.debug)
 		console.log('geoCallBack: duplicate geo request callback');
+	else
+		console.log("No response");
 
 	cmv.geoRequestASync = false;
 };
@@ -186,6 +188,12 @@ cmv.dataCallBack = function(response){
 	cmv.apiRequestASync = false;
 };
 
+cmv.run = function()
+{
+	cmv.display.location.updatePlace();
+	cmv.retrieveData();
+}
+
 /*
  * retrieveData : This function is called by the submit button to connect with the City
  * SDK and obtain the data.
@@ -205,46 +213,50 @@ cmv.retrieveData = function(){
 	//cmv.activeMap.request = cmv.display.map_request_template;
 
 	//set location details for the current request using the google places api
-	if(!cmv.display.location.setLocationDetails())
-		cmv.display.topbar.ProgressBarStop();
-
-	if(cmv.debugger.debug)
-		console.log(cmv.activeMap);
-
-	// get checkboxes from the web page
-	let checkBoxes = document.getElementsByName("censusVar");
-
-	// array to hold checked variables
-	let checkedBoxes = [];
-	let checked = false;
-
-	// processes each checkbox and determines which boxes have been checked
-	for(let i = 0; i < checkBoxes.length; i++){
-		if(checkBoxes[i].checked){
-			checkedBoxes.push(checkBoxes[i].value);
-			checked = true;
-		}
-	}
-
-	// fill the census data request with the variables selected by the user
-	if(checked)
-		cmv.activeMap.request.variables = checkedBoxes;
+	if(cmv.display.location.placeUpdated == false)
+		setTimeout(cmv.retrieveData, 100);
 	else
-		cmv.activeMap.request.variables = ['population'];
+	{
+		cmv.display.location.setLocationDetails();
 
-	cmv.userInput = cmv.activeMap.request.variables[0];
+		if(cmv.debugger.debug)
+			console.log(cmv.activeMap);
 
-	if(cmv.debugger.debug){
-		console.log(`retrieveData: request.variables: ${cmv.activeMap.request.variables}`);
-		console.log('retrieveData: request:');
-		console.log(cmv.activeMap.request);
+		// get checkboxes from the web page
+		let checkBoxes = document.getElementsByName("censusVar");
+
+		// array to hold checked variables
+		let checkedBoxes = [];
+		let checked = false;
+
+		// processes each checkbox and determines which boxes have been checked
+		for(let i = 0; i < checkBoxes.length; i++){
+			if(checkBoxes[i].checked){
+				checkedBoxes.push(checkBoxes[i].value);
+				checked = true;
+			}
+		}
+
+		// fill the census data request with the variables selected by the user
+		if(checked)
+			cmv.activeMap.request.variables = checkedBoxes;
+		else
+			cmv.activeMap.request.variables = ['population'];
+
+		cmv.userInput = cmv.activeMap.request.variables[0];
+
+		if(cmv.debugger.debug){
+			console.log(`retrieveData: request.variables: ${cmv.activeMap.request.variables}`);
+			console.log('retrieveData: request:');
+			console.log(cmv.activeMap.request);
+		}
+
+		// This request is used to get geographical data
+		cmv.census.geoRequest(cmv.activeMap.request, cmv.geoCallBack);
+
+		// This request is used to get the data to correlate with the Geo location data
+		cmv.census.apiRequest(cmv.activeMap.request, cmv.dataCallBack);
+
+		//cmv.activeMap.request = cmv.display.map_request_template;
 	}
-
-	// This request is used to get geographical data
-	cmv.census.geoRequest(cmv.activeMap.request, cmv.geoCallBack);
-
-	// This request is used to get the data to correlate with the Geo location data
-	cmv.census.apiRequest(cmv.activeMap.request, cmv.dataCallBack);
-
-	cmv.activeMap.request = cmv.display.map_request_template;
 };

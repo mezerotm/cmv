@@ -19,6 +19,7 @@ cmv.display.location.location_service = new google.maps.places.PlacesService(doc
 
 cmv.display.location.place;
 var placeTextVal;
+cmv.display.location.placeUpdated = false;
 
 //add listener to google places autocomplete object for when place is selected by user from dropdown list
 google.maps.event.addListener(cmv.display.location.location_input, 'place_changed', function() {
@@ -36,11 +37,13 @@ google.maps.event.addListener(cmv.display.location.location_input, 'place_change
 
 cmv.display.location.updatePlace = function()
 {
+	cmv.display.location.placeUpdated = false;
 	var input = document.getElementById("location_input");
 
 	if(input.value == "" || input.value == null)
 	{
 		console.log("No input entered. Please enter a location");
+		return false;
 	}
 	else if(input.value != placeTextVal)
 	{
@@ -48,20 +51,20 @@ cmv.display.location.updatePlace = function()
 		if(cmv.debugger.debug)
 			console.log("Updating Place");
 
-		var request = {
+		var place_request = {
 			query: input.value
 		};
 
 		//search for a place given the user's input
-		cmv.display.location.location_service.textSearch(request, function(results, status) {
+		cmv.display.location.location_service.textSearch(place_request, function(results, status) {
 			if(status == google.maps.places.PlacesServiceStatus.OK) {
 				var p = results[0];
-				var request = {
+				var place_request2 = {
 					reference: p.reference
 				};
 
 				//get detailed information on the place found by the search
-				cmv.display.location.location_service.getDetails(request, function(p, status) {
+				cmv.display.location.location_service.getDetails(place_request2, function(p, status) {
 					if(status == google.maps.places.PlacesServiceStatus.OK) {
 
 						//will hold the formatted output to be printed to the textbox shown to the user (the location_input textbox)
@@ -102,6 +105,11 @@ cmv.display.location.updatePlace = function()
 
 							$("#location_input").val(final_addr_string);
 						}
+
+
+						console.log("place updated");
+						cmv.display.location.placeUpdated = true;
+						return true;
 					}
 				});
 			}
@@ -110,6 +118,10 @@ cmv.display.location.updatePlace = function()
 		});
 	}
 	//else would be keeping place the same since nothing has changed and the input in the field is the same as it was when it last updated
+	else
+		cmv.display.location.placeUpdated = true;
+		return true;
+	
 }
 
 //set the variables in the citysdk data request to the values input by the user using the google places api
@@ -120,7 +132,7 @@ cmv.display.location.setLocationDetails = function()
 		if(cmv.display.location.setPlace())
 		{
 			if(cmv.debugger.debug)
-				console.log(cmv.activeMap.request.city);
+				console.log(cmv.activeMap.request);
 			return true;
 		}
 		else
@@ -240,3 +252,6 @@ cmv.display.location.setPlace = function()
 	else
 		console.log("Invalid country");
 };*/
+
+
+
