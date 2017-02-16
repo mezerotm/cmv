@@ -29,6 +29,9 @@ cmv.display.map = function(idNumber){
 	// cmv properties
 	this.request = cmv.display.map_request_template;
 
+	//map polygons array to allow for deletion of polygons later
+	this.polygons = [];
+
 	// creates a new map on instantiation
 	this.googleMap = new google.maps.Map(this.id, {
 		zoom: 7,
@@ -89,6 +92,33 @@ cmv.display.map.getActiveMap = function(){
 };
 
 
+//reset the request back to a default request for next processing
+cmv.display.map.resetRequest = function() {
+	activeMap = cmv.display.map.getActiveMap();
 
+	//reset request to default values
+	activeMap.request = {};
+	activeMap.request.api = 'acs5';
+	activeMap.request.year = '2014';
+	activeMap.request.sublevel = true;
+	//activeMap.request.variables = ['population'];
+	activeMap.request.level = 'county';
+}
 
+//reset the active map display to a blank map (to avoid having too many polygons on one map, and to clean up visual of the map display)
+cmv.display.map.resetActiveMapDisplay = function() {
+	for(i = 0; i < cmv.activeMap.polygons.length; i++)
+	{
+		cmv.activeMap.polygons[i].setMap(null);
+	}
+}
 
+/*cmv.display.map_request_template = {
+		level: 'county',
+		//zip: '30043',
+		api: 'acs5',
+		year: '2014',
+		//state: 'GA',
+		sublevel: true,
+		variables: ['population']
+	};*/

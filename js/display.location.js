@@ -28,12 +28,24 @@ google.maps.event.addListener(cmv.display.location.location_input, 'place_change
 	{
 		cmv.display.location.place = cmv.display.location.location_input.getPlace();
 		placeTextVal = $('#location_input').val();
-		console.log("Place Changed");
+		/*console.log("Place Changed");
 		console.log(cmv.display.location.place);
+		console.log(placeTextVal);
+		console.log(document.getElementById("location_input").value);*/
 	}
-	else
-		console.log("Place not found.");
-})
+	/*else
+		console.log("Place not found.");*/
+});
+
+//user presses the enter key while focused on the location_input textbox
+document.getElementById("location_input").addEventListener("keypress", function(event) {
+	if(event.which == 13 || event.keyCode == 13)
+	{
+		//user has pressed enter
+		document.getElementById("submit").focus();
+		cmv.run();
+	}
+});
 
 cmv.display.location.updatePlace = function()
 {
@@ -93,7 +105,6 @@ cmv.display.location.updatePlace = function()
 						else
 						{
 							cmv.display.location.place = p;
-							cmv.display.location.placeTextVal = $("#location_input").val();
 							//$("#location_input").val(JSON.stringify(cmv.display.location.place.address_components));
 							
 
@@ -104,6 +115,8 @@ cmv.display.location.updatePlace = function()
 								final_addr_string = addr_string.city + ", " + addr_string.state + " " + addr_string.zip + ", " + addr_string.country;
 
 							$("#location_input").val(final_addr_string);
+
+							cmv.display.location.placeTextVal = $("#location_input").val();
 						}
 
 
@@ -129,14 +142,14 @@ cmv.display.location.setLocationDetails = function()
 {
 	//console.log(cmv.display.location.location_input.getPlace());
 
-		if(cmv.display.location.setPlace())
-		{
-			if(cmv.debugger.debug)
-				console.log(cmv.activeMap.request);
-			return true;
-		}
-		else
-			return false;
+	if(cmv.display.location.setPlace())
+	{
+		if(cmv.debugger.debug)
+			console.log(cmv.activeMap.request);
+		return true;
+	}
+	else
+		return false;
 };
 
 //set zip code

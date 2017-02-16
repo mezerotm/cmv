@@ -147,7 +147,7 @@ cmv.geoCallBack = function(response){
 					});*/
 
 
-			new google.maps.Polygon({
+			cmv.activeMap.polygons.push(new google.maps.Polygon({
 				map: cmv.activeMap.googleMap,
 				paths: coords,
 				strokeColor: variablesArray[tract].color,
@@ -156,7 +156,7 @@ cmv.geoCallBack = function(response){
 				strokeOpacity: cmv.activeMap.googleProperties.strokeOpacity,
 				strokeWeight: cmv.activeMap.googleProperties.strokeWeight,
 				fillOpacity: cmv.activeMap.googleProperties.fillOpacity
-			});
+			}));
 		}
 
 		cmv.display.topbar.ProgressBarStop();
@@ -188,8 +188,11 @@ cmv.dataCallBack = function(response){
 	cmv.apiRequestASync = false;
 };
 
+//called when the user hits the submit button to prevent the citysdk requests from being made before the citysdk request is assembled with correct location info
 cmv.run = function()
 {
+	cmv.display.map.resetRequest();
+	cmv.display.map.resetActiveMapDisplay();
 	cmv.display.location.updatePlace();
 	cmv.retrieveData();
 }
@@ -214,7 +217,10 @@ cmv.retrieveData = function(){
 
 	//set location details for the current request using the google places api
 	if(cmv.display.location.placeUpdated == false)
+	{
 		setTimeout(cmv.retrieveData, 100);
+		console.log("retrieveData - waiting for location info");
+	}
 	else
 	{
 		cmv.display.location.setLocationDetails();
@@ -257,6 +263,6 @@ cmv.retrieveData = function(){
 		// This request is used to get the data to correlate with the Geo location data
 		cmv.census.apiRequest(cmv.activeMap.request, cmv.dataCallBack);
 
-		//cmv.activeMap.request = cmv.display.map_request_template;
+		//(DOES NOT WORK) cmv.activeMap.request = cmv.display.map_request_template;
 	}
 };
