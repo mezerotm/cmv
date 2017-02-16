@@ -107,9 +107,9 @@ cmv.display.map.resetRequest = function() {
 
 //reset the active map display to a blank map (to avoid having too many polygons on one map, and to clean up visual of the map display)
 cmv.display.map.resetActiveMapDisplay = function() {
-	for(i = 0; i < cmv.activeMap.polygons.length; i++)
+	for(i = 0; i < cmv.display.map.getActiveMap().polygons.length; i++)
 	{
-		cmv.activeMap.polygons[i].setMap(null);
+		cmv.display.map.getActiveMap().polygons[i].setMap(null);
 	}
 }
 
