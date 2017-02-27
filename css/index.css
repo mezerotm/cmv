@@ -39,19 +39,19 @@ h1, h2, h3, h4, h5, h6, p {
 
 /* unvisited link */
 a:link {
-	color: #D9DFEB;
+	color: #5B5C5C;
 	text-decoration: none;
 }
 
 /* visited link */
 a:visited {
-	color: #D9DFEB;
+	color: #5B5C5C;
 	text-decoration: none;
 }
 
 /* mouse over link */
 a:hover {
-	color: #ABB4C7;
+	color: #2D98BD;
 	text-decoration: none;
 }
 
@@ -72,6 +72,20 @@ html, body, .container {
 	position: absolute;
 	width: 100%;
 	bottom: 0;
+}
+
+#canvas-control-help-labels {
+	position: absolute;
+	right: 55px;
+	top: 70px;
+	z-index: 1;
+}
+
+#canvas-control-help-dimmer {
+	position: absolute;
+	top: 0px;
+	left: 0px;
+	z-index: 1;
 }
 
 #sidebar-control-settings, #sidebar-control-help {
@@ -253,3 +267,16 @@ html, body, .container {
 		padding: 4px 10px; /* still having issues on linux OS, works fine on Windows */
 	}
 }
+
+/* Map Legend CSS styles */
+.maplegend {
+	font-family: Arial, sans-serif;
+	background: #FFF;
+	padding: 10px;
+	margin: 10px;
+	border: 3px solid #000;
+}
+  
+  
+  
+  

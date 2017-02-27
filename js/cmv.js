@@ -55,7 +55,7 @@ cmv.geoCallBack = function(response){
 		let convertedVariable = cmv.census.parseToValidVariable(cmv.userInput, cmv.activeMap.request.api, cmv.activeMap.request.year) + '';
 
 		if(cmv.debugger.debug)
-			console.log(`convertedVariable: ${convertedVariable}`);
+			console.log('convertedVariable: ${convertedVariable}');
 
 		// Step 1: Determines the array of colors
 		// todo: find a way to pragmatically change the tint/shade
@@ -127,12 +127,12 @@ cmv.geoCallBack = function(response){
 		}
 
 		if(cmv.debugger.debug){
-			console.log(`geoCallBack: variablesArray:`);
+			console.log('geoCallBack: variablesArray:');
 			console.log(variablesArray);
 		}
 
 		if(cmv.debugger.debug)
-			console.log(`geoCallBack: response.features.length: ${response.features.length}`);
+			console.log('geoCallBack: response.features.length: ${response.features.length}');
 
 		// draw on to map
 		for(let tract = 0; tract < response.features.length; tract++){
@@ -159,7 +159,68 @@ cmv.geoCallBack = function(response){
 			}));
 		}
 
-		cmv.display.topbar.ProgressBarStop();
+     cmv.activeMap.centerMap();
+
+                // Step: 5 create the legend markers
+
+                // determine which map has the focus now.
+                var mapNumber = 0;  // is this stored in the map object?
+                for (var mapPos = 0; mapPos < cmv.display.maps.length; mapPos++) {
+                    if (cmv.display.maps[mapPos].focus == true) {
+                        mapNumber = mapPos;
+                    }
+                }
+
+                var mapLegend = document.getElementById("mapLegend" + mapNumber);
+
+                // clear out the old legend just in case the user is just changing variables
+                while (mapLegend.firstChild) {
+                     mapLegend.removeChild(mapLegend.firstChild);
+                }
+                // this resets the title of the map legends box because we just destroyed all
+                // of the nodes.
+                mapLegend.innerHTML = '<center><h3>Legend</h3></center>';
+
+               // This loop obtains the data to display in the map legend
+               // The colors and their corresponding upper and lower bounds
+               // The approach is to build a div container for each legend entry
+               // and then put an icon (the colored box) and label (data) into
+               // legend as one row in the legend. This repeatedly does this for
+               // all colors.
+                for(let colorPos = 0; colorPos < colors.length; colorPos++) {
+                    var color = colors[colorPos];
+
+                    if (isNaN(intervals[colorPos].lower)) {
+                        var lower = intervals[colorPos].lower;
+                        console.log("Not a number found");
+                    } else {
+                        var lower = intervals[colorPos].lower.toFixed(2);
+                    }
+                    if (isNaN(intervals[colorPos].upper)) {
+                        var upper = intervals[colorPos].upper;
+                    } else {
+                        var upper = intervals[colorPos].upper.toFixed(2);
+                    }
+
+                    var icon = document.createElement('div');
+                    // this styling ensures that the icon (the colored box) is to the left
+                    // of the text label.
+                    icon.setAttribute("style", "padding-right:5px;clear:left;float:left; width:20px; height:10px; background-color:" + color);
+                    // creates a text label with the bounds.
+                    var label = document.createTextNode( lower + ' - ' + upper);
+
+                    // create the container for both the icon and label
+                    var legendEntry = document.createElement('div');
+                    legendEntry.appendChild(icon);
+                    legendEntry.appendChild(label);
+
+                    // adds a row to the legend
+                    mapLegend.appendChild(legendEntry);
+                }
+
+                cmv.display.topbar.ProgressBarStop();
+
+
 	}else if(!cmv.geoRequestASync && cmv.debugger.debug)
 		console.log('geoCallBack: duplicate geo request callback');
 	else
@@ -195,7 +256,7 @@ cmv.run = function()
 	cmv.display.map.resetActiveMapDisplay();
 	cmv.display.location.updatePlace();
 	cmv.retrieveData();
-}
+};
 
 /*
  * retrieveData : This function is called by the submit button to connect with the City

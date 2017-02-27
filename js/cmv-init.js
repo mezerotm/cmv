@@ -16,6 +16,8 @@ cmv.census = new CensusModule("c83e06ec87c35c0d3ffb0f6d7640afbf52b7071c");
 cmv.debugger = {};
 
 cmv.display = {};
+cmv.display.help = {};
 cmv.display.topbar = {};
-cmv.display.sidebars = [];
+cmv.display.sidebar = {};
+cmv.display.sidebar.help = {};
 cmv.display.maps = []; // see './js/display.map.js' for additional information

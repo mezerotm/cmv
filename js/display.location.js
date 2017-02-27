@@ -14,7 +14,7 @@ cmv.display.location.location_input = new google.maps.places.Autocomplete(
 	);
 
 //for retrieving google places data programatically when user does not manually click a list item from autocomplete dropdown menu
-cmv.display.location.location_service = new google.maps.places.PlacesService(document.getElementById("location_input"));;
+cmv.display.location.location_service = new google.maps.places.PlacesService(document.getElementById("location_input"));
 
 
 cmv.display.location.place;
@@ -55,6 +55,7 @@ cmv.display.location.updatePlace = function()
 	if(input.value == "" || input.value == null)
 	{
 		console.log("No input entered. Please enter a location");
+		cmv.display.placeUpdated = true;
 		return false;
 	}
 	else if(input.value != placeTextVal)
@@ -135,7 +136,7 @@ cmv.display.location.updatePlace = function()
 		cmv.display.location.placeUpdated = true;
 		return true;
 	
-}
+};
 
 //set the variables in the citysdk data request to the values input by the user using the google places api
 cmv.display.location.setLocationDetails = function()
