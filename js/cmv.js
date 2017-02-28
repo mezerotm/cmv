@@ -134,12 +134,15 @@ cmv.geoCallBack = function(response){
 		if(cmv.debugger.debug)
 			console.log('geoCallBack: response.features.length: ${response.features.length}');
 
+
+     	cmv.activeMap.centerMap();
+
 		// draw on to map
 		for(let tract = 0; tract < response.features.length; tract++){
 			let coords = [];
 			for(let j = 0; j < response.features[tract].geometry.coordinates[0].length; j++)
 				if(cmv.display.map.polygonDetail(j))
-					coords.push(new google.maps.LatLng(response.features[tract].geometry.coordinates[0][j][1], response.features[tract].geometry.coordinates[0][j][0]))
+					coords.push(new google.maps.LatLng(response.features[tract].geometry.coordinates[0][j][1], response.features[tract].geometry.coordinates[0][j][0]));
 					//this manual cast to LatLng object only works for most zip codes, not all. The constructor given by google maps API works for all zip codes
 					/*coords.push({
 						lat: response.features[tract].geometry.coordinates[0][j][1],
@@ -159,7 +162,6 @@ cmv.geoCallBack = function(response){
 			}));
 		}
 
-     cmv.activeMap.centerMap();
 
                 // Step: 5 create the legend markers
 
