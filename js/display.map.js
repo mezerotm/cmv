@@ -67,11 +67,26 @@ cmv.display.map = function(idNumber){
     mapLegendDiv.setAttribute("class", "maplegend");
     mapLegendDiv.setAttribute("id", "mapLegend" + idNumber);
    
+   // get the maps container
     var mapContainer = document.getElementById('map' + idNumber);
+    
+    
     mapContainer.appendChild(mapLegendDiv);
     if(cmv.debugger.debug) console.log(mapContainer.innerHTML);
     // placing the map legend onto the map
     this.googleMap.controls[google.maps.ControlPosition.RIGHT_BOTTOM].push(document.getElementById('mapLegend' + idNumber));
+    
+    // create map title
+    // create map legend html div and add it to the map element
+    var mapTitleDiv = document.createElement('div');
+    mapTitleDiv.setAttribute("class", "mapTitle");
+    mapTitleDiv.setAttribute("id", "mapTitle" + idNumber);
+    mapTitleDiv.style.display = 'none';           // Hide
+   
+    mapContainer.appendChild(mapTitleDiv);
+    if(cmv.debugger.debug) console.log(mapContainer.innerHTML);
+    // placing the map legend onto the map
+    this.googleMap.controls[google.maps.ControlPosition.TOP_CENTER].push(document.getElementById('mapTitle' + idNumber));
         
         
   // adds dom listener
