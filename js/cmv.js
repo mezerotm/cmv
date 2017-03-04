@@ -219,6 +219,12 @@ cmv.geoCallBack = function(response){
                     // adds a row to the legend
                     mapLegend.appendChild(legendEntry);
                 }
+                
+                
+                // Step 6. Create Map Title
+                var mapTitle = document.getElementById("mapTitle" + mapNumber);
+                mapTitle.innerHTML = '<center><h1>' + cmv.getTitleFromKey(convertedVariable) + '</h1></center>';
+                mapTitle.style.display = 'block';           // Unhide
 
                 cmv.display.topbar.ProgressBarStop();
 
@@ -329,3 +335,25 @@ cmv.retrieveData = function(){
 		//(DOES NOT WORK) cmv.activeMap.request = cmv.display.map_request_template;
 	}
 };
+
+
+// Census Vars functions
+cmv.getVariableFromKey = function(keyValue) {
+    for (var i = 0; i < cmv.CENSUS_VARS.length; i++) {
+        if (cmv.CENSUS_VARS[i].key === keyValue)
+            return cmv.CENSUS_VARS[i].value;
+    }
+
+    return "Undefined";
+};
+
+
+cmv.getTitleFromKey = function(keyValue) {
+    for (var i = 0; i < cmv.CENSUS_VARS.length; i++) {
+        if (cmv.CENSUS_VARS[i].key === keyValue)
+            return cmv.CENSUS_VARS[i].title;
+    }
+
+    return "Undefined";
+};
+
