@@ -32,10 +32,10 @@
 		<div id='progress-bar'></div>
 
 		<div class='no-select'>
-			<input id='search-bar' class='no-drag' type='search' placeholder='Search' data-step="1" data-intro='Enter location informtion such as county name or zipcode'>
+			<input id='location_input' class='no-drag' type='text' placeholder='Search' data-step="1" data-intro='Enter location informtion such as county name or zipcode'>
 
-			<button name='submit' id='submit' onclick='cmv.retrieveData()' data-step="9" data-intro='Press this button to retrieve your data'>Submit</button>
-
+			<button name='submit' id='submit' onclick='cmv.run()' data-step="9" data-intro='Press this button to retrieve your data' >Submit</button>
+ 
 			<h4 id='mapviews-title'> Views </h4>
 
 			<select id='mapviews' onchange='cmv.display.topbar.updateMapView(this)' title='map-views'>
@@ -266,6 +266,7 @@
 <script src='https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js'></script>
 <!-- google maps api -->
 <script src='https://maps.google.com/maps/api/js?key=AIzaSyC_y5IRdURJMxS06jTtKecEq47r9VFcLTg'></script>
+<script src='https://maps.google.com/maps/api/js?key=AIzaSyCpL-2JnAAFuOFkITfVfUjrYyFwZ_f6nFQ&libraries=places'></script>
 <!-- citysdk api -->
 <script src='terraformer/terraformer-1.0.5.min.js'></script>
 <script src='terraformer/terraformer-arcgis-parser-1.0.4.min.js'></script>
@@ -281,5 +282,6 @@
 <script src='js/cmv.js'></script>
 <script src='js/intro.js'></script> <!-- library for the help functionality -->
 <script src="js/display.sidebar.help.js"></script>
+<script src='js/display.location.js'></script>
 </body>
 </html>
