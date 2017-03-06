@@ -16,7 +16,7 @@
  */
 
 // creates an active map
-cmv.activeMap;
+cmv.activeMap = cmv.display.map.getActiveMap();
 
 // toggles to prevent duplicate requests
 cmv.geoRequestASync = false;
@@ -134,17 +134,23 @@ cmv.geoCallBack = function(response){
 		if(cmv.debugger.debug)
 			console.log('geoCallBack: response.features.length: ${response.features.length}');
 
+
+     	cmv.activeMap.centerMap();
+
 		// draw on to map
 		for(let tract = 0; tract < response.features.length; tract++){
 			let coords = [];
 			for(let j = 0; j < response.features[tract].geometry.coordinates[0].length; j++)
 				if(cmv.display.map.polygonDetail(j))
-					coords.push({
+					coords.push(new google.maps.LatLng(response.features[tract].geometry.coordinates[0][j][1], response.features[tract].geometry.coordinates[0][j][0]));
+					//this manual cast to LatLng object only works for most zip codes, not all. The constructor given by google maps API works for all zip codes
+					/*coords.push({
 						lat: response.features[tract].geometry.coordinates[0][j][1],
 						lng: response.features[tract].geometry.coordinates[0][j][0]
-					});
+					});*/
 
-			new google.maps.Polygon({
+
+			cmv.activeMap.polygons.push(new google.maps.Polygon({
 				map: cmv.activeMap.googleMap,
 				paths: coords,
 				strokeColor: variablesArray[tract].color,
@@ -153,13 +159,12 @@ cmv.geoCallBack = function(response){
 				strokeOpacity: cmv.activeMap.googleProperties.strokeOpacity,
 				strokeWeight: cmv.activeMap.googleProperties.strokeWeight,
 				fillOpacity: cmv.activeMap.googleProperties.fillOpacity
-			});
+			}));
 		}
 
-     cmv.activeMap.centerMap();
-                
+
                 // Step: 5 create the legend markers
-                
+
                 // determine which map has the focus now.
                 var mapNumber = 0;  // is this stored in the map object?
                 for (var mapPos = 0; mapPos < cmv.display.maps.length; mapPos++) {
@@ -167,26 +172,26 @@ cmv.geoCallBack = function(response){
                         mapNumber = mapPos;
                     }
                 }
-                
+
                 var mapLegend = document.getElementById("mapLegend" + mapNumber);
 
                 // clear out the old legend just in case the user is just changing variables
                 while (mapLegend.firstChild) {
                      mapLegend.removeChild(mapLegend.firstChild);
                 }
-                // this resets the title of the map legends box because we just destroyed all 
+                // this resets the title of the map legends box because we just destroyed all
                 // of the nodes.
                 mapLegend.innerHTML = '<center><h3>Legend</h3></center>';
-               
+
                // This loop obtains the data to display in the map legend
                // The colors and their corresponding upper and lower bounds
                // The approach is to build a div container for each legend entry
-               // and then put an icon (the colored box) and label (data) into 
+               // and then put an icon (the colored box) and label (data) into
                // legend as one row in the legend. This repeatedly does this for
                // all colors.
                 for(let colorPos = 0; colorPos < colors.length; colorPos++) {
                     var color = colors[colorPos];
-                    
+
                     if (isNaN(intervals[colorPos].lower)) {
                         var lower = intervals[colorPos].lower;
                         console.log("Not a number found");
@@ -198,19 +203,19 @@ cmv.geoCallBack = function(response){
                     } else {
                         var upper = intervals[colorPos].upper.toFixed(2);
                     }
-                  
+
                     var icon = document.createElement('div');
-                    // this styling ensures that the icon (the colored box) is to the left 
+                    // this styling ensures that the icon (the colored box) is to the left
                     // of the text label.
                     icon.setAttribute("style", "padding-right:5px;clear:left;float:left; width:20px; height:10px; background-color:" + color);
-                    // creates a text label with the bounds. 
+                    // creates a text label with the bounds.
                     var label = document.createTextNode( lower + ' - ' + upper);
 
                     // create the container for both the icon and label
                     var legendEntry = document.createElement('div');
                     legendEntry.appendChild(icon);
                     legendEntry.appendChild(label);
-                          
+
                     // adds a row to the legend
                     mapLegend.appendChild(legendEntry);
                 }
@@ -222,10 +227,12 @@ cmv.geoCallBack = function(response){
                 mapTitle.style.display = 'block';           // Unhide
 
                 cmv.display.topbar.ProgressBarStop();
-              
-		
-                }else if(!cmv.geoRequestASync && cmv.debugger.debug)
+
+
+	}else if(!cmv.geoRequestASync && cmv.debugger.debug)
 		console.log('geoCallBack: duplicate geo request callback');
+	else
+		console.log("No response");
 
 	cmv.geoRequestASync = false;
 };
@@ -250,6 +257,15 @@ cmv.dataCallBack = function(response){
 	cmv.apiRequestASync = false;
 };
 
+//called when the user hits the submit button to prevent the citysdk requests from being made before the citysdk request is assembled with correct location info
+cmv.run = function()
+{
+	cmv.display.map.resetRequest();
+	cmv.display.map.resetActiveMapDisplay();
+	cmv.display.location.updatePlace();
+	cmv.retrieveData();
+};
+
 /*
  * retrieveData : This function is called by the submit button to connect with the City
  * SDK and obtain the data.
@@ -265,44 +281,59 @@ cmv.retrieveData = function(){
 
 	// set active map
 	cmv.activeMap = cmv.display.map.getActiveMap();
+	//reset active map request to an empty one (with only default values filled)
+	//cmv.activeMap.request = cmv.display.map_request_template;
 
-	if(cmv.debugger.debug)
-		console.log(cmv.activeMap);
-
-	// get checkboxes from the web page
-	let checkBoxes = document.getElementsByName("censusVar");
-
-	// array to hold checked variables
-	let checkedBoxes = [];
-	let checked = false;
-
-	// processes each checkbox and determines which boxes have been checked
-	for(let i = 0; i < checkBoxes.length; i++){
-		if(checkBoxes[i].checked){
-			checkedBoxes.push(checkBoxes[i].value);
-			checked = true;
-		}
+	//set location details for the current request using the google places api
+	if(cmv.display.location.placeUpdated == false)
+	{
+		setTimeout(cmv.retrieveData, 100);
+		console.log("retrieveData - waiting for location info");
 	}
-
-	// fill the census data request with the variables selected by the user
-	if(checked)
-		cmv.activeMap.request.variables = checkedBoxes;
 	else
-		cmv.activeMap.request.variables = ['population'];
+	{
+		cmv.display.location.setLocationDetails();
 
-	cmv.userInput = cmv.activeMap.request.variables[0];
+		if(cmv.debugger.debug)
+			console.log(cmv.activeMap);
 
-	if(cmv.debugger.debug){
-		console.log('retrieveData: request.variables: ${cmv.activeMap.request.variables}');
-		console.log('retrieveData: request:');
-		console.log(cmv.activeMap.request);
+		// get checkboxes from the web page
+		let checkBoxes = document.getElementsByName("censusVar");
+
+		// array to hold checked variables
+		let checkedBoxes = [];
+		let checked = false;
+
+		// processes each checkbox and determines which boxes have been checked
+		for(let i = 0; i < checkBoxes.length; i++){
+			if(checkBoxes[i].checked){
+				checkedBoxes.push(checkBoxes[i].value);
+				checked = true;
+			}
+		}
+
+		// fill the census data request with the variables selected by the user
+		if(checked)
+			cmv.activeMap.request.variables = checkedBoxes;
+		else
+			cmv.activeMap.request.variables = ['population'];
+
+		cmv.userInput = cmv.activeMap.request.variables[0];
+
+		if(cmv.debugger.debug){
+			console.log(`retrieveData: request.variables: ${cmv.activeMap.request.variables}`);
+			console.log('retrieveData: request:');
+			console.log(cmv.activeMap.request);
+		}
+
+		// This request is used to get geographical data
+		cmv.census.geoRequest(cmv.activeMap.request, cmv.geoCallBack);
+
+		// This request is used to get the data to correlate with the Geo location data
+		cmv.census.apiRequest(cmv.activeMap.request, cmv.dataCallBack);
+
+		//(DOES NOT WORK) cmv.activeMap.request = cmv.display.map_request_template;
 	}
-
-	// This request is used to get geographical data
-	cmv.census.geoRequest(cmv.activeMap.request, cmv.geoCallBack);
-
-	// This request is used to get the data to correlate with the Geo location data
-	cmv.census.apiRequest(cmv.activeMap.request, cmv.dataCallBack);
 };
 
 
