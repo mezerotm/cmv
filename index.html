@@ -10,19 +10,32 @@
 
 	<!-- custom css -->
 	<link href='css/index.css' rel='stylesheet'>
+        <!-- Help page styles -->
+        <link href='css/introjs.css' rel='stylesheet'>
+        <!-- Help page theme -->
+        <link href='css/introjs-modern.css' rel='stylesheet'>
 </head>
 <body>
-
+<script>
+		function startTour() {
+			var tour = introJs()
+                        tour.setOption('showProgress', 'true');
+			tour.setOption('tooltipPosition', 'auto');
+			tour.setOption('positionPrecedence', ['left', 'right', 'bottom', 'top'])
+			tour.start()
+		}
+	
+</script>
 <div class='container no-drag no-select'>
 
 	<div id='top-panel'>
 		<div id='progress-bar'></div>
 
 		<div class='no-select'>
-			<input id='location_input' class='no-drag' type='text' placeholder='Search' >
+			<input id='location_input' class='no-drag' type='text' placeholder='Search' data-step="1" data-intro='Enter location informtion such as county name or zipcode'>
 
-			<button name='submit' id='submit' onclick='cmv.run()'>Submit</button>
-
+			<button name='submit' id='submit' onclick='cmv.run()' data-step="9" data-intro='Press this button to retrieve your data' >Submit</button>
+ 
 			<h4 id='mapviews-title'> Views </h4>
 
 			<select id='mapviews' onchange='cmv.display.topbar.updateMapView(this)' title='map-views'>
@@ -60,7 +73,7 @@
 	</div> <!-- /canvas-control-help -->
 
 	<div class='sidebar-panel'>
-		<div class='sidebar no-select'>
+		<div class='sidebar no-select' data-position="auto" data-step="2" data-intro='You can now choose from a list of variables below'>
 
 			<div id='placeholder' class='sidebar-tab'></div> <!-- /placeholder -->
 
@@ -70,37 +83,37 @@
 				</div>
 			</div> <!-- /sidebar-configuration-icon -->
 
-			<div class='sidebar-tab' onclick='cmv.display.sidebar.open("population")'>
+			<div class='sidebar-tab' onclick='cmv.display.sidebar.open("population")' data-step="3" data-intro='Press this icon to select a population variable, OR'>
 				<div class='sidebar-content'>
 					<img class='sidebar-icon no-drag' src='img/svg/sidebar-icons/population.svg'/>
 				</div>
 			</div> <!-- /sidebar-population-icon -->
 
-			<div class='sidebar-tab' onclick='cmv.display.sidebar.open("demographic")'>
+			<div class='sidebar-tab' onclick='cmv.display.sidebar.open("demographic")' data-step="4" data-intro='Press this icon to select a age demographic variable, OR'>
 				<div class='sidebar-content'>
 					<img class='sidebar-icon no-drag' src='img/svg/sidebar-icons/demographic.svg'/>
 				</div>
 			</div> <!-- /sidebar-demographic-icon -->
 
-			<div class='sidebar-tab' onclick='cmv.display.sidebar.open("income")'>
+			<div class='sidebar-tab' onclick='cmv.display.sidebar.open("income")' data-step="5" data-intro='Press this icon to select a income variable, OR'>
 				<div class='sidebar-content'>
 					<img class='sidebar-icon no-drag' src='img/svg/sidebar-icons/income.svg'>
 				</div>
 			</div> <!-- /sidebar-income-icon -->
 
-			<div class='sidebar-tab' onclick='cmv.display.sidebar.open("crime")'>
+			<div class='sidebar-tab' onclick='cmv.display.sidebar.open("crime")' data-step="6" data-intro='Press this icon to select a crime variable, OR'>
 				<div class='sidebar-content'>
 					<img class='sidebar-icon no-drag' src='img/svg/sidebar-icons/crime.svg'>
 				</div>
 			</div> <!-- /sidebar-crime-icon -->
 
-			<div class='sidebar-tab' onclick='cmv.display.sidebar.open("transportation")'>
+			<div class='sidebar-tab' onclick='cmv.display.sidebar.open("transportation")' data-step="7" data-intro='Press this icon to select a transportation variable, OR'>
 				<div class='sidebar-content'>
 					<img class='sidebar-icon no-drag' src='img/svg/sidebar-icons/transportation.svg'>
 				</div>
 			</div> <!-- /sidebar-transportation-icon -->
 
-			<div class='sidebar-tab' onclick='cmv.display.sidebar.open("education")'>
+			<div class='sidebar-tab' onclick='cmv.display.sidebar.open("education")' data-step="8" data-intro='Press this icon to select a education variable.'>
 				<div class='sidebar-content'>
 					<img class='sidebar-icon no-drag' src='img/svg/sidebar-icons/education.svg'>
 				</div>
@@ -110,7 +123,7 @@
 				<div id='sidebar-control-settings'>
 					<img class='sidebar-icon no-drag' src='img/svg/sidebar-icons/settings.svg'>
 				</div>
-				<div id='sidebar-control-help' onclick='cmv.display.sidebar.help.open()'>
+				<div id='sidebar-control-help' onclick='javascript:startTour();'>
 					<img class='sidebar-icon no-drag' src='img/svg/sidebar-icons/help.svg'>
 				</div>
 			</div>
@@ -265,9 +278,10 @@
 <script src='js/display.map.styles.js'></script>
 <script src='js/display.map.js'></script>
 <script src='js/display.topbar.js'></script>
-<script src="js/display.sidebar.help.js"></script>
 <script src='js/display.sidebar.js'></script>
 <script src='js/cmv.js'></script>
+<script src='js/intro.js'></script> <!-- library for the help functionality -->
+<script src="js/display.sidebar.help.js"></script>
 <script src='js/display.location.js'></script>
 </body>
 </html>
