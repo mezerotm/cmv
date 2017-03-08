@@ -109,8 +109,8 @@ cmv.display.map = function(idNumber){
         if (status == 'OK') {
 
         //get latitude and longitude
-        let latitude = results[0].geometry.location.lat();
-        let longitude = results[0].geometry.location.lng();
+        let lat = results[0].geometry.location.lat();
+        let long = results[0].geometry.location.lng();
 
         // defualt zoom
         let zoom = 1;
@@ -138,7 +138,7 @@ cmv.display.map = function(idNumber){
         }
 
         this.googleMap.setZoom(zoom);
-        this.googleMap.setCenter({lat: latitude, lng: longitude});
+        this.googleMap.setCenter({lat: lat, lng: long});
         } else if(cmv.debugger.debug)
           console.log('cmv.display.map.centerMap: ' + status);
     }.bind(this));
@@ -220,3 +220,39 @@ cmv.display.map.resetActiveMapDisplay = function() {
 		variables: ['population']
 	};*/
 //console.log('zipCord:' + cmv.display.map.zipCodeConverter( cmv.display.maps[0].request.zip ) );
+
+
+cmv.display.map.centerActiveMap = function()
+{
+    activeMap = cmv.display.map.getActiveMap();
+
+    lat = cmv.display.location.place.geometry.location.lat();
+    long = cmv.display.location.place.geometry.location.lng();
+
+    console.log(activeMap.request.level)
+
+    // sets zoom based off request level
+    switch(activeMap.request.level){
+        case 'blockGroup':
+            zoom = 10;
+            break;
+        case 'tract':
+            zoom = 10;
+            break;
+        case 'county':
+            zoom = 10;
+            break;
+        case 'state':
+            zoom = 7;
+            break;
+        case 'us':
+            zoom = 15;
+            break;
+        case 'place':
+            zoom = 5;
+            break;
+    }
+
+    activeMap.googleMap.setCenter(new google.maps.LatLng(lat, long));
+    console.log("Centered map")
+};

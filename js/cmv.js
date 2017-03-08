@@ -135,7 +135,8 @@ cmv.geoCallBack = function(response){
 			console.log('geoCallBack: response.features.length: ${response.features.length}');
 
 
-     	cmv.activeMap.centerMap();
+     	//cmv.activeMap.centerMap();
+		cmv.display.map.centerActiveMap();
 
 		// draw on to map
 		for(let tract = 0; tract < response.features.length; tract++){
