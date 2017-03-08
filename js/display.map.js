@@ -178,6 +178,12 @@ cmv.display.map.disableMaps = function(){
 //reset the request back to a default request for next processing
 cmv.display.map.resetRequest = function() {
     activeMap = cmv.display.map.getActiveMap();
+    activeMap.request = {};
+    activeMap.request.api = 'acs5';
+    activeMap.request.year = '2014';
+    activeMap.request.sublevel = true;
+    //activeMap.request.variables = ['population'];
+    activeMap.request.level = 'county';
 
 };
 
