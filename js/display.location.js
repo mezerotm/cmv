@@ -20,6 +20,7 @@ cmv.display.location.location_service = new google.maps.places.PlacesService(doc
 cmv.display.location.place;
 var placeTextVal;
 cmv.display.location.placeUpdated = false;
+cmv.display.location.location_updated = true;
 
 //add listener to google places autocomplete object for when place is selected by user from dropdown list
 google.maps.event.addListener(cmv.display.location.location_input, 'place_changed', function() {
@@ -142,6 +143,7 @@ cmv.display.location.updatePlace = function()
 cmv.display.location.setLocationDetails = function()
 {
 	//console.log(cmv.display.location.location_input.getPlace());
+	cmv.display.location.location_updated = false;
 
 	if(cmv.display.location.setPlace())
 	{
@@ -174,6 +176,8 @@ cmv.display.location.setPlace = function()
 
 		cmv.activeMap.request.zip = zip;
 		cmv.activeMap.request.state = state;
+
+		cmv.display.location.location_updated = true;
 		
 		return true;
 	/*}

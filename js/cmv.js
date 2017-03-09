@@ -114,6 +114,8 @@ cmv.geoCallBack = function(response){
 
 		for(let i = 0; i < response.features.length; i++){
 			let dataPoint = response.features[i].properties[convertedVariable];
+			if(dataPoint == NaN)  // if the response has empty values for the data points, resend the request
+				setTimeout(cmv.run(), 100)
 			let colorValue;
 
 			for(let j = 0; j < colors.length; j++)
@@ -261,7 +263,7 @@ cmv.dataCallBack = function(response){
 //called when the user hits the submit button to prevent the citysdk requests from being made before the citysdk request is assembled with correct location info
 cmv.run = function()
 {
-	cmv.display.map.resetRequest();
+    cmv.display.map.resetRequest();
 	cmv.display.map.resetActiveMapDisplay();
 	cmv.display.location.updatePlace();
 	cmv.retrieveData();
@@ -289,12 +291,15 @@ cmv.retrieveData = function(){
 	if(cmv.display.location.placeUpdated == false)
 	{
 		setTimeout(cmv.retrieveData, 100);
-		console.log("retrieveData - waiting for location info");
+		console.log("retrieveData - waiting for place update");
 	}
 	else
 	{
-		cmv.display.location.setLocationDetails();
-
+        cmv.display.location.setLocationDetails();
+		if(cmv.display.location.location_updated == false) {
+            setTimeout(cmv.retrieveData, 100)
+            console.log("retrieveData - waiting for location update")
+        }
 		if(cmv.debugger.debug)
 			console.log(cmv.activeMap);
 
