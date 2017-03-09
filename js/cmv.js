@@ -114,8 +114,6 @@ cmv.geoCallBack = function(response){
 
 		for(let i = 0; i < response.features.length; i++){
 			let dataPoint = response.features[i].properties[convertedVariable];
-			if(dataPoint == NaN)  // if the response has empty values for the data points, resend the request
-				setTimeout(cmv.run(), 100)
 			let colorValue;
 
 			for(let j = 0; j < colors.length; j++)
@@ -127,6 +125,17 @@ cmv.geoCallBack = function(response){
 
 			variablesArray.push({value: dataPoint, color: colorValue});
 		}
+
+
+        for(let i = 0; i < variablesArray.length; i++) {
+            if (isNaN(variablesArray[i].value))
+			{
+                setTimeout(cmv.run());
+                console.log("ERROR HELLO")
+				return;
+        	}
+		}
+
 
 		if(cmv.debugger.debug){
 			console.log('geoCallBack: variablesArray:');
