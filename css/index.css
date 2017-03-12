@@ -244,6 +244,9 @@ html, body, .container {
 	background: black;
 }
 
+#location_input {
+	margin: 4px 0 0 0;
+}
 /* /top panel css rules */
 
 /* Google Maps css rules */

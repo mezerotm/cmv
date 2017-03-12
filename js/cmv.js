@@ -283,11 +283,10 @@ cmv.run = function()
  * SDK and obtain the data.
  */
 cmv.retrieveData = function(){
-	cmv.display.topbar.ProgressBarStart();
-
 	if(cmv.debugger.debug)
 		console.log('retrieveData: invoked');
 
+	cmv.display.map.mapRequestASync = false;
 	cmv.geoRequestASync = true;
 	cmv.apiRequestASync = true;
 

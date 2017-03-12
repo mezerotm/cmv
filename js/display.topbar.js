@@ -68,12 +68,6 @@ cmv.display.topbar.ProgressBarStart = function(){
 	}
 };
 
-cmv.display.topbar.ProgressBarStop = function(){
-	clearInterval(cmv.display.topbar.ProgressBarStart.timer);
-	cmv.display.topbar.progressBar.style.width = null;
-	cmv.display.topbar.ProgressBar = false;
-};
-
 //This function will contain the code for the date on the index page. 
 cmv.display.showDate = function(){
   var d = new Date();
