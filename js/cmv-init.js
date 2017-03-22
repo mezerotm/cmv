@@ -15,6 +15,17 @@ cmv.census = new CensusModule("c83e06ec87c35c0d3ffb0f6d7640afbf52b7071c");
 
 cmv.debugger = {};
 
+//the index of the colors currently being used for the next map
+cmv.colors_num = 0;
+//the colors that are being used to color the next map
+cmv.colors = [
+    ['#FFCCCC', '#FF9999', '#FF6666', '#FF3333', '#F00000'],
+    ['#FFFFCC', '#FFE999', '#FFB666', '#FF8333', '#E65000'],
+    ['#CCE6FF', '#99B3FF', '#6680FF', '#334DFF', '#001ADB'],
+    ['#CCFFD9', '#99FFA6', '#66FF73', '#33FF40', '#00FF0D']
+];
+
+
 cmv.display = {};
 cmv.display.help = {};
 cmv.display.topbar = {};
@@ -44,4 +55,119 @@ cmv.CENSUS_VARS = [
              {key: "B08136_003E", value: "commute_time_solo_automobile", title:"Car, truck, or van: Drove alone (Minutes)"} // Car, truck, or van: Drove alone
     ];
   
- 
+
+cmv.initPlace = function() {
+    if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(cmv.setInitPlace, cmv.errorHandleInitPlace);
+    } else {
+        console.log( "Geolocation is not supported by this browser.");
+        cmv.setInitPlace({'coords': {'latitude': 33.7493, 'longitude': -84.3883}}); // set default location to lawrenceville, GA
+    }
+}
+
+cmv.setInitPlace = function(location) {
+
+    //create request based on default lat and long for the program
+    var place_request = {
+        query: (location.coords.latitude + ', ' + location.coords.longitude)
+    };
+
+    //search for a place given the default lat and long for the program
+    cmv.display.location.location_service.textSearch(place_request, function(results, status) {
+        if(status == google.maps.places.PlacesServiceStatus.OK) {
+            var p = results[0];
+            var place_request2 = {
+                reference: p.reference
+            };
+
+            //get detailed information on the place found by the search
+            cmv.display.location.location_service.getDetails(place_request2, function(p, status) {
+                if(status == google.maps.places.PlacesServiceStatus.OK) {
+
+                    //will hold the formatted output to be printed to the textbox shown to the user (the location_input textbox)
+                    addr_string = {
+                        city: "",
+                        state: "",
+                        zip: "",
+                        country: ""
+                    };
+
+                    for(i = 0; i < p.address_components.length; i++)
+                    {
+                        //compose string for showing in text box
+                        if(p.address_components[i].types[0] == "locality")
+                            addr_string.city = p.address_components[i].long_name;
+                        else if(p.address_components[i].types[0] == 'administrative_area_level_1')
+                            addr_string.state = p.address_components[i].long_name;
+                        else if(p.address_components[i].types[0] == 'postal_code')
+                            addr_string.zip = p.address_components[i].long_name;
+                        else if(p.address_components[i].types[0] == 'country')
+                            addr_string.country = p.address_components[i].long_name;
+                    }
+
+                    if(addr_string.country != "United States")
+                        console.log("That location is not within the United States, it is in " + addr_string.country + ". Please enter a valid location within the United States");
+                    else
+                    {
+                        cmv.display.location.place = p;
+                        //$("#location_input").val(JSON.stringify(cmv.display.location.place.address_components));
+
+
+                        //concatenate the parts of the addr_string into the final string to be put in the location_input textbox
+                        if(addr_string.city == "")
+                            final_addr_string = addr_string.state + " " + addr_string.zip + ", " + addr_string.country;
+                        else
+                            final_addr_string = addr_string.city + ", " + addr_string.state + " " + addr_string.zip + ", " + addr_string.country;
+
+                        $("#location_input").val(final_addr_string);
+
+                        cmv.display.location.placeTextVal = $("#location_input").val();
+                    }
+
+
+                    console.log("default place set");
+                    cmv.display.location.place = p;
+                    cmv.display.location.placeUpdated = true;
+                    //center all maps on this new default location
+                    cmv.initCenterMaps();
+                    return true;
+                }
+            });
+        }
+        else
+            console.log("ERROR in textsearch for default place");
+    });
+};
+
+//center all maps on the current place
+cmv.initCenterMaps = function()
+{
+    //set the location for all of the maps to this default location
+    for(i = 0; i < cmv.display.maps.length; i++)
+    {
+        cmv.display.maps[i].centerMap();
+    }
+};
+
+
+//error handling for setting initial place of maps
+cmv.errorHandleInitPlace = function(error) {
+    switch(error.code) {
+        case error.PERMISSION_DENIED:
+            console.log("User denied the request for Geolocation.");
+            cmv.setInitPlace({'coords': {'latitude': 33.7493, 'longitude': -84.3883}}); // set default location to lawrenceville, GA
+            break;
+        case error.POSITION_UNAVAILABLE:
+            console.log("Location information is unavailable for initial map place");
+            break;
+        case error.TIMEOUT:
+            console.log("The request to get user location for initial map place timed out.");
+            break;
+        case error.UNKNOWN_ERROR:
+            console.log("An unknown error occurred when setting initial map place.")
+            break;
+    }
+};
+
+//run the function to set the default place for the map
+cmv.initPlace();

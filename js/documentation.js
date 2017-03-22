@@ -30,7 +30,7 @@
  */
 
 // flag for debug output
-cmv.debugger.debug = false;
+cmv.debugger.debug = true;
 cmv.debugger.documentation = false;
 
 if(cmv.debugger.documentation){

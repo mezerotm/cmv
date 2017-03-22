@@ -58,8 +58,11 @@ cmv.geoCallBack = function(response){
 			console.log('convertedVariable: ${convertedVariable}');
 
 		// Step 1: Determines the array of colors
-		// todo: find a way to pragmatically change the tint/shade
-		let colors = ['#FEEDDE', '#FDBE85', '#FD8D3C', '#E6550D', '#A63603'];
+		if (cmv.colors_num == cmv.colors.length)
+			cmv.colors_num = 0;
+		else
+			cmv.colors_num++;
+		let colors = cmv.colors[cmv.colors_num];
 
 		// Step 2: Determine the range
 		let minMaxValue = (function(){

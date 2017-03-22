@@ -123,6 +123,7 @@ cmv.display.location.updatePlace = function()
 
 
 						console.log("place updated");
+						cmv.display.location.place = p;
 						cmv.display.location.placeUpdated = true;
 						return true;
 					}
