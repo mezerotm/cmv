@@ -286,6 +286,19 @@ html, body, .container {
 	border: 3px solid #000;
 }
   
-  
-  
-  
+[tooltip]:before {
+	background-color: #F1F3F6;
+	border-color: black;
+	border-width: 1px;
+	border-style: solid;
+	left: 20px;
+	position: absolute;
+	content: attr(tooltip);
+	opacity: 0;
+	font-size: 12px;
+}
+
+[tooltip]:hover:before {
+	opacity: 1;
+	transition-delay:1s;
+}
