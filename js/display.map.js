@@ -78,6 +78,7 @@ cmv.display.map = function(idNumber){
     mapLegendDiv.innerHTML = '<center><h3>Legend</h3></center>';
     mapLegendDiv.setAttribute("class", "maplegend");
     mapLegendDiv.setAttribute("id", "mapLegend" + idNumber);
+    mapLegendDiv.style.display = "none";
 
    
    // get the maps container
@@ -207,6 +208,15 @@ cmv.display.map.getActiveMap = function(){
       return cmv.display.maps[i];
 };
 
+// returns the current active map number
+cmv.display.map.getActiveMapNumber = function(){
+  for(let i = 0; i < cmv.display.maps.length; i++)
+    if(cmv.display.maps[i].focus)
+      return i;
+};
+
+
+
 // disable all maps
 cmv.display.map.disableMaps = function(){
   for(let i = 0; i < cmv.display.maps.length; i++)
@@ -246,6 +256,17 @@ cmv.display.map.resetActiveMapDisplay = function() {
 	{
 		cmv.display.map.getActiveMap().polygons[i].setMap(null);
 	}
+        
+        // remove the title on reload
+        var titleControl = cmv.display.map.getActiveMap().googleMap.controls[google.maps.ControlPosition.TOP_CENTER];
+        // this concoction came from inspecting the debugger. There must be a more straight-forward way to do this (crh)
+        titleControl.b[0].style.display = "none"; // hide
+        
+        // remove the legend on reload
+        var legendControl = cmv.display.map.getActiveMap().googleMap.controls[google.maps.ControlPosition.RIGHT_BOTTOM];
+        // this concoction came from inspecting the debugger. There must be a more straight-forward way to do this (crh)
+        legendControl.b[0].style.display = "none"; // hide
+        
 };
   // disable #mapviews
   $("#mapviews").prop("disabled", false);
