@@ -234,7 +234,7 @@ cmv.geoCallBack = function(response){
                     // adds a row to the legend
                     mapLegend.appendChild(legendEntry);
                 }
-                
+                mapLegend.style.display = "block";
                 
                 // Step 6. Create Map Title
                 var mapTitle = document.getElementById("mapTitle" + mapNumber);
