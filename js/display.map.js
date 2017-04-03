@@ -13,6 +13,7 @@
  *
  * where the index a value from 0  - 3 indicating map location on the screen.
  */
+
  //template for empty map request
 cmv.display.map_request_template = {
 		level: 'county',
@@ -67,6 +68,7 @@ cmv.display.map = function(idNumber){
     mapLegendDiv.innerHTML = '<center><h3>Legend</h3></center>';
     mapLegendDiv.setAttribute("class", "maplegend");
     mapLegendDiv.setAttribute("id", "mapLegend" + idNumber);
+    mapLegendDiv.style.display = "none";
 
    
    // get the maps container
@@ -100,48 +102,38 @@ cmv.display.map = function(idNumber){
       console.log(this);
   }.bind(this));
 
-    // center map
-    this.centerMap = function(){
+// center map
+this.centerMap = function(){
     let geocoder = new google.maps.Geocoder();
-    let address = '30043';
 
-    geocoder.geocode( { 'address': address }, function (results, status) {
-        if (status == 'OK') {
+    lat = cmv.display.location.place.geometry.location.lat();
+    long = cmv.display.location.place.geometry.location.lng();
 
-        //get latitude and longitude
-        let lat = results[0].geometry.location.lat();
-        let long = results[0].geometry.location.lng();
-
-        // defualt zoom
-        let zoom = 1;
-
-        // sets zoom based off request level
-        switch(this.request.level){
-          case 'blockGroup':
+    // sets zoom based off request level
+    switch(this.request.level){
+        case 'blockGroup':
             zoom = 10;
             break;
-          case 'tract':
+        case 'tract':
             zoom = 10;
             break;
-          case 'county':
+        case 'county':
             zoom = 10;
             break;
-          case 'state':
+        case 'state':
             zoom = 7;
             break;
-          case 'us':
+        case 'us':
             zoom = 15;
             break;
-          case 'place':
+        case 'place':
             zoom = 5;
             break;
-        }
+    }
 
-        this.googleMap.setZoom(zoom);
-        this.googleMap.setCenter({lat: lat, lng: long});
-        } else if(cmv.debugger.debug)
-          console.log('cmv.display.map.centerMap: ' + status);
-    }.bind(this));
+    this.googleMap.setCenter(new google.maps.LatLng(lat, long));
+
+    this.googleMap.setZoom(zoom);
   };
 
 };
@@ -166,6 +158,15 @@ cmv.display.map.getActiveMap = function(){
     if(cmv.display.maps[i].focus)
       return cmv.display.maps[i];
 };
+
+// returns the current active map number
+cmv.display.map.getActiveMapNumber = function(){
+  for(let i = 0; i < cmv.display.maps.length; i++)
+    if(cmv.display.maps[i].focus)
+      return i;
+};
+
+
 
 // disable all maps
 cmv.display.map.disableMaps = function(){
@@ -206,6 +207,17 @@ cmv.display.map.resetActiveMapDisplay = function() {
 	{
 		cmv.display.map.getActiveMap().polygons[i].setMap(null);
 	}
+        
+        // remove the title on reload
+        var titleControl = cmv.display.map.getActiveMap().googleMap.controls[google.maps.ControlPosition.TOP_CENTER];
+        // this concoction came from inspecting the debugger. There must be a more straight-forward way to do this (crh)
+        titleControl.b[0].style.display = "none"; // hide
+        
+        // remove the legend on reload
+        var legendControl = cmv.display.map.getActiveMap().googleMap.controls[google.maps.ControlPosition.RIGHT_BOTTOM];
+        // this concoction came from inspecting the debugger. There must be a more straight-forward way to do this (crh)
+        legendControl.b[0].style.display = "none"; // hide
+        
 };
   // disable #mapviews
   $("#mapviews").prop("disabled", false);
