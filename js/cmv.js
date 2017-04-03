@@ -241,7 +241,7 @@ cmv.geoCallBack = function(response){
                 mapTitle.innerHTML = '<center><h1>' + cmv.getTitleFromKey(convertedVariable) + '</h1></center>';
                 mapTitle.style.display = 'block';           // Unhide
 
-                cmv.display.topbar.ProgressBarStop();
+		cmv.activeMap.progressBar.stop();
 
 
 	}else if(!cmv.geoRequestASync && cmv.debugger.debug)
@@ -275,7 +275,7 @@ cmv.dataCallBack = function(response){
 //called when the user hits the submit button to prevent the citysdk requests from being made before the citysdk request is assembled with correct location info
 cmv.run = function()
 {
-    cmv.display.map.resetRequest();
+	cmv.display.map.resetRequest();
 	cmv.display.map.resetActiveMapDisplay();
 	cmv.display.location.updatePlace();
 	cmv.retrieveData();
@@ -286,6 +286,8 @@ cmv.run = function()
  * SDK and obtain the data.
  */
 cmv.retrieveData = function(){
+	cmv.display.map.getActiveMap().progressBar.start();
+
 	if(cmv.debugger.debug)
 		console.log('retrieveData: invoked');
 

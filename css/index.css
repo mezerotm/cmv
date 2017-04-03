@@ -261,6 +261,20 @@ html, body, .container {
 	width: 100%;
 }
 
+.map-container > svg {
+	position: relative;
+	height: 50%;
+	display: none;
+}
+
+#map-container td > svg {
+	position: absolute;
+	height: 50%;
+	width: 100%;
+	top: 25%;
+	display: none;
+	margin: auto;
+}
 /* /Google Maps css rules */
 
 @-moz-document url-prefix() { /* firefox specific css rules */

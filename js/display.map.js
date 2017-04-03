@@ -25,6 +25,16 @@ cmv.display.map_request_template = {
 		variables: ['population']
 	};
 
+/*
+ * cmv.map(idNumber)
+ *
+ * This is a constructor for creating map objects
+ * Creation of this object looks like
+ *
+ * cmv.display.maps[index] = new cmv.display.map(index);
+ *
+ * where the index a value from 0  - 3 indicating map location on the screen.
+ */
 cmv.display.map = function(idNumber){
 	this.id = document.getElementById(`map${idNumber}`);
 	this.focus = false;
@@ -68,7 +78,6 @@ cmv.display.map = function(idNumber){
     mapLegendDiv.innerHTML = '<center><h3>Legend</h3></center>';
     mapLegendDiv.setAttribute("class", "maplegend");
     mapLegendDiv.setAttribute("id", "mapLegend" + idNumber);
-    mapLegendDiv.style.display = "none";
 
    
    // get the maps container
@@ -102,39 +111,78 @@ cmv.display.map = function(idNumber){
       console.log(this);
   }.bind(this));
 
-// center map
-this.centerMap = function(){
+	// center map
+	this.centerMap = function(){
     let geocoder = new google.maps.Geocoder();
+		let address = '30043';
 
-    lat = cmv.display.location.place.geometry.location.lat();
-    long = cmv.display.location.place.geometry.location.lng();
+		geocoder.geocode({'address': address}, function(results, status){
+			if(status == 'OK'){
 
-    // sets zoom based off request level
-    switch(this.request.level){
-        case 'blockGroup':
+				//get latitude and longitude
+				let lat = results[0].geometry.location.lat();
+				let long = results[0].geometry.location.lng();
+
+				// defualt zoom
+				let zoom = 1;
+
+				// sets zoom based off request level
+				switch(this.request.level){
+					case 'blockGroup':
             zoom = 10;
             break;
-        case 'tract':
+					case 'tract':
             zoom = 10;
             break;
-        case 'county':
+					case 'county':
             zoom = 10;
             break;
-        case 'state':
+					case 'state':
             zoom = 7;
             break;
-        case 'us':
+					case 'us':
             zoom = 15;
             break;
-        case 'place':
+					case 'place':
             zoom = 5;
             break;
-    }
+				}
 
-    this.googleMap.setCenter(new google.maps.LatLng(lat, long));
-
-    this.googleMap.setZoom(zoom);
+				this.googleMap.setZoom(zoom);
+				this.googleMap.setCenter({lat: lat, lng: long});
+			}else if(cmv.debugger.debug)
+				console.log('cmv.display.map.centerMap: ' + status);
+		}.bind(this));
   };
+
+	//Loading indicator
+	this.progressBar =
+		{
+			bar: new ProgressBar.Circle(this.id, {
+				color: '#5B5C5C',
+				duration: 2000,
+				// sets default to nothing
+				svgStyle: {},
+			}),
+
+			start: function(){
+				let that = this;
+				$("#map-container").find("td > svg").css("display", "block");
+				function loop(){
+					if(that.bar.value() <= .01)
+						that.bar.animate(1, function(){
+							that.bar.animate(0);
+						})
+				}
+
+				setInterval(loop, 100);
+			},
+
+			stop: function(){
+				$("#map-container").find("td > svg").css("display", "none");
+				clearInterval();
+			}
+		}
 
 };
 
@@ -158,15 +206,6 @@ cmv.display.map.getActiveMap = function(){
     if(cmv.display.maps[i].focus)
       return cmv.display.maps[i];
 };
-
-// returns the current active map number
-cmv.display.map.getActiveMapNumber = function(){
-  for(let i = 0; i < cmv.display.maps.length; i++)
-    if(cmv.display.maps[i].focus)
-      return i;
-};
-
-
 
 // disable all maps
 cmv.display.map.disableMaps = function(){
@@ -207,17 +246,6 @@ cmv.display.map.resetActiveMapDisplay = function() {
 	{
 		cmv.display.map.getActiveMap().polygons[i].setMap(null);
 	}
-        
-        // remove the title on reload
-        var titleControl = cmv.display.map.getActiveMap().googleMap.controls[google.maps.ControlPosition.TOP_CENTER];
-        // this concoction came from inspecting the debugger. There must be a more straight-forward way to do this (crh)
-        titleControl.b[0].style.display = "none"; // hide
-        
-        // remove the legend on reload
-        var legendControl = cmv.display.map.getActiveMap().googleMap.controls[google.maps.ControlPosition.RIGHT_BOTTOM];
-        // this concoction came from inspecting the debugger. There must be a more straight-forward way to do this (crh)
-        legendControl.b[0].style.display = "none"; // hide
-        
 };
   // disable #mapviews
   $("#mapviews").prop("disabled", false);

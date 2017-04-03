@@ -4,7 +4,6 @@
  */
 
 cmv.display.topbar.mapContainer = document.getElementById('map-container');
-cmv.display.topbar.progressBar = document.getElementById('progress-bar');
 
 // is used to determine weather a page is open or not
 cmv.display.sidebar.isOpened = undefined;
@@ -48,24 +47,6 @@ cmv.display.topbar.updateMapView = function(self){
 		cmv.display.topbar.mapContainer.style.width = 'calc(100% - 45px)';
 	else
 		cmv.display.topbar.mapContainer.style.width = 'calc(100% - 290px)';
-};
-
-cmv.display.topbar.ProgressBar = false;
-
-cmv.display.topbar.ProgressBarStart = function(){
-	if(!cmv.display.topbar.ProgressBar){
-		cmv.display.topbar.ProgressBar = true;
-		let width = 0;
-		cmv.display.topbar.ProgressBarStart.timer = setInterval(frame, 35);
-		function frame(){
-			if(width >= 100){
-				width = 0;
-			}else{
-				width++;
-				cmv.display.topbar.progressBar.style.width = width + '%';
-			}
-		}
-	}
 };
 
 //This function will contain the code for the date on the index page. 
