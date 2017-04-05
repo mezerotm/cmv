@@ -269,9 +269,9 @@ html, body, .container {
 
 #map-container td > svg {
 	position: absolute;
-	height: 50%;
+	height: 10%;
 	width: 100%;
-	top: 25%;
+	top: 40%;
 	display: none;
 	margin: auto;
 }

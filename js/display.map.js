@@ -160,19 +160,23 @@ cmv.display.map = function(idNumber){
 	this.progressBar =
 		{
 			bar: new ProgressBar.Circle(this.id, {
-				color: '#5B5C5C',
-				duration: 2000,
+				color: '#CDCDCD',
+        status: 'inactive',
+				duration: 500,
 				// sets default to nothing
 				svgStyle: {},
+        strokeWidth: 99.9
 			}),
 
 			start: function(){
 				let that = this;
 				$("#map-container").find("td > svg").css("display", "block");
+        let svgs = $("#map-container").find("td > svg");
+        that.bar.status = 'active';
 				function loop(){
-					if(that.bar.value() <= .01)
+					if(that.bar.value() <= .01 && that.bar.status == 'active')
 						that.bar.animate(1, function(){
-							that.bar.animate(0);
+							that.bar.set(0);
 						})
 				}
 
@@ -181,7 +185,8 @@ cmv.display.map = function(idNumber){
 
 			stop: function(){
 				$("#map-container").find("td > svg").css("display", "none");
-				clearInterval();
+        this.bar.status = 'inactive';
+        clearInterval();
 			}
 		}
 
