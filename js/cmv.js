@@ -189,7 +189,8 @@ cmv.geoCallBack = function(response){
                     }
                 }*/
                 mapNumber = cmv.activeMap.idNum;
-				console.log("Map ID: " + mapNumber);
+				if (cmv.debugger.debug)
+					console.log("Map ID: " + mapNumber);
                 var mapLegend = document.getElementById("mapLegend" + mapNumber);
 
                 // clear out the old legend just in case the user is just changing variables
