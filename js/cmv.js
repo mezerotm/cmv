@@ -16,7 +16,7 @@
  */
 
 // creates an active map
-cmv.activeMap = cmv.display.map.getActiveMap();
+cmv.activeMap = null;
 
 // toggles to prevent duplicate requests
 cmv.geoRequestASync = false;
@@ -182,12 +182,14 @@ cmv.geoCallBack = function(response){
 
                 // determine which map has the focus now.
                 var mapNumber = 0;  // is this stored in the map object?
-                for (var mapPos = 0; mapPos < cmv.display.maps.length; mapPos++) {
+				//this will change so that it goes to the map that was active at the time this request was submitted
+                /*for (var mapPos = 0; mapPos < cmv.display.maps.length; mapPos++) {
                     if (cmv.display.maps[mapPos].focus == true) {
                         mapNumber = mapPos;
                     }
-                }
-
+                }*/
+                mapNumber = cmv.activeMap.idNum;
+				console.log("Map ID: " + mapNumber);
                 var mapLegend = document.getElementById("mapLegend" + mapNumber);
 
                 // clear out the old legend just in case the user is just changing variables
@@ -250,6 +252,7 @@ cmv.geoCallBack = function(response){
 		console.log("No response");
 
 	cmv.geoRequestASync = false;
+	cmv.activeMap = null
 };
 
 /*
@@ -275,6 +278,8 @@ cmv.dataCallBack = function(response){
 //called when the user hits the submit button to prevent the citysdk requests from being made before the citysdk request is assembled with correct location info
 cmv.run = function()
 {
+    if(cmv.activeMap == null) //only change active map if this is a new request, which would mean cmv.activeMap is set to null after completion of last request
+		cmv.activeMap = cmv.display.map.getActiveMap();
 	cmv.display.map.resetRequest();
 	cmv.display.map.resetActiveMapDisplay();
 	cmv.display.location.updatePlace();
@@ -286,6 +291,7 @@ cmv.run = function()
  * SDK and obtain the data.
  */
 cmv.retrieveData = function(){
+
 	cmv.display.map.getActiveMap().progressBar.start();
 
 	if(cmv.debugger.debug)
@@ -296,7 +302,7 @@ cmv.retrieveData = function(){
 	cmv.apiRequestASync = true;
 
 	// set active map
-	cmv.activeMap = cmv.display.map.getActiveMap();
+	//(moved to cmv.run function) cmv.activeMap = cmv.display.map.getActiveMap();
 	//reset active map request to an empty one (with only default values filled)
 	//cmv.activeMap.request = cmv.display.map_request_template;
 

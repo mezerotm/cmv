@@ -37,6 +37,7 @@ cmv.display.map_request_template = {
  */
 cmv.display.map = function(idNumber){
 	this.id = document.getElementById(`map${idNumber}`);
+	this.idNum = idNumber;
 	this.focus = false;
 
 	// cmv properties
@@ -171,8 +172,8 @@ cmv.display.map = function(idNumber){
 			start: function(){
 				let that = this;
 				$("#map-container").find("td > svg").css("display", "block");
-        let svgs = $("#map-container").find("td > svg");
-        that.bar.status = 'active';
+                let svgs = $("#map-container").find("td > svg");
+                that.bar.status = 'active';
 				function loop(){
 					if(that.bar.value() <= .01 && that.bar.status == 'active')
 						that.bar.animate(1, function(){
@@ -208,9 +209,13 @@ cmv.display.map.reFocus = function(){
 
 // returns the current active map
 cmv.display.map.getActiveMap = function(){
-  for(let i = 0; i < cmv.display.maps.length; i++)
-    if(cmv.display.maps[i].focus)
-      return cmv.display.maps[i];
+  if(cmv.activeMap == null) {
+      for (let i = 0; i < cmv.display.maps.length; i++)
+          if (cmv.display.maps[i].focus)
+              return cmv.display.maps[i];
+  }
+  else
+      return cmv.activeMap;
 };
 
 // returns the current active map number
@@ -257,18 +262,18 @@ cmv.display.map.enableMaps = function(){
 
 //reset the active map display to a blank map (to avoid having too many polygons on one map, and to clean up visual of the map display)
 cmv.display.map.resetActiveMapDisplay = function() {
-	for(i = 0; i < cmv.display.map.getActiveMap().polygons.length; i++)
+	for(i = 0; i < cmv.activeMap.polygons.length; i++)
 	{
-		cmv.display.map.getActiveMap().polygons[i].setMap(null);
+		cmv.activeMap.polygons[i].setMap(null);
 	}
         
         // remove the title on reload
-        var titleControl = cmv.display.map.getActiveMap().googleMap.controls[google.maps.ControlPosition.TOP_CENTER];
+        var titleControl = cmv.activeMap.googleMap.controls[google.maps.ControlPosition.TOP_CENTER];
         // this concoction came from inspecting the debugger. There must be a more straight-forward way to do this (crh)
         titleControl.b[0].style.display = "none"; // hide
         
         // remove the legend on reload
-        var legendControl = cmv.display.map.getActiveMap().googleMap.controls[google.maps.ControlPosition.RIGHT_BOTTOM];
+        var legendControl = cmv.activeMap.googleMap.controls[google.maps.ControlPosition.RIGHT_BOTTOM];
         // this concoction came from inspecting the debugger. There must be a more straight-forward way to do this (crh)
         legendControl.b[0].style.display = "none"; // hide
         
@@ -290,7 +295,7 @@ cmv.display.map.resetActiveMapDisplay = function() {
 
 cmv.display.map.centerActiveMap = function()
 {
-    activeMap = cmv.display.map.getActiveMap();
+    activeMap = cmv.activeMap;
 
     lat = cmv.display.location.place.geometry.location.lat();
     long = cmv.display.location.place.geometry.location.lng();
