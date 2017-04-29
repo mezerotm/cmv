@@ -125,7 +125,7 @@ cmv.setInitPlace = function(location) {
                     }
 
 
-                    console.log("default place set");
+	                if(cmv.debugger.debug) console.log("default place set");
                     cmv.display.location.place = p;
                     cmv.display.location.placeUpdated = true;
                     //center all maps on this new default location

@@ -317,7 +317,7 @@ cmv.display.map.centerActiveMap = function()
     lat = cmv.display.location.place.geometry.location.lat();
     long = cmv.display.location.place.geometry.location.lng();
 
-    console.log(activeMap.request.level)
+	if(cmv.debugger.debug) console.log(activeMap.request.level)
 
     // sets zoom based off request level
     switch(activeMap.request.level){
@@ -342,5 +342,5 @@ cmv.display.map.centerActiveMap = function()
     }
 
     activeMap.googleMap.setCenter(new google.maps.LatLng(lat, long));
-    console.log("Centered map")
+	if(cmv.debugger.debug) console.log("Centered map")
 };

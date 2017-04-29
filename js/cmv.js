@@ -249,7 +249,7 @@ cmv.geoCallBack = function(response){
 
 	}else if(!cmv.geoRequestASync && cmv.debugger.debug)
 		console.log('geoCallBack: duplicate geo request callback');
-	else
+	else if(cmv.debugger.debug)
 		console.log("No response");
 
 	cmv.geoRequestASync = false;
@@ -311,14 +311,14 @@ cmv.retrieveData = function(){
 	if(cmv.display.location.placeUpdated == false)
 	{
 		setTimeout(cmv.retrieveData, 100);
-		console.log("retrieveData - waiting for place update");
+		if(cmv.debugger.debug) console.log("retrieveData - waiting for place update");
 	}
 	else
 	{
         cmv.display.location.setLocationDetails();
 		if(cmv.display.location.location_updated == false) {
             setTimeout(cmv.retrieveData, 100)
-            console.log("retrieveData - waiting for location update")
+			if(cmv.debugger.debug) console.log("retrieveData - waiting for location update")
         }
 		if(cmv.debugger.debug)
 			console.log(cmv.activeMap);
