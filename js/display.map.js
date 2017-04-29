@@ -116,14 +116,30 @@ cmv.display.map = function(idNumber){
 	// center map
 	this.centerMap = function(){
     let geocoder = new google.maps.Geocoder();
-		let address = '30043';
+    let addresss = null;
+    if(cmv.display.location.place != null)
+    {
+		    address = cmv.display.location.place.zip;
+    }
+    else
+    {
+      console.log("Cannot center map on null place");
+      return;
+    }
 
-		geocoder.geocode({'address': address}, function(results, status){
+    //dynamically get center location coordinates
+    let lat = cmv.display.location.place.geometry.location.lat();
+    let lng = cmv.display.location.place.geometry.location.lng();
+    console.log(lat + " " + lng);
+    this.googleMap.setZoom(10);
+    this.googleMap.setCenter(new google.maps.LatLng(lat, lng));
+
+	/*	geocoder.geocode({'address': address}, function(results, status){
 			if(status == 'OK'){
 
 				//get latitude and longitude
 				let lat = results[0].geometry.location.lat();
-				let long = results[0].geometry.location.lng();
+				let lng = results[0].geometry.location.lng();
 
 				// defualt zoom
 				let zoom = 1;
@@ -151,10 +167,11 @@ cmv.display.map = function(idNumber){
 				}
 
 				this.googleMap.setZoom(zoom);
-				this.googleMap.setCenter({lat: lat, lng: long});
+				this.googleMap.setCenter({lat: lat, lng: lng});
 			}else if(cmv.debugger.debug)
 				console.log('cmv.display.map.centerMap: ' + status);
-		}.bind(this));
+		}.bind(this));*/
+     
   };
 
 	//Loading indicator
