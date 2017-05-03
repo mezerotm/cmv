@@ -205,25 +205,16 @@ html, body, .container {
 	float: left;
 }
 
-#date {
+#api, #years, #level {
 	float: right;
-	cursor: pointer;
-	padding: 4px 10px;
-	border-right: solid #C9CACA 1px;
-	border-left: solid #C9CACA 1px;
+	margin: 5px 5px 0 5px;
 }
 
-#date:hover {
-	background: #FFF;
-	border-bottom: solid #C9CACA 1px;
-}
-
-#mapviews-title {
+.mapviews-title {
 	margin: 4px 10px 0 5px;
 	float: right;
 	padding-left: 10px;
 }
-
 #mapviews {
 	margin: 5px 5px 0 5px;
 	float: right;
@@ -246,6 +237,7 @@ html, body, .container {
 
 #location_input {
 	margin: 4px 0 0 0;
+	float: left;
 }
 /* /top panel css rules */
 
@@ -276,14 +268,6 @@ html, body, .container {
 	margin: auto;
 }
 /* /Google Maps css rules */
-
-@-moz-document url-prefix() { /* firefox specific css rules */
-	#date:hover {
-		background: #FFF;
-		border-bottom: solid #C9CACA 1px;
-		padding: 4px 10px; /* still having issues on linux OS, works fine on Windows */
-	}
-}
 
 /* Map Legend CSS styles */
 .maplegend {

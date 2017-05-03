@@ -26,6 +26,9 @@ cmv.colors = [
 ];
 
 
+//(js/documentation.js:36) - cmv.census.availableDatasets
+cmv.api = {approved: ["acs5"]};
+
 cmv.display = {};
 cmv.display.help = {};
 cmv.display.topbar = {};

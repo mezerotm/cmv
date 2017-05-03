@@ -49,11 +49,40 @@ cmv.display.topbar.updateMapView = function(self){
 		cmv.display.topbar.mapContainer.style.width = 'calc(100% - 290px)';
 };
 
-//This function will contain the code for the date on the index page. 
-cmv.display.showDate = function(){
-  var d = new Date();
-  document.getElementById("date").innerHTML = d.toDateString();
-}();
+// -----------------------------------------
+
+cmv.display.topbar.setApi = function(api){
+	if(cmv.api.approved.indexOf(api) === -1) return false;
+	document.getElementById("api").value = api;
+	cmv.display.topbar.setYears();
+};
+
+//populate years select list
+cmv.display.topbar.setYears = function(){
+	let select = document.getElementById("years");
+	let years = cmv.census.availableDatasets[document.getElementById("api").value];
+
+	$("#years").empty();
+
+	for(let i = 0; i < years.length; i++)
+		select.options[select.options.length] = new Option(years[i], years[i]);
+};
+
+//set initial state of APIs and years select lists
+(function(){
+	//populate APIs
+	let select = document.getElementById("api");
+	let approved = cmv.api.approved;
+
+	for(let i = 0; i < approved.length; i++)
+		select.options[select.options.length] = new Option(approved[i], approved[i]);
+
+	cmv.display.topbar.setYears();
+})();
+
+document.getElementById("api").addEventListener("change", function(){
+	cmv.display.topbar.setYears();
+});
 
 
 

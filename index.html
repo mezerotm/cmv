@@ -32,11 +32,9 @@
 		<div id='progress-bar'></div>
 
 		<div class='no-select'>
-			<input id='location_input' class='no-drag' type='text' placeholder='Search' data-step="1" data-intro='Enter location informtion such as county name or zipcode'>
-
 			<button name='submit' id='submit' onclick='cmv.run()' data-step="9" data-intro='Press this button to retrieve your data' >Submit</button>
- 
-			<h4 id='mapviews-title'> Views </h4>
+
+			<input id='location_input' class='no-drag' type='text' placeholder='Search' data-step='1' data-intro='Enter location information such as county name or zipcode'>
 
 			<select id='mapviews' onchange='cmv.display.topbar.updateMapView(this)' title='map-views'>
 				<option value='1' selected>1</option>
@@ -44,7 +42,21 @@
 				<option value='4'>4</option>
 			</select>
 
-			<h4 id='date'></h4>
+			<h4 class='mapviews-title'> Views </h4>
+
+			<!--'blockGroup', 'tract', 'county', 'state', 'us', 'place'-->
+			<select id='level'>
+				<option value='state'>State</option>
+				<option value='county' selected='selected'>County</option>
+				<option value='tract'>Tract</option>
+			</select>
+			<h4 class='mapviews-title'> Level </h4>
+
+			<select id='years'></select>
+			<h4 class='mapviews-title'> Years </h4>
+
+			<select id='api'></select>
+			<h4 class='mapviews-title'> APIs </h4>
 		</div>
 
 	</div> <!-- /top-panel -->
@@ -277,8 +289,8 @@
 <script src='js/cmv-init.js'></script>
 <script src='js/documentation.js'></script>
 <script src='js/display.map.styles.js'></script>
-<script src='js/display.map.js'></script>
 <script src='js/display.topbar.js'></script>
+<script src='js/display.map.js'></script>
 <script src='js/display.sidebar.js'></script>
 <script src='js/cmv.js'></script>
 <script src='js/intro.js'></script> <!-- library for the help functionality -->

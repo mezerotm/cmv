@@ -30,10 +30,13 @@
  */
 
 // flag for debug output
-cmv.debugger.debug = false;
+cmv.debugger.debug = true;
 cmv.debugger.documentation = false;
 
 if(cmv.debugger.documentation){
+
+	// available data sets and their respective years
+	console.log(cmv.census.availableDatasets);
 
 	// Will log all census variables in RAW
 	console.log(cmv.census.getACSVariableDictionary('acs5', '2014'));

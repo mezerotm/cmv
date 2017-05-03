@@ -16,11 +16,10 @@
 
  //template for empty map request
 cmv.display.map_request_template = {
-		level: 'county',
-		//zip: '30043',
-		api: 'acs5',
-		year: '2014',
-		//state: 'GA',
+	level: document.getElementById("level").value,
+	api: document.getElementById("api").value,
+	year: document.getElementById("years").value,
+	container: document.getElementById("level").value,
 		sublevel: true,
 		variables: ['population']
 	};
@@ -109,8 +108,12 @@ cmv.display.map = function(idNumber){
     cmv.display.map.reFocus();
     this.focus = true;
 
+	  cmv.display.topbar.setApi(this.request.api);
+	  document.getElementById("years").value = this.request.year;
+	  document.getElementById("level").value = this.request.level;
+
     if(cmv.debugger.debug)
-      console.log(this);
+	    console.log(this);
   }.bind(this));
 
 	// center map
@@ -256,8 +259,8 @@ cmv.display.map.disableMaps = function(){
 cmv.display.map.resetRequest = function() {
     activeMap = cmv.display.map.getActiveMap();
     activeMap.request = {};
-    activeMap.request.api = 'acs5';
-    activeMap.request.year = '2014';
+	activeMap.request.api = document.getElementById("api").value;
+	activeMap.request.year = document.getElementById("years").value;
     activeMap.request.sublevel = true;
     //activeMap.request.variables = ['population'];
     activeMap.request.level = 'county';
@@ -270,8 +273,8 @@ cmv.display.map.enableMaps = function(){
     cmv.display.maps[i].googleMap.setOptions({draggable: true});
 	//reset request to default values
 	activeMap.request = {};
-	activeMap.request.api = 'acs5';
-	activeMap.request.year = '2014';
+	activeMap.request.api = document.getElementById("api").value;
+	activeMap.request.year = document.getElementById("years").value;
 	activeMap.request.sublevel = true;
 	//activeMap.request.variables = ['population'];
 	activeMap.request.level = 'county';
@@ -301,8 +304,8 @@ cmv.display.map.resetActiveMapDisplay = function() {
 /*cmv.display.map_request_template = {
 		level: 'county',
 		//zip: '30043',
-		api: 'acs5',
-		year: '2014',
+ api: cmcmv.display.topbar.api,
+ year: cmv.display.topbar.year,
 		//state: 'GA',
 		sublevel: true,
 		variables: ['population']
