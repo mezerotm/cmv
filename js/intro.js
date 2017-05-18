@@ -51,15 +51,15 @@
       /* Close introduction when pressing Escape button? */
       exitOnEsc: true,
       /* Close introduction when clicking on overlay layer? */
-      exitOnOverlayClick: true,
+	    exitOnOverlayClick: false,
       /* Show step numbers in introduction? */
-      showStepNumbers: true,
+	    showStepNumbers: false,
       /* Let user use keyboard to navigate the tour? */
       keyboardNavigation: true,
       /* Show tour control buttons? */
       showButtons: true,
       /* Show tour bullets? */
-      showBullets: true,
+	    showBullets: false,
       /* Show tour progress? */
       showProgress: false,
       /* Scroll to highlighted element? */
